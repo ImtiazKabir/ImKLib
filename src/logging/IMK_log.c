@@ -1,17 +1,20 @@
-#define USING_IMKLIB_LOGGING_LOG
-#include "imklib/logging/log.h"
+#define USING_IMKLIB_LOGGING_IMK_LOG
+#include "imklib/logging/IMK_log.h"
 
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
 
+#define USING_IMKLIB_LOGGING_IMK_ANSI_STYLE
+#include "imklib/logging/IMK_ansi_style.h"
+
 static unsigned char log_levelmsk = LOG_MASK_ALL;
 
 static char const *level_strings[] = {"TRACE", "DEBUG", "INFO",
                                       "WARN",  "ERROR", "FATAL"};
-static char const *level_colors[] = {"\x1b[94m", "\x1b[36m", "\x1b[32m",
-                                     "\x1b[33m", "\x1b[31m", "\x1b[35m"};
+static char const *level_colors[] = {ANSI_FG_BRIGHT_BLUE, ANSI_FG_CYAN, ANSI_FG_GREEN,
+                                     ANSI_FG_YELLOW, ANSI_FG_RED, ANSI_FG_MAGENTA};
 
 void IMK_LogvfBW(unsigned char level, FILE *fp, char const *file, int line,
                       char const *fmt, va_list args) {

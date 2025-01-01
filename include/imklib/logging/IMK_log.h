@@ -1,5 +1,5 @@
-#ifndef IMKLIB_LOGGING_LOG_H_
-#define IMKLIB_LOGGING_LOG_H_
+#ifndef IMKLIB_LOGGING_IMK_LOG_H_
+#define IMKLIB_LOGGING_IMK_LOG_H_
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -64,7 +64,7 @@ unsigned char IMK_LogGetMask(void);
 void IMK_LogAddMask(unsigned char levelmsk);
 void IMK_LogClearMask(unsigned char levelmsk);
 
-#ifdef USING_IMKLIB_LOGGING_LOG
+#ifdef USING_IMKLIB_LOGGING_IMK_LOG
 #define Logf      IMK_Logf
 #define Logf1     IMK_Logf1
 #define Logf2     IMK_Logf2
@@ -101,7 +101,17 @@ void IMK_LogClearMask(unsigned char levelmsk);
 #define LOG_MASK_NONE   IMK_LOG_MASK_NONE
 #define LOG_MASK_ALL    IMK_LOG_MASK_ALL
 
-#endif /* USING_IMKLIB_LOGGING_LOG */
+#define LogvfBW IMK_LogvfBW
+#define LogvBW  IMK_LogvBW
+#define LogfBW  IMK_LogfBW
+#define LogBW  IMK_LogBW
 
-#endif /* !IMKLIB_LOGGING_LOG_H_ */
+#define LogvfCol IMK_LogvfCol
+#define LogvCol  IMK_LogvCol
+#define LogfCol  IMK_LogfCol
+#define LogCol  IMK_LogCol
+
+#endif /* USING_IMKLIB_LOGGING_IMK_LOG */
+
+#endif /* !IMKLIB_LOGGING_IMK_LOG_H_ */
 

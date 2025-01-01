@@ -1,5 +1,5 @@
-#define USING_IMKLIB_LOGGING_LOG
-#include "imklib/logging/log.h"
+#define USING_IMKLIB_LOGGING_IMK_LOG
+#include "imklib/logging/IMK_log.h"
 
 int main(void) {
   IMK_LogSetMin(LOG_WARN);
