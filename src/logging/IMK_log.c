@@ -16,7 +16,7 @@ static char const *level_strings[] = {"TRACE", "DEBUG", "INFO",
 static char const *level_colors[] = {ANSI_FG_BRIGHT_BLUE, ANSI_FG_CYAN, ANSI_FG_GREEN,
                                      ANSI_FG_YELLOW, ANSI_FG_RED, ANSI_FG_MAGENTA};
 
-void IMK_LogvfBW(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogVFBW(unsigned char level, FILE *fp, char const *file, int line,
                       char const *fmt, va_list args) {
   auto time_t rawtime = {0};
   register struct tm const *timeinfo = NULL;
@@ -35,16 +35,16 @@ void IMK_LogvfBW(unsigned char level, FILE *fp, char const *file, int line,
   fprintf(fp, "\n");
 }
 
-void IMK_LogvBW(unsigned char level, char const *file, int line,
+void IMK_LogVBW(unsigned char level, char const *file, int line,
                      char const *fmt, va_list args) {
-  IMK_LogvfBW(level, stdout, file, line, fmt, args);
+  IMK_LogVFBW(level, stdout, file, line, fmt, args);
 }
 
-void IMK_LogfBW(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogFBW(unsigned char level, FILE *fp, char const *file, int line,
                      char const *fmt, ...) {
   va_list args = {0};
   va_start(args, fmt);
-  IMK_LogvfBW(level, fp, file, line, fmt, args);
+  IMK_LogVFBW(level, fp, file, line, fmt, args);
   va_end(args);
 }
 
@@ -53,11 +53,11 @@ void IMK_LogBW(unsigned char level, char const *file, int line,
   va_list args = {0};
   FILE *fp = level < LOG_MASK_WARN ? stdout : stderr;
   va_start(args, fmt);
-  IMK_LogvfBW(level, fp, file, line, fmt, args);
+  IMK_LogVFBW(level, fp, file, line, fmt, args);
   va_end(args);
 }
 
-void IMK_LogvfCol(unsigned char level, FILE *fp, char const *file,
+void IMK_LogVFCol(unsigned char level, FILE *fp, char const *file,
                        int line, char const *fmt, va_list args) {
   time_t rawtime = {0};
   struct tm const *timeinfo = NULL;
@@ -76,16 +76,16 @@ void IMK_LogvfCol(unsigned char level, FILE *fp, char const *file,
   fprintf(fp, "\n");
 }
 
-void IMK_LogvCol(unsigned char level, char const *file, int line,
+void IMK_LogVCol(unsigned char level, char const *file, int line,
                       char const *fmt, va_list args) {
-  IMK_LogvfCol(level, stdout, file, line, fmt, args);
+  IMK_LogVFCol(level, stdout, file, line, fmt, args);
 }
 
-void IMK_LogfCol(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogFCol(unsigned char level, FILE *fp, char const *file, int line,
                       char const *fmt, ...) {
   va_list args = {0};
   va_start(args, fmt);
-  IMK_LogvfCol(level, fp, file, line, fmt, args);
+  IMK_LogVFCol(level, fp, file, line, fmt, args);
   va_end(args);
 }
 
@@ -94,7 +94,7 @@ void IMK_LogCol(unsigned char level, char const *file, int line,
   auto va_list args = {0};
   FILE *fp = level < LOG_MASK_WARN ? stdout : stderr;
   va_start(args, fmt);
-  IMK_LogvfCol(level, fp, file, line, fmt, args);
+  IMK_LogVFCol(level, fp, file, line, fmt, args);
   va_end(args);
 }
 

@@ -91,6 +91,6 @@ void IMK_ClearError(void) {
 void IMK_PrintError(char const *str) {
   char *msg = pthread_getspecific(errmsg_key);
   if ((msg != NULL) && (*msg != '\0')) {
-    Logf2(LOG_ERROR, stderr, "%s: %s\n", str, msg);
+    LogF2(LOG_ERROR, stderr, "%s: %s\n", str, msg);
   }
 }

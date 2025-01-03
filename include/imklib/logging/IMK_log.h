@@ -5,25 +5,25 @@
 #include <stdio.h>
 
 /* clang-format off */
-#define IMK_Logf(level, fp, fmt)                                                  IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt)
-#define IMK_Logf1(level, fp, fmt, arg1)                                           IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt, arg1)
-#define IMK_Logf2(level, fp, fmt, arg1, arg2)                                     IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2)
-#define IMK_Logf3(level, fp, fmt, arg1, arg2, arg3)                               IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3)
-#define IMK_Logf4(level, fp, fmt, arg1, arg2, arg3, arg4)                         IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4)
-#define IMK_Logf5(level, fp, fmt, arg1, arg2, arg3, arg4, arg5)                   IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4, arg5)
-#define IMK_Logf6(level, fp, fmt, arg1, arg2, arg3, arg4, arg5, arg6)             IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4, arg5, arg6)
-#define IMK_Logf7(level, fp, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7)       IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
-#define IMK_Logf8(level, fp, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) IMK_LogfCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+#define IMK_LogF(level, fp, fmt)                                                  IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt)
+#define IMK_LogF1(level, fp, fmt, arg1)                                           IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1)
+#define IMK_LogF2(level, fp, fmt, arg1, arg2)                                     IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2)
+#define IMK_LogF3(level, fp, fmt, arg1, arg2, arg3)                               IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3)
+#define IMK_LogF4(level, fp, fmt, arg1, arg2, arg3, arg4)                         IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4)
+#define IMK_LogF5(level, fp, fmt, arg1, arg2, arg3, arg4, arg5)                   IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4, arg5)
+#define IMK_LogF6(level, fp, fmt, arg1, arg2, arg3, arg4, arg5, arg6)             IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4, arg5, arg6)
+#define IMK_LogF7(level, fp, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7)       IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+#define IMK_LogF8(level, fp, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 
-#define IMK_Log(level, fmt)                                                  IMK_Logf(level, stdout, fmt)
-#define IMK_Log1(level, fmt, arg1)                                           IMK_Logf1(level, stdout, fmt, arg1)
-#define IMK_Log2(level, fmt, arg1, arg2)                                     IMK_Logf2(level, stdout, fmt, arg1, arg2)
-#define IMK_Log3(level, fmt, arg1, arg2, arg3)                               IMK_Logf3(level, stdout, fmt, arg1, arg2, arg3)
-#define IMK_Log4(level, fmt, arg1, arg2, arg3, arg4)                         IMK_Logf4(level, stdout, fmt, arg1, arg2, arg3, arg4)
-#define IMK_Log5(level, fmt, arg1, arg2, arg3, arg4, arg5)                   IMK_Logf5(level, stdout, fmt, arg1, arg2, arg3, arg4, arg5)
-#define IMK_Log6(level, fmt, arg1, arg2, arg3, arg4, arg5, arg6)             IMK_Logf6(level, stdout, fmt, arg1, arg2, arg3, arg4, arg5, arg6)
-#define IMK_Log7(level, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7)       IMK_Logf7(level, stdout, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
-#define IMK_Log8(level, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) IMK_Logf8(level, stdout, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+#define IMK_Log(level, fmt)                                                  IMK_LogF(level, stdout, fmt)
+#define IMK_Log1(level, fmt, arg1)                                           IMK_LogF1(level, stdout, fmt, arg1)
+#define IMK_Log2(level, fmt, arg1, arg2)                                     IMK_LogF2(level, stdout, fmt, arg1, arg2)
+#define IMK_Log3(level, fmt, arg1, arg2, arg3)                               IMK_LogF3(level, stdout, fmt, arg1, arg2, arg3)
+#define IMK_Log4(level, fmt, arg1, arg2, arg3, arg4)                         IMK_LogF4(level, stdout, fmt, arg1, arg2, arg3, arg4)
+#define IMK_Log5(level, fmt, arg1, arg2, arg3, arg4, arg5)                   IMK_LogF5(level, stdout, fmt, arg1, arg2, arg3, arg4, arg5)
+#define IMK_Log6(level, fmt, arg1, arg2, arg3, arg4, arg5, arg6)             IMK_LogF6(level, stdout, fmt, arg1, arg2, arg3, arg4, arg5, arg6)
+#define IMK_Log7(level, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7)       IMK_LogF7(level, stdout, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+#define IMK_Log8(level, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) IMK_LogF8(level, stdout, fmt, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 /* clang-format on */
 
 enum { IMK_LOG_TRACE, IMK_LOG_DEBUG, IMK_LOG_INFO, IMK_LOG_WARN, IMK_LOG_ERROR, IMK_LOG_FATAL };
@@ -40,20 +40,20 @@ enum {
 #define IMK_LOG_MASK_ALL                                                               \
   (IMK_LOG_MASK_TRACE | IMK_LOG_MASK_DEBUG | IMK_LOG_MASK_INFO | IMK_LOG_MASK_WARN | IMK_LOG_MASK_ERROR | IMK_LOG_MASK_FATAL)
 
-void IMK_LogvfBW(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogVFBW(unsigned char level, FILE *fp, char const *file, int line,
                char const *fmt, va_list args);
-void IMK_LogvBW(unsigned char level, char const *file, int line,
+void IMK_LogVBW(unsigned char level, char const *file, int line,
               char const *fmt, va_list args);
-void IMK_LogfBW(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogFBW(unsigned char level, FILE *fp, char const *file, int line,
               char const *fmt, ...);
 void IMK_LogBW(unsigned char level, char const *file, int line,
              char const *fmt, ...);
 
-void IMK_LogvfCol(unsigned char level, FILE *fp, char const *file,
+void IMK_LogVFCol(unsigned char level, FILE *fp, char const *file,
                 int line, char const *fmt, va_list args);
-void IMK_LogvCol(unsigned char level, char const *file, int line,
+void IMK_LogVCol(unsigned char level, char const *file, int line,
                char const *fmt, va_list args);
-void IMK_LogfCol(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogFCol(unsigned char level, FILE *fp, char const *file, int line,
                char const *fmt, ...);
 void IMK_LogCol(unsigned char level, char const *file, int line,
               char const *fmt, ...);
@@ -65,15 +65,15 @@ void IMK_LogAddMask(unsigned char levelmsk);
 void IMK_LogClearMask(unsigned char levelmsk);
 
 #ifdef USING_IMKLIB_LOGGING_IMK_LOG
-#define Logf      IMK_Logf
-#define Logf1     IMK_Logf1
-#define Logf2     IMK_Logf2
-#define Logf3     IMK_Logf3
-#define Logf4     IMK_Logf4
-#define Logf5     IMK_Logf5
-#define Logf6     IMK_Logf6
-#define Logf7     IMK_Logf7
-#define Logf8     IMK_Logf8
+#define LogF      IMK_LogF
+#define LogF1     IMK_LogF1
+#define LogF2     IMK_LogF2
+#define LogF3     IMK_LogF3
+#define LogF4     IMK_LogF4
+#define LogF5     IMK_LogF5
+#define LogF6     IMK_LogF6
+#define LogF7     IMK_LogF7
+#define LogF8     IMK_LogF8
 
 #define Log      IMK_Log
 #define Log1     IMK_Log1
@@ -101,14 +101,14 @@ void IMK_LogClearMask(unsigned char levelmsk);
 #define LOG_MASK_NONE   IMK_LOG_MASK_NONE
 #define LOG_MASK_ALL    IMK_LOG_MASK_ALL
 
-#define LogvfBW IMK_LogvfBW
-#define LogvBW  IMK_LogvBW
-#define LogfBW  IMK_LogfBW
+#define LogVFBW IMK_LogVFBW
+#define LogVBW  IMK_LogVBW
+#define LogFBW  IMK_LogFBW
 #define LogBW  IMK_LogBW
 
-#define LogvfCol IMK_LogvfCol
-#define LogvCol  IMK_LogvCol
-#define LogfCol  IMK_LogfCol
+#define LogVFCol IMK_LogVFCol
+#define LogVCol  IMK_LogVCol
+#define LogFCol  IMK_LogFCol
 #define LogCol  IMK_LogCol
 
 #endif /* USING_IMKLIB_LOGGING_IMK_LOG */
