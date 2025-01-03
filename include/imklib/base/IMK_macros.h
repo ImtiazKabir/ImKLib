@@ -20,7 +20,7 @@
 #define CRASSERT(c) STATEMENT( if (!(c)){ PROGRAM_CRASH(); } )
 #else
 #define CRASSERT(c)
-#endif
+#endif /* ENABLE_CRASSERT */
 
 #define ARRAY_COUNT(a) (sizeof(a)/sizeof(a[0]))
 

@@ -6,17 +6,19 @@
 #include <string.h>
 #include <time.h>
 
+#include "imklib/base/IMK_ints.h"
+
 #define USING_IMKLIB_LOGGING_IMK_ANSI_STYLE
 #include "imklib/logging/IMK_ansi_style.h"
 
-static unsigned char log_levelmsk = LOG_MASK_ALL;
+static u8 log_levelmsk = LOG_MASK_ALL;
 
 static char const *level_strings[] = {"TRACE", "DEBUG", "INFO",
                                       "WARN",  "ERROR", "FATAL"};
 static char const *level_colors[] = {ANSI_FG_BRIGHT_BLUE, ANSI_FG_CYAN, ANSI_FG_GREEN,
                                      ANSI_FG_YELLOW, ANSI_FG_RED, ANSI_FG_MAGENTA};
 
-void IMK_LogVFBW(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogVFBW(u8 level, FILE *fp, char const *file, int line,
                       char const *fmt, va_list args) {
   auto time_t rawtime = {0};
   register struct tm const *timeinfo = NULL;
@@ -35,12 +37,12 @@ void IMK_LogVFBW(unsigned char level, FILE *fp, char const *file, int line,
   fprintf(fp, "\n");
 }
 
-void IMK_LogVBW(unsigned char level, char const *file, int line,
+void IMK_LogVBW(u8 level, char const *file, int line,
                      char const *fmt, va_list args) {
   IMK_LogVFBW(level, stdout, file, line, fmt, args);
 }
 
-void IMK_LogFBW(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogFBW(u8 level, FILE *fp, char const *file, int line,
                      char const *fmt, ...) {
   va_list args = {0};
   va_start(args, fmt);
@@ -48,7 +50,7 @@ void IMK_LogFBW(unsigned char level, FILE *fp, char const *file, int line,
   va_end(args);
 }
 
-void IMK_LogBW(unsigned char level, char const *file, int line,
+void IMK_LogBW(u8 level, char const *file, int line,
                     char const *fmt, ...) {
   va_list args = {0};
   FILE *fp = level < LOG_MASK_WARN ? stdout : stderr;
@@ -57,7 +59,7 @@ void IMK_LogBW(unsigned char level, char const *file, int line,
   va_end(args);
 }
 
-void IMK_LogVFCol(unsigned char level, FILE *fp, char const *file,
+void IMK_LogVFCol(u8 level, FILE *fp, char const *file,
                        int line, char const *fmt, va_list args) {
   time_t rawtime = {0};
   struct tm const *timeinfo = NULL;
@@ -76,12 +78,12 @@ void IMK_LogVFCol(unsigned char level, FILE *fp, char const *file,
   fprintf(fp, "\n");
 }
 
-void IMK_LogVCol(unsigned char level, char const *file, int line,
+void IMK_LogVCol(u8 level, char const *file, int line,
                       char const *fmt, va_list args) {
   IMK_LogVFCol(level, stdout, file, line, fmt, args);
 }
 
-void IMK_LogFCol(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogFCol(u8 level, FILE *fp, char const *file, int line,
                       char const *fmt, ...) {
   va_list args = {0};
   va_start(args, fmt);
@@ -89,7 +91,7 @@ void IMK_LogFCol(unsigned char level, FILE *fp, char const *file, int line,
   va_end(args);
 }
 
-void IMK_LogCol(unsigned char level, char const *file, int line,
+void IMK_LogCol(u8 level, char const *file, int line,
                      char const *fmt, ...) {
   auto va_list args = {0};
   FILE *fp = level < LOG_MASK_WARN ? stdout : stderr;
@@ -98,15 +100,15 @@ void IMK_LogCol(unsigned char level, char const *file, int line,
   va_end(args);
 }
 
-void IMK_LogSetMask(unsigned char levelmsk) { log_levelmsk = levelmsk; }
+void IMK_LogSetMask(u8 levelmsk) { log_levelmsk = levelmsk; }
 
-void IMK_LogSetMin(unsigned char level) {
-  log_levelmsk = (unsigned char)(((unsigned char)-1) << level);
+void IMK_LogSetMin(u8 level) {
+  log_levelmsk = (u8)(((u8)-1) << level);
 }
 
-unsigned char IMK_LogGetMask(void) { return log_levelmsk; }
+u8 IMK_LogGetMask(void) { return log_levelmsk; }
 
-void IMK_LogAddMask(unsigned char levelmsk) { log_levelmsk |= levelmsk; }
+void IMK_LogAddMask(u8 levelmsk) { log_levelmsk |= levelmsk; }
 
-void IMK_LogClearMask(unsigned char levelmsk) { log_levelmsk &= ~levelmsk; }
+void IMK_LogClearMask(u8 levelmsk) { log_levelmsk &= ~levelmsk; }
 

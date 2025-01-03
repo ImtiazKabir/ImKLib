@@ -4,6 +4,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#include "../base/IMK_ints.h"
+
 /* clang-format off */
 #define IMK_LogF(level, fp, fmt)                                                  IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt)
 #define IMK_LogF1(level, fp, fmt, arg1)                                           IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt, arg1)
@@ -40,29 +42,29 @@ enum {
 #define IMK_LOG_MASK_ALL                                                               \
   (IMK_LOG_MASK_TRACE | IMK_LOG_MASK_DEBUG | IMK_LOG_MASK_INFO | IMK_LOG_MASK_WARN | IMK_LOG_MASK_ERROR | IMK_LOG_MASK_FATAL)
 
-void IMK_LogVFBW(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogVFBW(u8 level, FILE *fp, char const *file, int line,
                char const *fmt, va_list args);
-void IMK_LogVBW(unsigned char level, char const *file, int line,
+void IMK_LogVBW(u8 level, char const *file, int line,
               char const *fmt, va_list args);
-void IMK_LogFBW(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogFBW(u8 level, FILE *fp, char const *file, int line,
               char const *fmt, ...);
-void IMK_LogBW(unsigned char level, char const *file, int line,
+void IMK_LogBW(u8 level, char const *file, int line,
              char const *fmt, ...);
 
-void IMK_LogVFCol(unsigned char level, FILE *fp, char const *file,
+void IMK_LogVFCol(u8 level, FILE *fp, char const *file,
                 int line, char const *fmt, va_list args);
-void IMK_LogVCol(unsigned char level, char const *file, int line,
+void IMK_LogVCol(u8 level, char const *file, int line,
                char const *fmt, va_list args);
-void IMK_LogFCol(unsigned char level, FILE *fp, char const *file, int line,
+void IMK_LogFCol(u8 level, FILE *fp, char const *file, int line,
                char const *fmt, ...);
-void IMK_LogCol(unsigned char level, char const *file, int line,
+void IMK_LogCol(u8 level, char const *file, int line,
               char const *fmt, ...);
 
-void IMK_LogSetMask(unsigned char levelmsk);
-void IMK_LogSetMin(unsigned char level);
-unsigned char IMK_LogGetMask(void);
-void IMK_LogAddMask(unsigned char levelmsk);
-void IMK_LogClearMask(unsigned char levelmsk);
+void IMK_LogSetMask(u8 levelmsk);
+void IMK_LogSetMin(u8 level);
+u8 IMK_LogGetMask(void);
+void IMK_LogAddMask(u8 levelmsk);
+void IMK_LogClearMask(u8 levelmsk);
 
 #ifdef USING_IMKLIB_LOGGING_IMK_LOG
 #define LogF      IMK_LogF
@@ -110,6 +112,12 @@ void IMK_LogClearMask(unsigned char levelmsk);
 #define LogVCol  IMK_LogVCol
 #define LogFCol  IMK_LogFCol
 #define LogCol  IMK_LogCol
+
+#define LogSetMask IMK_LogSetMask
+#define LogSetMin IMK_LogSetMin
+#define LogGetMask IMK_LogGetMask
+#define LogAddMask IMK_LogGetMask
+#define LogClearMask IMK_LogClearMask
 
 #endif /* USING_IMKLIB_LOGGING_IMK_LOG */
 

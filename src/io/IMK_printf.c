@@ -6,7 +6,7 @@
 
 static char internal_buffer[268435456];
 
-int IMK_VSNPrintf(char *str, size_t size, char const *fmt, va_list ap) {
+int IMK_VSNPrintF(char *str, size_t size, char const *fmt, va_list ap) {
   int ret = -1;
   if (size > sizeof(internal_buffer)) {
     return ret;
@@ -20,11 +20,11 @@ int IMK_VSNPrintf(char *str, size_t size, char const *fmt, va_list ap) {
   return ret;
 }
 
-int IMK_SNPrintf(char *str, size_t size, char const *fmt, ...) {
+int IMK_SNPrintF(char *str, size_t size, char const *fmt, ...) {
   va_list ap;
   int ret;
   va_start(ap, fmt);
-  ret = IMK_VSNPrintf(str, size, fmt, ap);
+  ret = IMK_VSNPrintF(str, size, fmt, ap);
   va_end(ap);
   return ret;
 }
