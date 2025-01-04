@@ -6,7 +6,7 @@
 int main(void) {
   ASSERT(1);
   ASSERT_MSG(1 == 1, "Silent");
-  ASSERT_MSG(2 == 3, "Oh no");
+  ASSERT_MSG(2 == 3, "Imtiaz Kabir");
   ASSERT_MSG(2 == 2, "Oh yes");
   return 0;
 }

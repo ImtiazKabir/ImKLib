@@ -21,9 +21,9 @@ void IMK_ModLogv(LogModule *logger, u8 priority, char const *fmt, va_list args) 
   if (level > &logger->level[MODULE_LOG_MAX_LEVEL]) {
     return;
   }
-  printf("%s%s%s", level->pre_bg, level->pre_fg, level->prefix);
+  printf("%s%s", level->pre_style, level->prefix);
   printf("%s ", ANSI_RESET);
-  printf("%s%s", level->txt_bg, level->txt_fg);
+  printf("%s", level->txt_style);
   vprintf(fmt, args);
   printf("%s", ANSI_RESET);
 }

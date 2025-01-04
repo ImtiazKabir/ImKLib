@@ -11,11 +11,9 @@ typedef u32 IMK_LogModuleLevelType;
 typedef struct {
   u8 priority;
   char const *prefix;
-  char const *pre_bg;
-  char const *pre_fg;
-  char const *txt_bg;
-  char const *txt_fg;
-} IMK_LogModuleLevel ;
+  char const *pre_style;
+  char const *txt_style;
+} IMK_LogModuleLevel;
 
 typedef struct {
   IMK_LogModuleLevelType mask;

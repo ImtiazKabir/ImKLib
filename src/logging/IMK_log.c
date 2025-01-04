@@ -15,8 +15,14 @@ static u8 log_levelmsk = LOG_MASK_ALL;
 
 static char const *level_strings[] = {"TRACE", "DEBUG", "INFO",
                                       "WARN",  "ERROR", "FATAL"};
-static char const *level_colors[] = {ANSI_FG_BRIGHT_BLUE, ANSI_FG_CYAN, ANSI_FG_GREEN,
-                                     ANSI_FG_YELLOW, ANSI_FG_RED, ANSI_FG_MAGENTA};
+static char const *level_colors[] = {
+  ANSI_BG_CYAN ANSI_FG_BLACK, /* TRACE */
+  ANSI_BG_BRIGHT_BLUE ANSI_FG_BLACK, /* DEBUG */
+  ANSI_BG_BRIGHT_GREEN ANSI_FG_BLACK, /* INFO */
+  ANSI_BG_BRIGHT_YELLOW ANSI_FG_BLACK, /* WARN */
+  ANSI_BG_RED ANSI_FG_BLACK, /* FATAL */
+  ANSI_BG_BRIGHT_RED ANSI_FG_BLACK /* FATAL */
+};
 
 void IMK_LogVFBW(u8 level, FILE *fp, char const *file, int line,
                       char const *fmt, va_list args) {
@@ -71,7 +77,7 @@ void IMK_LogVFCol(u8 level, FILE *fp, char const *file,
   time(&rawtime);
   timeinfo = localtime(&rawtime);
 
-  fprintf(fp, "%02d:%02d:%02d\x1b[0m %s%-5s \x1b[90m%s:%d:\x1b[0m ",
+  fprintf(fp, "%02d:%02d:%02d\x1b[0m %s%-5s" ANSI_RESET " \x1b[90m%s:%d:\x1b[0m ",
                   timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec,
                   level_colors[level], level_strings[level], file, line);
   vfprintf(fp, fmt, args);
@@ -100,15 +106,25 @@ void IMK_LogCol(u8 level, char const *file, int line,
   va_end(args);
 }
 
-void IMK_LogSetMask(u8 levelmsk) { log_levelmsk = levelmsk; }
+void IMK_LogSetMask(u8 levelmsk) { 
+  log_levelmsk = levelmsk;
+  log_levelmsk |= LOG_MASK_FATAL;
+}
 
 void IMK_LogSetMin(u8 level) {
   log_levelmsk = (u8)(((u8)-1) << level);
+  log_levelmsk |= LOG_MASK_FATAL;
 }
 
 u8 IMK_LogGetMask(void) { return log_levelmsk; }
 
-void IMK_LogAddMask(u8 levelmsk) { log_levelmsk |= levelmsk; }
+void IMK_LogAddMask(u8 levelmsk) {
+  log_levelmsk |= levelmsk;
+  log_levelmsk |= LOG_MASK_FATAL;
+}
 
-void IMK_LogClearMask(u8 levelmsk) { log_levelmsk &= ~levelmsk; }
+void IMK_LogClearMask(u8 levelmsk) {
+  log_levelmsk &= ~levelmsk;
+  log_levelmsk |= LOG_MASK_FATAL;
+}
 
