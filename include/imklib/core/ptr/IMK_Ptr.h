@@ -2,6 +2,7 @@
 #define IMKLIB_CORE_PTR_IMK_PTR_H_
 
 #include <stdlib.h>
+#include <stddef.h>
 
 #include "../../base/IMK_ints.h"
 #include "../../base/IMK_macros.h"
@@ -13,24 +14,24 @@ enum {
   IMK_PTR_TRANSFERRED = BIN2(1, 1)
 };
 
-#define IMK_PTR_IMK_MEM BIN4(0, 1, 0, 0)
-
 typedef struct {
   void *cptr;
-  u8 flags;
+  u8 flags;                 /* description is below struct definition */
+  ptrdiff_t back_offset;    /* in bytes */
+  ptrdiff_t fwd_offset;     /* in bytes */
 } IMK_Ptr;
-
-#define IMK_PTR_NULL {NULL, IMK_PTR_BORROWED}
 
 /*
  * flags
  * +----+----+----+----+----+----+----+----+
- * |    |    |    |    |    | B  | A1 | A0 |
+ * |    |    | E  | D  | C  | B  | A1 | A0 |
  * +----+----+----+----+----+----+----+----+
  *
  * A1 A0 => Uninitialized / Borrowed / Owned / Transferred / Reserved
- * B => 0 = not imk mem, 1 = imk mem
- *
+ * B => Stack or Heap
+ * C => Steap?
+ * D => ImKMem?
+ * E => read only?
  */
 
 #endif /* !IMKLIB_CORE_PTR_IMK_PTR_H_ */
