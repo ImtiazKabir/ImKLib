@@ -6,8 +6,6 @@ Testing
 Makefile
 cmake_install.cmake
 install_manifest.txt
-compile_commands.json
-compile_flags.txt
 CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
