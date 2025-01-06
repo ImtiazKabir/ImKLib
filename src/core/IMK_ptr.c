@@ -1,5 +1,5 @@
 #define USING_IMKLIB_CORE_IMK_PTR
-#include "imklib/core/IMK_Ptr.h"
+#include "imklib/core/IMK_ptr.h"
 
 #define USING_IMKLIB_IO_IMK_ASSERT
 #include "imklib/io/IMK_assert.h"

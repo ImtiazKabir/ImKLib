@@ -4,7 +4,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#include "IMK_Ptr.h"
+#include "IMK_ptr.h"
 
 #define IMK_STACK(c)                                                           \
   struct {                                                                     \

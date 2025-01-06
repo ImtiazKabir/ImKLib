@@ -1,7 +1,7 @@
 #define USING_IMKLIB_CORE_IMK_SCOPE
 #define USING_IMKLIB_CORE_IMK_PTR
 
-#include "imklib/core/IMK_Ptr.h"
+#include "imklib/core/IMK_ptr.h"
 #include "imklib/core/IMK_scope.h"
 
 static Ptr FuncA(void) {

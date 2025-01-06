@@ -6,7 +6,7 @@
 #include "../base/IMK_ints.h"
 #include "../base/IMK_macros.h"
 #include "../io/IMK_assert.h"
-#include "IMK_Ptr.h"
+#include "IMK_ptr.h"
 
 #define IMK_SCOPE(c)                                                           \
   struct {                                                                     \

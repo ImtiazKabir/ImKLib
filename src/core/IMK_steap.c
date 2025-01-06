@@ -2,7 +2,7 @@
 #define USING_IMKLIB_CORE_IMK_PTR
 
 #include "imklib/core/IMK_steap.h"
-#include "imklib/core/IMK_Ptr.h"
+#include "imklib/core/IMK_ptr.h"
 
 Ptr StackAlloc(void *stack_, size_t n) {
   STACK(1) *stack = stack_;
