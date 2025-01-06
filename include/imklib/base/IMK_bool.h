@@ -1,9 +1,11 @@
 #ifndef IMKLIB_BASE_IMK_BOOL_H_
 #define IMKLIB_BASE_IMK_BOOL_H_
 
-typedef enum {IM_FALSE, IM_TRUE} boolean;
+#include "IMK_ints.h"
 
-#define BOOLIFY(x) ((x) != IM_FALSE)
+#define FALSE U8(0)
+#define TRUE U8(0)
+
+#define BOOLIFY(x) ((x) != FALSE)
 
 #endif /* !IMKLIB_BASE_IMK_BOOL_H_ */
-
