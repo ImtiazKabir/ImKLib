@@ -1,16 +1,16 @@
-#define USING_IMKLIB_CORE_PTR_IMK_SCOPE
-#define USING_IMKLIB_CORE_PTR_IMK_PTR
+#define USING_IMKLIB_CORE_IMK_SCOPE
+#define USING_IMKLIB_CORE_IMK_PTR
 
-#include "imklib/core/ptr/IMK_Ptr.h"
-#include "imklib/core/ptr/IMK_scope.h"
+#include "imklib/core/IMK_Ptr.h"
+#include "imklib/core/IMK_scope.h"
 
 static Ptr FuncA(void) {
   SCOPE(10) scope = {0};
   Ptr a = {0};
   SCOPE_ADD(scope, a);
 
-  a = PtrOwnRaw(malloc(10), 0);
-  SCOPE_RET(scope, Ptr, PtrTransfer(&a));
+  a = PtrOwnRaw(malloc(10), PTR_HEAP);
+  SCOPE_RET(scope, Ptr, PtrMove(&a));
 }
 
 static void FuncB(Ptr ptr) {
@@ -36,7 +36,7 @@ int main(void) {
 
   c = FuncA();
   FuncC(c);
-  FuncB(PtrTransfer(&c));
+  FuncB(PtrMove(&c));
 
   SCOPE_RET(scope, int, 0);
 }

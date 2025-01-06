@@ -1,11 +1,11 @@
-#ifndef IMKLIB_CORE_PTR_IMK_SCOPE_H_
-#define IMKLIB_CORE_PTR_IMK_SCOPE_H_
+#ifndef IMKLIB_CORE_IMK_SCOPE_H_
+#define IMKLIB_CORE_IMK_SCOPE_H_
 
 #include <stdlib.h>
 
-#include "../../base/IMK_ints.h"
-#include "../../base/IMK_macros.h"
-#include "../../io/IMK_assert.h"
+#include "../base/IMK_ints.h"
+#include "../base/IMK_macros.h"
+#include "../io/IMK_assert.h"
 #include "IMK_Ptr.h"
 
 #define IMK_SCOPE(c)                                                           \
@@ -14,6 +14,7 @@
     size_t len;                                                                \
   }
 
+#define IMK_SCOPE_INIT(s, c) SCOPE(c) s = {{0}, 0}
 #define IMK_SCOPE_ADD(s, p)                                                    \
   IMK_ASSERT_MSG(s.len < ARRAY_COUNT(s.ptrs),                                  \
                  "Scope too small, can not add pointer");                      \
@@ -31,11 +32,12 @@
     return s_ret_2005041_;                                                     \
   }
 
-#ifdef USING_IMKLIB_CORE_PTR_IMK_SCOPE
+#ifdef USING_IMKLIB_CORE_IMK_SCOPE
 #define SCOPE IMK_SCOPE
+#define SCOPE_INIT IMK_SCOPE_INIT
 #define SCOPE_ADD IMK_SCOPE_ADD
 #define SCOPE_END IMK_SCOPE_END
 #define SCOPE_RET IMK_SCOPE_RET
-#endif /* USING_IMKLIB_CORE_PTR_IMK_SCOPE */
+#endif /* USING_IMKLIB_CORE_IMK_SCOPE */
 
-#endif /* !IMKLIB_CORE_PTR_IMK_SCOPE_H_ */
+#endif /* !IMKLIB_CORE_IMK_SCOPE_H_ */

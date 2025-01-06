@@ -1,11 +1,11 @@
-#ifndef IMKLIB_CORE_PTR_IMK_PTR_H_
-#define IMKLIB_CORE_PTR_IMK_PTR_H_
+#ifndef IMKLIB_CORE_IMK_PTR_H_
+#define IMKLIB_CORE_IMK_PTR_H_
 
 #include <stddef.h>
 #include <stdlib.h>
 
-#include "../../base/IMK_macros.h"
-#include "../../base/IMK_types.h"
+#include "../base/IMK_ints.h"
+#include "../base/IMK_macros.h"
 
 typedef struct {
   void *raw;
@@ -17,12 +17,11 @@ typedef struct {
 /*
  * flags
  * +----+----+----+----+----+----+----+----+
- * |    |    | E  | D  | C  | B  | A1 | A0 |
+ * |    |    | E  | D  | B1 | B0 | A1 | A0 |
  * +----+----+----+----+----+----+----+----+
  *
- * A1 A0 => Uninitialized / Borrowed / Owned / Transferred
- * B => Stack or Heap
- * C => Steap?
+ * A1 A0 => Uninitialized / Borrowed / Owned / Moved
+ * B1 B0 => None / Stack / Heap / Static
  * D => ImKMem?
  * E => read only?
  */
@@ -31,34 +30,38 @@ enum {
   IMK_PTR_UNINITIALIZED = BIN2(0, 0),
   IMK_PTR_BORROWED = BIN2(0, 1),
   IMK_PTR_OWNED = BIN2(1, 0),
-  IMK_PTR_TRANSFERRED = BIN2(1, 1)
+  IMK_PTR_MOVED = BIN2(1, 1)
 };
 
 enum {
-  IMK_PTR_STACK = 1 << 2,
-  IMK_PTR_STEAP = 1 << 3,
-  IMK_PTR_IMKMEM = 1 << 4,
-  IMK_PTR_RDONLY = 1 << 5
+  IMK_PTR_STACK = BIN2(0, 1) << 2,
+  IMK_PTR_HEAP = BIN2(1, 0) << 2,
+  IMK_PTR_STATIC = BIN2(1, 1) << 2
 };
 
-IMK_Ptr IMK_PtrOwnRaw(void *raw, boolean stack);
-IMK_Ptr IMK_PtrBorrowRaw(void *raw, boolean stack);
+enum { IMK_PTR_IMKMEM = 1 << 4, IMK_PTR_RDONLY = 1 << 5 };
+
+IMK_Ptr IMK_PtrOwnRaw(void *raw, u32 type);
+IMK_Ptr IMK_PtrBorrowRaw(void *raw, u32 type);
 IMK_Ptr *IMK_PtrSetRdOnly(IMK_Ptr *ptr);
 IMK_Ptr *IMK_PtrSetSize(IMK_Ptr *ptr, size_t size);
-IMK_Ptr IMK_PtrMove(IMK_Ptr ptr, ptrdiff_t amt);
+IMK_Ptr IMK_PtrOff(IMK_Ptr ptr, ptrdiff_t amt);
 IMK_Ptr IMK_PtrBorrow(IMK_Ptr ptr);
-IMK_Ptr IMK_PtrTransfer(IMK_Ptr *ptr);
+IMK_Ptr IMK_PtrMove(IMK_Ptr *ptr);
 void IMK_PtrDrop(IMK_Ptr *ptr);
 
-#ifdef USING_IMKLIB_CORE_PTR_IMK_PTR
+#ifdef USING_IMKLIB_CORE_IMK_PTR
 typedef IMK_Ptr Ptr;
 
 #define PTR_UNINITIALIZED IMK_PTR_UNINITIALIZED
 #define PTR_BORROWED IMK_PTR_BORROWED
 #define PTR_OWNED IMK_PTR_OWNED
-#define PTR_TRANSFERRED IMK_PTR_TRANSFERRED
+#define PTR_MOVED IMK_PTR_MOVED
+
 #define PTR_STACK IMK_PTR_STACK
-#define PTR_STEAP IMK_PTR_STEAP
+#define PTR_HEAP IMK_PTR_HEAP
+#define PTR_STATIC IMK_PTR_STATIC
+
 #define PTR_IMKMEM IMK_PTR_IMKMEM
 #define PTR_RDONLY IMK_PTR_RDONLY
 
@@ -66,11 +69,11 @@ typedef IMK_Ptr Ptr;
 #define PtrBorrowRaw IMK_PtrBorrowRaw
 #define PtrSetRdOnly IMK_PtrSetRdOnly
 #define PtrSetSize IMK_PtrSetSize
-#define PtrMove IMK_PtrMove
+#define PtrOff IMK_PtrOff
 #define PtrBorrow IMK_PtrBorrow
-#define PtrTransfer IMK_PtrTransfer
+#define PtrMove IMK_PtrMove
 #define PtrDrop IMK_PtrDrop
 
-#endif /* USING_IMKLIB_CORE_PTR_IMK_PTR */
+#endif /* USING_IMKLIB_CORE_IMK_PTR */
 
-#endif /* !IMKLIB_CORE_PTR_IMK_PTR_H_ */
+#endif /* !IMKLIB_CORE_IMK_PTR_H_ */

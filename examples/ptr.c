@@ -1,5 +1,5 @@
-#define USING_IMKLIB_CORE_PTR_IMK_PTR
-#include "imklib/core/ptr/IMK_Ptr.h"
+#define USING_IMKLIB_CORE_IMK_PTR
+#include "imklib/core/IMK_Ptr.h"
 
 #include <stdlib.h>
 
@@ -7,8 +7,8 @@
 #include "imklib/logging/IMK_log.h"
 
 static Ptr FuncA(void) {
-  Ptr a = PtrOwnRaw(malloc(10), 0);
-  Ptr b = PtrTransfer(&a);
+  Ptr a = PtrOwnRaw(malloc(10), PTR_HEAP);
+  Ptr b = PtrMove(&a);
   PtrDrop(&a);
   return b;
 }
@@ -23,7 +23,7 @@ static void FuncC(Ptr ptr_b) {
 int main(void) {
   Ptr c = FuncA();
   FuncC(c);
-  FuncB(PtrTransfer(&c));
+  FuncB(PtrMove(&c));
   PtrDrop(&c);
   return 0;
 }
