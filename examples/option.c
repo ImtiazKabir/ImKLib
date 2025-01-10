@@ -7,6 +7,7 @@ struct ComplexNumber {
 };
 
 OPTION_DECLARE(OptCmplx, struct ComplexNumber)
+typedef struct OptCmplx OptCmplx;
 OPTION_DEFINE(OptCmplx, struct ComplexNumber)
 
 static OptInt Foo(int p) {

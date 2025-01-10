@@ -15,42 +15,42 @@
 #define IMK_OPTION_UNWRAP_OR(opt) GLUE(opt, _UnwrapOr)
 
 #define IMK_OPTION_DECLARE(O, T)                                               \
-  typedef struct {                                                             \
+  struct O {                                                                   \
     T value;                                                                   \
     u8 some;                                                                   \
-  } O;                                                                         \
-  O IMK_OPTION_SOME(O)(T);                                                     \
-  O IMK_OPTION_NONE(O)(void);                                                  \
-  int IMK_OPTION_IS_SOME(O)(O);                                                \
-  int IMK_OPTION_IS_NONE(O)(O);                                                \
-  T IMK_OPTION_UNWRAP(O)(O);                                                   \
-  T IMK_OPTION_EXPECT(O)(O, char const *);                                     \
-  T IMK_OPTION_UNWRAP_OR(O)(O, T);
+  };                                                                           \
+  struct O IMK_OPTION_SOME(O)(T);                                              \
+  struct O IMK_OPTION_NONE(O)(void);                                           \
+  int IMK_OPTION_IS_SOME(O)(struct O);                                         \
+  int IMK_OPTION_IS_NONE(O)(struct O);                                         \
+  T IMK_OPTION_UNWRAP(O)(struct O);                                            \
+  T IMK_OPTION_EXPECT(O)(struct O, char const *);                              \
+  T IMK_OPTION_UNWRAP_OR(O)(struct O, T);
 
 #define IMK_OPTION_DEFINE(O, T)                                                \
-  O IMK_OPTION_SOME(O)(T value) {                                              \
-    O opt = {0};                                                               \
+  struct O IMK_OPTION_SOME(O)(T value) {                                       \
+    struct O opt = {0};                                                        \
     opt.value = value;                                                         \
     opt.some = 1;                                                              \
     return opt;                                                                \
   }                                                                            \
-  O IMK_OPTION_NONE(O)(void) {                                                 \
-    O opt = {0};                                                               \
+  struct O IMK_OPTION_NONE(O)(void) {                                          \
+    struct O opt = {0};                                                        \
     opt.some = 0;                                                              \
     return opt;                                                                \
   }                                                                            \
-  int IMK_OPTION_IS_SOME(O)(O opt) { return opt.some != 0; }                   \
-  int IMK_OPTION_IS_NONE(O)(O opt) { return opt.some == 0; }                   \
-  T IMK_OPTION_UNWRAP(O)(O opt) {                                              \
+  int IMK_OPTION_IS_SOME(O)(struct O opt) { return opt.some != 0; }            \
+  int IMK_OPTION_IS_NONE(O)(struct O opt) { return opt.some == 0; }            \
+  T IMK_OPTION_UNWRAP(O)(struct O opt) {                                       \
     IMK_ASSERT_MSG(IMK_OPTION_IS_SOME(O)(opt),                                 \
                    "Attempted to unwrap empty Option of type " #T);            \
     return opt.value;                                                          \
   }                                                                            \
-  T IMK_OPTION_EXPECT(O)(O opt, char const *message_on_none) {                 \
+  T IMK_OPTION_EXPECT(O)(struct O opt, char const *message_on_none) {          \
     IMK_ASSERT_MSG(IMK_OPTION_IS_SOME(O)(opt), message_on_none);               \
     return opt.value;                                                          \
   }                                                                            \
-  T IMK_OPTION_UNWRAP_OR(O)(O opt, T else_val) {                               \
+  T IMK_OPTION_UNWRAP_OR(O)(struct O opt, T else_val) {                        \
     if (IMK_OPTION_IS_NONE(O)(opt)) {                                          \
       return else_val;                                                         \
     }                                                                          \
@@ -88,6 +88,29 @@ IMK_OPTION_DECLARE(IMK_OptU32, u32)
 IMK_OPTION_DECLARE(IMK_OptU64, u64)
 IMK_OPTION_DECLARE(IMK_OptF32, f32)
 IMK_OPTION_DECLARE(IMK_OptF64, f64)
+
+typedef struct IMK_OptVoid IMK_OptVoid;
+typedef struct IMK_OptInt IMK_OptInt;
+typedef struct IMK_OptShort IMK_OptShort;
+typedef struct IMK_OptLong IMK_OptLong;
+typedef struct IMK_OptFloat IMK_OptFloat;
+typedef struct IMK_OptDouble IMK_OptDouble;
+typedef struct IMK_OptChar IMK_OptChar;
+typedef struct IMK_OptUInt IMK_OptUInt;
+typedef struct IMK_OptUShort IMK_OptUShort;
+typedef struct IMK_OptULong IMK_OptULong;
+typedef struct IMK_OptUChar IMK_OptUChar;
+typedef struct IMK_OptPtr IMK_OptPtr;
+typedef struct IMK_OptS8 IMK_OptS8;
+typedef struct IMK_OptS16 IMK_OptS16;
+typedef struct IMK_OptS32 IMK_OptS32;
+typedef struct IMK_OptS64 IMK_OptS64;
+typedef struct IMK_OptU8 IMK_OptU8;
+typedef struct IMK_OptU16 IMK_OptU16;
+typedef struct IMK_OptU32 IMK_OptU32;
+typedef struct IMK_OptU64 IMK_OptU64;
+typedef struct IMK_OptF32 IMK_OptF32;
+typedef struct IMK_OptF64 IMK_OptF64;
 
 #ifdef USING_IMKLIB_OPTRES_IMK_OPTION
 #define OPTION_SOME IMK_OPTION_SOME
