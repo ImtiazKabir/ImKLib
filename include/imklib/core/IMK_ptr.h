@@ -49,6 +49,8 @@ IMK_Ptr IMK_PtrOff(IMK_Ptr ptr, ptrdiff_t amt);
 IMK_Ptr IMK_PtrBorrow(IMK_Ptr ptr);
 IMK_Ptr IMK_PtrMove(IMK_Ptr *ptr);
 void IMK_PtrDrop(IMK_Ptr *ptr);
+void IMK_PtrDropR(IMK_Ptr ptr);
+IMK_Ptr IMK_PtrToStr(IMK_Ptr ptr);
 
 #ifdef USING_IMKLIB_CORE_IMK_PTR
 typedef IMK_Ptr Ptr;
@@ -73,6 +75,8 @@ typedef IMK_Ptr Ptr;
 #define PtrBorrow IMK_PtrBorrow
 #define PtrMove IMK_PtrMove
 #define PtrDrop IMK_PtrDrop
+#define PtrDropR IMK_PtrDropR
+#define PtrToStr IMK_PtrToStr
 
 #endif /* USING_IMKLIB_CORE_IMK_PTR */
 

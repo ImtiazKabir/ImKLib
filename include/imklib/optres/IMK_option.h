@@ -57,7 +57,7 @@
     return opt.value;                                                          \
   }
 
-#define OPTION_TRY(dest, O, opt, R)                                            \
+#define IMK_OPTION_TRY(dest, O, opt, R)                                        \
   do {                                                                         \
     O UNIQUE_NAME(GLUE(GLUE(option_, O), _try_at)) = opt;                      \
     if (UNIQUE_NAME(GLUE(GLUE(option_, O), _try_at)).some == 0) {              \
@@ -120,6 +120,7 @@ typedef struct IMK_OptF64 IMK_OptF64;
 #define OPTION_UNWRAP IMK_OPTION_UNWRAP
 #define OPTION_EXPECT IMK_OPTION_EXPECT
 #define OPTION_UNWRAP_OR IMK_OPTION_UNWRAP_OR
+#define OPTION_TRY IMK_OPTION_TRY
 
 #define OPTION_DECLARE IMK_OPTION_DECLARE
 #define OPTION_DEFINE IMK_OPTION_DEFINE

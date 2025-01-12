@@ -104,3 +104,11 @@ void PtrDrop(Ptr *ptr) {
   free(ptr->raw);
   memset(ptr, 0, sizeof(*ptr));
 }
+
+void PtrDropR(Ptr ptr) { PtrDrop(&ptr); }
+
+Ptr PtrToStr(Ptr ptr) {
+  Ptr p = PtrOwnRaw((void *)"PtrToStr called", PTR_STATIC);
+  (void)ptr;
+  return PtrMove(&p);
+}
