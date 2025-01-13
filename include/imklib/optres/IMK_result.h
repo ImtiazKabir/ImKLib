@@ -125,7 +125,8 @@ IMK_RESULT_DECLARE(IMK_ResUInt, unsigned int, IMK_Ptr)
 IMK_RESULT_DECLARE(IMK_ResUShort, unsigned short, IMK_Ptr)
 IMK_RESULT_DECLARE(IMK_ResULong, unsigned long, IMK_Ptr)
 IMK_RESULT_DECLARE(IMK_ResUChar, unsigned char, IMK_Ptr)
-IMK_RESULT_DECLARE(IMK_ResPtr, void *, IMK_Ptr)
+IMK_RESULT_DECLARE(IMK_ResRPtr, void *, IMK_Ptr)
+IMK_RESULT_DECLARE(IMK_ResPtr, IMK_Ptr, IMK_Ptr)
 IMK_RESULT_DECLARE(IMK_ResS8, s8, IMK_Ptr)
 IMK_RESULT_DECLARE(IMK_ResS16, s16, IMK_Ptr)
 IMK_RESULT_DECLARE(IMK_ResS32, s32, IMK_Ptr)
@@ -149,6 +150,7 @@ typedef struct IMK_ResUShort IMK_ResUShort;
 typedef struct IMK_ResULong IMK_ResULong;
 typedef struct IMK_ResUChar IMK_ResUChar;
 typedef struct IMK_ResPtr IMK_ResPtr;
+typedef struct IMK_ResRPtr IMK_ResRPtr;
 typedef struct IMK_ResS8 IMK_ResS8;
 typedef struct IMK_ResS16 IMK_ResS16;
 typedef struct IMK_ResS32 IMK_ResS32;
@@ -186,6 +188,7 @@ typedef IMK_ResUInt ResUInt;
 typedef IMK_ResUShort ResUShort;
 typedef IMK_ResULong ResULong;
 typedef IMK_ResUChar ResUChar;
+typedef IMK_ResRPtr ResRPtr;
 typedef IMK_ResPtr ResPtr;
 typedef IMK_ResS8 ResS8;
 typedef IMK_ResS16 ResS16;
@@ -296,6 +299,15 @@ typedef IMK_ResF64 ResF64;
 #define ResUChar_Unwrap IMK_ResUChar_Unwrap
 #define ResUChar_Expect IMK_ResUChar_Expect
 #define ResUChar_UnwrapOr IMK_ResUChar_UnwrapOr
+
+#define ResRPtr_Ok IMK_ResRPtr_Ok
+#define ResRPtr_Err IMK_ResRPtr_Err
+#define ResRPtr_ErrWithCode IMK_ResRPtr_ErrWithCode
+#define ResRPtr_IsOk IMK_ResRPtr_IsOk
+#define ResRPtr_IsErr IMK_ResRPtr_IsErr
+#define ResRPtr_Unwrap IMK_ResRPtr_Unwrap
+#define ResRPtr_Expect IMK_ResRPtr_Expect
+#define ResRPtr_UnwrapOr IMK_ResRPtr_UnwrapOr
 
 #define ResPtr_Ok IMK_ResPtr_Ok
 #define ResPtr_Err IMK_ResPtr_Err

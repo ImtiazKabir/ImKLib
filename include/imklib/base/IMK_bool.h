@@ -4,7 +4,7 @@
 #include "IMK_ints.h"
 
 #define FALSE U8(0)
-#define TRUE U8(0)
+#define TRUE U8(1)
 
 #define BOOLIFY(x) ((x) != FALSE)
 

@@ -5,6 +5,7 @@
 #include "../base/IMK_ints.h"
 #include "../base/IMK_macros.h"
 #include "../io/IMK_assert.h"
+#include "../core/IMK_ptr.h"
 
 #define IMK_OPTION_SOME(opt) GLUE(opt, _Some)
 #define IMK_OPTION_NONE(opt) GLUE(opt, _None)
@@ -77,7 +78,8 @@ IMK_OPTION_DECLARE(IMK_OptUInt, unsigned int)
 IMK_OPTION_DECLARE(IMK_OptUShort, unsigned short)
 IMK_OPTION_DECLARE(IMK_OptULong, unsigned long)
 IMK_OPTION_DECLARE(IMK_OptUChar, unsigned char)
-IMK_OPTION_DECLARE(IMK_OptPtr, void *)
+IMK_OPTION_DECLARE(IMK_OptRPtr, void *)
+IMK_OPTION_DECLARE(IMK_OptPtr, IMK_Ptr)
 IMK_OPTION_DECLARE(IMK_OptS8, s8)
 IMK_OPTION_DECLARE(IMK_OptS16, s16)
 IMK_OPTION_DECLARE(IMK_OptS32, s32)
@@ -100,6 +102,7 @@ typedef struct IMK_OptUInt IMK_OptUInt;
 typedef struct IMK_OptUShort IMK_OptUShort;
 typedef struct IMK_OptULong IMK_OptULong;
 typedef struct IMK_OptUChar IMK_OptUChar;
+typedef struct IMK_OptRPtr IMK_OptRPtr;
 typedef struct IMK_OptPtr IMK_OptPtr;
 typedef struct IMK_OptS8 IMK_OptS8;
 typedef struct IMK_OptS16 IMK_OptS16;
@@ -136,6 +139,7 @@ typedef IMK_OptUInt OptUInt;
 typedef IMK_OptUShort OptUShort;
 typedef IMK_OptULong OptULong;
 typedef IMK_OptUChar OptUChar;
+typedef IMK_OptRPtr OptRPtr;
 typedef IMK_OptPtr OptPtr;
 typedef IMK_OptS8 OptS8;
 typedef IMK_OptS16 OptS16;
@@ -235,6 +239,14 @@ typedef IMK_OptF64 OptF64;
 #define OptUChar_Unwrap IMK_OptUChar_Unwrap
 #define OptUChar_Expect IMK_OptUChar_Expect
 #define OptUChar_UnwrapOr IMK_OptUChar_UnwrapOr
+
+#define OptRPtr_Some IMK_OptRPtr_Some
+#define OptRPtr_None IMK_OptRPtr_None
+#define OptRPtr_IsSome IMK_OptRPtr_IsSome
+#define OptRPtr_IsNone IMK_OptRPtr_IsNone
+#define OptRPtr_Unwrap IMK_OptRPtr_Unwrap
+#define OptRPtr_Expect IMK_OptRPtr_Expect
+#define OptRPtr_UnwrapOr IMK_OptRPtr_UnwrapOr
 
 #define OptPtr_Some IMK_OptPtr_Some
 #define OptPtr_None IMK_OptPtr_None
