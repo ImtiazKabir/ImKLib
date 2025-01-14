@@ -70,7 +70,7 @@ IMK_Params *IMK_ParamsPush(IMK_Params *self, size_t len, ...);
 int IMK_ParamsMatch(IMK_Params const *self, size_t len, ...);
 void IMK_ParamsExtract(IMK_Params const *self, ...);
 
-#ifdef USING_IMKLIB_CORE_IMK_PARAMS_H_
+#ifdef USING_IMKLIB_CORE_IMK_PARAMS
 typedef IMK_ParamType ParamType;
 typedef IMK_ParamValue ParamValue;
 typedef IMK_Params Params;
@@ -105,7 +105,7 @@ typedef IMK_Params Params;
 #define  PARAM_F64    IMK_PARAM_F64
 
 
-#endif /* USING_IMKLIB_CORE_IMK_PARAMS_H_ */
+#endif /* USING_IMKLIB_CORE_IMK_PARAMS */
 
 #endif /* !IMKLIB_CORE_IMK_PARAMS_H_ */
 

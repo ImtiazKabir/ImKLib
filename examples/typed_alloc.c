@@ -16,7 +16,7 @@ int main(void) {
   SCOPE_ADD(scope, p);
 
   p = TypedAllocP("Any", NULL, 128, FORCE_HEAP);
-  Log1(LOG_INFO, "Allocated at %p", p.raw);
+  Log2(LOG_INFO, "Allocated %s@%p", GetTypeHint(p), p.raw);
 
   SCOPE_RET(scope, int, 0);
 }

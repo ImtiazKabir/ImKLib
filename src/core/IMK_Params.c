@@ -1,4 +1,4 @@
-#define USING_IMKLIB_CORE_IMK_PARAMS_H_
+#define USING_IMKLIB_CORE_IMK_PARAMS
 #define USING_IMKLIB_CORE_IMK_PTR
 
 #include <stdarg.h>

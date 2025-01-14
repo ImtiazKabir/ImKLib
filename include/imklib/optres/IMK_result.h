@@ -101,7 +101,7 @@
   do {                                                                         \
     R UNIQUE_NAME(GLUE(GLUE(result_, R), _try_at)) = res;                      \
     if (UNIQUE_NAME(GLUE(GLUE(result_, R), _try_at)).err_code != 0) {          \
-      return IMK_RESULT_ERRC(RET)(res.val.err_val, err_code);                  \
+      return IMK_RESULT_ERRC(RET)(res.val.err_val, res.err_code);              \
     }                                                                          \
   } while (0)
 
