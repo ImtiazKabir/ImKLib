@@ -18,11 +18,11 @@ static OptInt Foo(int p) {
 }
 
 static OptCmplx Bar(void) {
-  OptInt t = OptInt_None();
-  OPTION_TRY(t, OptInt, Foo(0), OptCmplx);
+  int val;
+  OPTION_TRY(val, OptInt, Foo(0), OptCmplx);
   {
     struct ComplexNumber c = {2, 3};
-    c.x = OptInt_Unwrap(t);
+    c.x = val;
     return OptCmplx_Some(c);
   }
 }

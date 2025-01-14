@@ -2,7 +2,7 @@
 #define USING_IMKLIB_IO_IMK_ASSERT
 #define USING_IMKLIB_LOGGING_IMK_LOG
 
-#include "imklib/core/IMK_Params.h"
+#include "imklib/core/IMK_params.h"
 #include "imklib/io/IMK_assert.h"
 #include "imklib/logging/IMK_log.h"
 

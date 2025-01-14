@@ -17,6 +17,10 @@ Ptr PtrOwnRaw(void *raw, u32 type) {
              "Unknown type");
   ptr.flags |= type;
 
+  if (type == PTR_STATIC) {
+    PtrSetRdOnly(&ptr);
+  }
+
   return ptr;
 }
 
@@ -91,24 +95,3 @@ Ptr PtrMove(Ptr *ptr) {
   return ret;
 }
 
-void PtrDrop(Ptr *ptr) {
-  if (ptr == NULL) {
-    return;
-  }
-  if ((ptr->flags & BIN2(1, 1)) != PTR_OWNED) {
-    return;
-  }
-  if ((ptr->flags & BIN2(1, 1) << 2) != PTR_HEAP) {
-    return;
-  }
-  free(ptr->raw);
-  memset(ptr, 0, sizeof(*ptr));
-}
-
-void PtrDropR(Ptr ptr) { PtrDrop(&ptr); }
-
-Ptr PtrToStr(Ptr ptr) {
-  Ptr p = PtrOwnRaw((void *)"PtrToStr called", PTR_STATIC);
-  (void)ptr;
-  return PtrMove(&p);
-}

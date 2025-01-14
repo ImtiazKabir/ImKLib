@@ -44,7 +44,7 @@
       B                                                                        \
   }
 
-#define BIN1(b0) (b0)
+#define BIN1(b0) U64(b0)
 
 #define BIN2(b1, b0) ((BIN1(b1) << 1) | BIN1(b0))
 

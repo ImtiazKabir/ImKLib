@@ -14,16 +14,21 @@
   }
 #define IMK_STACK_INIT(s, c) IMK_STACK(c) s = {c, 0, {0}}
 
-IMK_Ptr IMK_StackAlloc(void *steap, size_t n);
-IMK_Ptr IMK_HeapAlloc(size_t n);
-IMK_Ptr IMK_SteapAlloc(void *steap, size_t n);
+typedef enum {
+  IMK_PREFER_STACK,
+  IMK_FORCE_STACK,
+  IMK_PREFER_HEAP,
+  IMK_FORCE_HEAP
+} IMK_SteapMode;
 
 #ifdef USING_IMKLIB_CORE_IMK_STEAP
 #define STACK IMK_STACK
 #define STACK_INIT IMK_STACK_INIT
-#define StackAlloc IMK_StackAlloc
-#define HeapAlloc IMK_HeapAlloc
-#define SteapAlloc IMK_SteapAlloc
+#define PREFER_STACK IMK_PREFER_STACK
+#define FORCE_STACK  IMK_FORCE_STACK
+#define PREFER_HEAP  IMK_PREFER_HEAP
+#define FORCE_HEAP   IMK_FORCE_HEAP  
+#define SteapMode IMK_SteapMode
 #endif /* USING_IMKLIB_CORE_IMK_STEAP */
 
 #endif /* !IMKLIB_CORE_IMK_STEAP_H_*/

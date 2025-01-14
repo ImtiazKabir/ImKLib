@@ -4,7 +4,7 @@
 #include <stdarg.h>
 
 #include "imklib/base/IMK_macros.h"
-#include "imklib/core/IMK_Params.h"
+#include "imklib/core/IMK_params.h"
 #include "imklib/core/IMK_ptr.h"
 
 #include "imklib/base/IMK_types.h"

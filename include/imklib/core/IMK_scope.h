@@ -7,6 +7,7 @@
 #include "../base/IMK_macros.h"
 #include "../io/IMK_assert.h"
 #include "IMK_ptr.h"
+#include "IMK_mem.h"
 
 #define IMK_SCOPE(c)                                                           \
   struct {                                                                     \
@@ -23,7 +24,7 @@
 #define IMK_SCOPE_END(s)                                                       \
   {                                                                            \
     FOR(u32 s_iter_2005041_, s_iter_2005041_ = 0; s_iter_2005041_ < s.len;     \
-        s_iter_2005041_++, IMK_PtrDrop(s.ptrs[s_iter_2005041_]);)              \
+        s_iter_2005041_++, IMK_Drop(s.ptrs[s_iter_2005041_]);)              \
   }
 #define IMK_SCOPE_RET(s, T, x)                                                 \
   {                                                                            \

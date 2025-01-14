@@ -64,7 +64,7 @@
     if (UNIQUE_NAME(GLUE(GLUE(option_, O), _try_at)).some == 0) {              \
       return IMK_OPTION_NONE(R)();                                             \
     }                                                                          \
-    dest = UNIQUE_NAME(GLUE(GLUE(option_, O), _try_at));                       \
+    dest = UNIQUE_NAME(GLUE(GLUE(option_, O), _try_at)).value;                 \
   } while (0)
 
 IMK_OPTION_DECLARE(IMK_OptVoid, int)

@@ -69,7 +69,7 @@
                      "Attempted to unwrap empty Result of type " #R            \
                      ". Instead had error: %s",                                \
                      (char *)(s.raw));                                         \
-        IMK_PtrDrop(&s);                                                       \
+        IMK_Drop(&s);                                                          \
         IMK_PanicBox(str);                                                     \
       }                                                                        \
       IMK_PanicBox("Attempted to unwrap empty Result of type " #R              \

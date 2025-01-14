@@ -39,7 +39,7 @@ enum {
   IMK_PTR_STATIC = BIN2(1, 1) << 2
 };
 
-enum { IMK_PTR_IMKMEM = 1 << 4, IMK_PTR_RDONLY = 1 << 5 };
+enum { IMK_PTR_IMK_MEM = 1 << 4, IMK_PTR_RDONLY = 1 << 5 };
 
 IMK_Ptr IMK_PtrOwnRaw(void *raw, u32 type);
 IMK_Ptr IMK_PtrBorrowRaw(void *raw, u32 type);
@@ -48,9 +48,8 @@ IMK_Ptr *IMK_PtrSetSize(IMK_Ptr *ptr, size_t size);
 IMK_Ptr IMK_PtrOff(IMK_Ptr ptr, ptrdiff_t amt);
 IMK_Ptr IMK_PtrBorrow(IMK_Ptr ptr);
 IMK_Ptr IMK_PtrMove(IMK_Ptr *ptr);
-void IMK_PtrDrop(IMK_Ptr *ptr);
-void IMK_PtrDropR(IMK_Ptr ptr);
-IMK_Ptr IMK_PtrToStr(IMK_Ptr ptr);
+
+void IMK_Drop(IMK_Ptr *ptr);
 
 #ifdef USING_IMKLIB_CORE_IMK_PTR
 typedef IMK_Ptr Ptr;
@@ -64,7 +63,7 @@ typedef IMK_Ptr Ptr;
 #define PTR_HEAP IMK_PTR_HEAP
 #define PTR_STATIC IMK_PTR_STATIC
 
-#define PTR_IMKMEM IMK_PTR_IMKMEM
+#define PTR_IMK_MEM IMK_PTR_IMK_MEM
 #define PTR_RDONLY IMK_PTR_RDONLY
 
 #define PtrOwnRaw IMK_PtrOwnRaw
@@ -74,9 +73,7 @@ typedef IMK_Ptr Ptr;
 #define PtrOff IMK_PtrOff
 #define PtrBorrow IMK_PtrBorrow
 #define PtrMove IMK_PtrMove
-#define PtrDrop IMK_PtrDrop
-#define PtrDropR IMK_PtrDropR
-#define PtrToStr IMK_PtrToStr
+#define Drop IMK_Drop
 
 #endif /* USING_IMKLIB_CORE_IMK_PTR */
 
