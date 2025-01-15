@@ -26,6 +26,8 @@ typedef struct {
  * E => read only?
  */
 
+#define IMK_PTR_DEREF(p, T) (*((T *)(p).raw))
+
 enum {
   IMK_PTR_UNINITIALIZED = BIN2(0, 0),
   IMK_PTR_BORROWED = BIN2(0, 1),
@@ -53,6 +55,8 @@ void IMK_Drop(IMK_Ptr *ptr);
 
 #ifdef USING_IMKLIB_CORE_IMK_PTR
 typedef IMK_Ptr Ptr;
+
+#define PTR_DEREF IMK_PTR_DEREF
 
 #define PTR_UNINITIALIZED IMK_PTR_UNINITIALIZED
 #define PTR_BORROWED IMK_PTR_BORROWED

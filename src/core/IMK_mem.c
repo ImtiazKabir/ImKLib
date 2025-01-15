@@ -166,7 +166,7 @@ OptPtr ToStr(Ptr ptr, void *stack, SteapMode mode) {
   Klass *klass = GetKlass(ptr);
   BlockHeader *header;
   if (klass != NULL && klass->to_str != NULL) {
-    return OptPtr_Some(klass->to_str(ptr.raw, stack, mode));
+    return OptPtr_Some(klass->to_str(PtrBorrow(ptr), stack, mode));
   }
   header = GetHeader(ptr);
   if (header == NULL) {
@@ -201,7 +201,7 @@ size_t Hash(Ptr ptr) {
   if (klass == NULL) {
     return 0;
   }
-  return klass->hash(ptr.raw);
+  return klass->hash(PtrBorrow(ptr));
 }
 
 
@@ -211,7 +211,7 @@ int Compare(Ptr p1, Ptr p2) {
   if (k1 == NULL || k2 == NULL || k1 != k2) {
     return (int)((char *)p1.raw - (char *)p2.raw);
   }
-  return k1->compare(p1.raw, p2.raw);
+  return k1->compare(PtrBorrow(p1), PtrBorrow(p2));
 }
 
 static void InitAncestryLineRecurse(Klass *klass) {
@@ -257,7 +257,7 @@ static OptPtr AllocKlass(Klass *klass, void *stack_, SteapMode mode) {
   return OptPtr_Some(ptr);
 }
 
-static ResVoid CtorRecurse(void *self, Klass *klass, Params *params) {
+static ResVoid CtorRecurse(Ptr self, Klass *klass, Params *params) {
   if (klass->super_klass) {
     Params super_params = {0};
     if (klass->super_params) {
@@ -269,7 +269,7 @@ static ResVoid CtorRecurse(void *self, Klass *klass, Params *params) {
   }
 
   if (klass->ctor) {
-    return klass->ctor(self, params);
+    return klass->ctor(PtrBorrow(self), params);
   }
   return ResVoid_Ok(0);
 }
@@ -285,7 +285,7 @@ static ResPtr KlassAllocV(Klass *klass, void *stack, SteapMode mode, va_list lis
     ParamsVPush(&params, len, list);
   }
 
-  RESULT_TRY(ResVoid, CtorRecurse(ret.raw, klass, &params), ResPtr);
+  RESULT_TRY(ResVoid, CtorRecurse(ret, klass, &params), ResPtr);
 
   return ResPtr_Ok(ret);
 }
@@ -308,12 +308,12 @@ Ptr KlassAllocP(Klass *klass, void *stack, SteapMode mode, ...) {
   return ptr;
 }
 
-static void CloneRecurse(void *from, Klass *klass, void *to) {
+static void CloneRecurse(Ptr from, Klass *klass, Ptr to) {
   if (klass == NULL) {
     return;
   }
   CloneRecurse(from, klass->super_klass, to);
-  klass->clone(to, from);
+  klass->clone(PtrBorrow(to), PtrBorrow(from));
 }
 
 OptPtr Clone(Ptr ptr, void *stack, SteapMode mode) {
@@ -322,7 +322,7 @@ OptPtr Clone(Ptr ptr, void *stack, SteapMode mode) {
   ASSERT(klass);
   ASSERT(klass->clone);
   OPTION_TRY(cloned, OptPtr, AllocKlass(klass, stack, mode), OptPtr);
-  CloneRecurse(ptr.raw, klass, cloned.raw);
+  CloneRecurse(ptr, klass, cloned);
   return OptPtr_Some(cloned);
 }
 
@@ -330,12 +330,12 @@ Ptr CloneP(Ptr ptr, void *stack, SteapMode mode) {
   return OptPtr_Unwrap(Clone(ptr, stack, mode));
 }
 
-static void AssignRecurse(void *from, Klass *klass, void *to) {
+static void AssignRecurse(Ptr from, Klass *klass, Ptr to) {
   if (klass == NULL) {
     return;
   }
   AssignRecurse(from, klass->super_klass, to);
-  klass->clone(to, from);
+  klass->clone(PtrBorrow(to), PtrBorrow(from));
 }
 
 void Assign(Ptr to, Ptr from) {
@@ -346,16 +346,16 @@ void Assign(Ptr to, Ptr from) {
   ASSERT(from_klass);
   ASSERT(to_klass == from_klass);
   
-  AssignRecurse(from.raw, to_klass, to.raw);
+  AssignRecurse(from, to_klass, to);
 }
 
-static void DtorRecurse(void *self, Klass *klass) {
+static void DtorRecurse(Ptr self, Klass *klass) {
   if (klass == NULL) {
     return;
   }
   DtorRecurse(self, klass->super_klass);
   if (klass->dtor) {
-    klass->dtor(self);
+    klass->dtor(PtrBorrow(self));
   }
 }
 
@@ -376,7 +376,7 @@ void Drop(Ptr *ptr) {
     if (header->allockey == KLASS_ALLOC_KEY) {
       Klass *klass = header->type.klass;
       ASSERT(klass);
-      DtorRecurse(ptr->raw, klass);
+      DtorRecurse(*ptr, klass);
     }
   }
 

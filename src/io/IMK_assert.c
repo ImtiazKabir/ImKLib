@@ -14,7 +14,7 @@
 #define USING_IMKLIB_ERROR_IMK_ERRNO
 #include "imklib/error/IMK_errno.h"
 
-void IMK_Panic(char const *msg) {
+void Panic(char const *msg) {
   LogF1(LOG_FATAL, stderr, "PANIC: %s", msg);
   if (errno != 0) {
     LogF1(LOG_ERROR, stderr, "ERRNO: %s", strerror(errno));

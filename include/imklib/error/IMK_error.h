@@ -18,6 +18,8 @@ typedef struct {
 
 extern IMK_Klass *const IMK_ErrorKlass;
 
+void IMK_ErrorThrow(IMK_Ptr self, void *stack, IMK_SteapMode mode);
+
 #define IMK_ERROR_DECLARE(name, parent)                                        \
   typedef struct {\
     parent err;\
@@ -50,8 +52,13 @@ extern IMK_Klass *const IMK_ErrorKlass;
     }                                                                          \
     return IMK_ResVoid_Ok(0);\
   }                                                                            \
-  static IMK_Ptr GLUE(name, _ToStr_)(void const *self_, void *stack, IMK_SteapMode mode) { \
-    return IMK_ErrorKlass->to_str(self_, stack, mode);\
+  static IMK_Ptr GLUE(name, _ToStr_)(Ptr self_, void *stack, IMK_SteapMode mode) { \
+    IMK_Error self = IMK_PTR_DEREF(self_, IMK_Error); \
+    char const *prefix = "[" STRINGIFY(name) "]: "; \
+    IMK_Ptr ptr = IMK_TypedAllocP("String", stack, strlen(prefix) + strlen(self.desc.raw) + 1, mode); \
+    strcat(ptr.raw, prefix); \
+    strcat(ptr.raw, self.desc.raw); \
+    return IMK_PtrMove(&ptr); \
   }\
                                                                                \
   IMK_KLASS(GLUE(name, Klass)) {                                                                \
@@ -66,6 +73,7 @@ typedef IMK_Error Error;
 #define ErrorKlass IMK_ErrorKlass
 #define ERROR_DECLARE IMK_ERROR_DECLARE
 #define ERROR_DEFINE IMK_ERROR_DEFINE
+#define ErrorThrow IMK_ErrorThrow
 #endif /* USING_IMKLIB_ERROR_IMK_ERROR */
 
 #endif /* !IMKLIB_ERROR_IMK_ERROR_H_ */

@@ -22,19 +22,19 @@ struct IMK_Klass {
   IMK_Klass *super_klass;
   IMK_ResVoid (*super_params)(IMK_Params *sup_args, IMK_Params *self_args);
 
-  IMK_ResVoid (*ctor)(void *self, IMK_Params *args);
+  IMK_ResVoid (*ctor)(IMK_Ptr self, IMK_Params *args);
 
   /*************************** rule of three *********************************/
-  void (*dtor)(void *self);
-  void (*clone)(void *self, void const *from);
-  void (*assign)(void *self, void const *from);
+  void (*dtor)(IMK_Ptr ptr);
+  void (*clone)(IMK_Ptr self, IMK_Ptr from);
+  void (*assign)(IMK_Ptr self, IMK_Ptr from);
   /***************************************************************************/
 
-  size_t (*hash)(void const *self);
-  int (*compare)(void const *a, void const *b);
-  IMK_Ptr (*to_str)(void const *self, void *stack, IMK_SteapMode mode);
+  size_t (*hash)(IMK_Ptr self);
+  int (*compare)(IMK_Ptr a, IMK_Ptr b);
+  IMK_Ptr (*to_str)(IMK_Ptr self, void *stack, IMK_SteapMode mode);
 
-  void (*impl_of)(void *interface);
+  void (*impl_of)(IMK_Ptr interface);
 };
 
 #define IMK_KLASS(k)                                                           \

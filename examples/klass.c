@@ -23,13 +23,13 @@ typedef struct {
   int id;
 } Student;
 
-ResVoid Constructor(void *self_, Params *args) {
-  Student *self = self_;
+ResVoid Constructor(Ptr self_, Params *args) {
+  Student self = PTR_DEREF(self_, Student);
   int id;
   Log(LOG_TRACE, "Inside constructor");
   ASSERT(ParamsMatch(args, 1, PARAM_INT));
   ParamsExtract(args, &id);
-  self->id = id;
+  self.id = id;
   return ResVoid_Ok(0);
 }
 

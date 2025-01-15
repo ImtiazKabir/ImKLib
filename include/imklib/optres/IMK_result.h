@@ -63,7 +63,7 @@
     if (IMK_RESULT_IS_ERR(R)(res)) {                                           \
       IMK_Ptr (*str_err)(E) = serr;                                            \
       if (str_err != NULL) {                                                   \
-        char str[128] = {0};                                                   \
+        char str[512] = {0};                                                   \
         IMK_Ptr s = str_err(res.val.err_val);                                  \
         IMK_SNPrintF(str, sizeof(str),                                         \
                      "Attempted to unwrap empty Result of type " #R            \
@@ -171,6 +171,7 @@ typedef struct IMK_ResF64 IMK_ResF64;
 #define RESULT_UNWRAP IMK_RESULT_UNWRAP
 #define RESULT_EXPECT IMK_RESULT_EXPECT
 #define RESULT_UNWRAP_OR IMK_RESULT_UNWRAP_OR
+#define RESULT_UNWRAP_ERR IMK_RESULT_UNWRAP_ERR
 #define RESULT_TRY IMK_RESULT_TRY
 #define RESULT_TRY_OR IMK_RESULT_TRY_OR
 
@@ -209,6 +210,7 @@ typedef IMK_ResF64 ResF64;
 #define ResVoid_Unwrap IMK_ResVoid_Unwrap
 #define ResVoid_Expect IMK_ResVoid_Expect
 #define ResVoid_UnwrapOr IMK_ResVoid_UnwrapOr
+#define ResVoid_UnwrapErr IMK_ResVoid_UnwrapErr
 
 #define ResInt_Ok IMK_ResInt_Ok
 #define ResInt_Err IMK_ResInt_Err
@@ -218,6 +220,7 @@ typedef IMK_ResF64 ResF64;
 #define ResInt_Unwrap IMK_ResInt_Unwrap
 #define ResInt_Expect IMK_ResInt_Expect
 #define ResInt_UnwrapOr IMK_ResInt_UnwrapOr
+#define ResInt_UnwrapErr IMK_ResInt_UnwrapErr
 
 #define ResShort_Ok IMK_ResShort_Ok
 #define ResShort_Err IMK_ResShort_Err
@@ -227,6 +230,7 @@ typedef IMK_ResF64 ResF64;
 #define ResShort_Unwrap IMK_ResShort_Unwrap
 #define ResShort_Expect IMK_ResShort_Expect
 #define ResShort_UnwrapOr IMK_ResShort_UnwrapOr
+#define ResShort_UnwrapErr IMK_ResShort_UnwrapErr
 
 #define ResLong_Ok IMK_ResLong_Ok
 #define ResLong_Err IMK_ResLong_Err
@@ -236,6 +240,7 @@ typedef IMK_ResF64 ResF64;
 #define ResLong_Unwrap IMK_ResLong_Unwrap
 #define ResLong_Expect IMK_ResLong_Expect
 #define ResLong_UnwrapOr IMK_ResLong_UnwrapOr
+#define ResLong_UnwrapErr IMK_ResLong_UnwrapErr
 
 #define ResFloat_Ok IMK_ResFloat_Ok
 #define ResFloat_Err IMK_ResFloat_Err
@@ -245,6 +250,7 @@ typedef IMK_ResF64 ResF64;
 #define ResFloat_Unwrap IMK_ResFloat_Unwrap
 #define ResFloat_Expect IMK_ResFloat_Expect
 #define ResFloat_UnwrapOr IMK_ResFloat_UnwrapOr
+#define ResFloat_UnwrapErr IMK_ResFloat_UnwrapErr
 
 #define ResDouble_Ok IMK_ResDouble_Ok
 #define ResDouble_Err IMK_ResDouble_Err
@@ -254,6 +260,7 @@ typedef IMK_ResF64 ResF64;
 #define ResDouble_Unwrap IMK_ResDouble_Unwrap
 #define ResDouble_Expect IMK_ResDouble_Expect
 #define ResDouble_UnwrapOr IMK_ResDouble_UnwrapOr
+#define ResDouble_UnwrapErr IMK_ResDouble_UnwrapErr
 
 #define ResChar_Ok IMK_ResChar_Ok
 #define ResChar_Err IMK_ResChar_Err
@@ -263,6 +270,7 @@ typedef IMK_ResF64 ResF64;
 #define ResChar_Unwrap IMK_ResChar_Unwrap
 #define ResChar_Expect IMK_ResChar_Expect
 #define ResChar_UnwrapOr IMK_ResChar_UnwrapOr
+#define ResChar_UnwrapErr IMK_ResChar_UnwrapErr
 
 #define ResUInt_Ok IMK_ResUInt_Ok
 #define ResUInt_Err IMK_ResUInt_Err
@@ -272,6 +280,7 @@ typedef IMK_ResF64 ResF64;
 #define ResUInt_Unwrap IMK_ResUInt_Unwrap
 #define ResUInt_Expect IMK_ResUInt_Expect
 #define ResUInt_UnwrapOr IMK_ResUInt_UnwrapOr
+#define ResUInt_UnwrapErr IMK_ResUInt_UnwrapErr
 
 #define ResUShort_Ok IMK_ResUShort_Ok
 #define ResUShort_Err IMK_ResUShort_Err
@@ -281,6 +290,7 @@ typedef IMK_ResF64 ResF64;
 #define ResUShort_Unwrap IMK_ResUShort_Unwrap
 #define ResUShort_Expect IMK_ResUShort_Expect
 #define ResUShort_UnwrapOr IMK_ResUShort_UnwrapOr
+#define ResUShort_UnwrapErr IMK_ResUShort_UnwrapErr
 
 #define ResULong_Ok IMK_ResULong_Ok
 #define ResULong_Err IMK_ResULong_Err
@@ -290,6 +300,7 @@ typedef IMK_ResF64 ResF64;
 #define ResULong_Unwrap IMK_ResULong_Unwrap
 #define ResULong_Expect IMK_ResULong_Expect
 #define ResULong_UnwrapOr IMK_ResULong_UnwrapOr
+#define ResULong_UnwrapErr IMK_ResULong_UnwrapErr
 
 #define ResUChar_Ok IMK_ResUChar_Ok
 #define ResUChar_Err IMK_ResUChar_Err
@@ -299,6 +310,7 @@ typedef IMK_ResF64 ResF64;
 #define ResUChar_Unwrap IMK_ResUChar_Unwrap
 #define ResUChar_Expect IMK_ResUChar_Expect
 #define ResUChar_UnwrapOr IMK_ResUChar_UnwrapOr
+#define ResUChar_UnwrapErr IMK_ResUChar_UnwrapErr
 
 #define ResRPtr_Ok IMK_ResRPtr_Ok
 #define ResRPtr_Err IMK_ResRPtr_Err
@@ -308,6 +320,7 @@ typedef IMK_ResF64 ResF64;
 #define ResRPtr_Unwrap IMK_ResRPtr_Unwrap
 #define ResRPtr_Expect IMK_ResRPtr_Expect
 #define ResRPtr_UnwrapOr IMK_ResRPtr_UnwrapOr
+#define ResRPtr_UnwrapErr IMK_ResRPtr_UnwrapErr
 
 #define ResPtr_Ok IMK_ResPtr_Ok
 #define ResPtr_Err IMK_ResPtr_Err
@@ -317,6 +330,7 @@ typedef IMK_ResF64 ResF64;
 #define ResPtr_Unwrap IMK_ResPtr_Unwrap
 #define ResPtr_Expect IMK_ResPtr_Expect
 #define ResPtr_UnwrapOr IMK_ResPtr_UnwrapOr
+#define ResPtr_UnwrapErr IMK_ResPtr_UnwrapErr
 
 #define ResS8_Ok IMK_ResS8_Ok
 #define ResS8_Err IMK_ResS8_Err
@@ -326,6 +340,7 @@ typedef IMK_ResF64 ResF64;
 #define ResS8_Unwrap IMK_ResS8_Unwrap
 #define ResS8_Expect IMK_ResS8_Expect
 #define ResS8_UnwrapOr IMK_ResS8_UnwrapOr
+#define ResS8_UnwrapErr IMK_ResS8_UnwrapErr
 
 #define ResS16_Ok IMK_ResS16_Ok
 #define ResS16_Err IMK_ResS16_Err
@@ -335,6 +350,7 @@ typedef IMK_ResF64 ResF64;
 #define ResS16_Unwrap IMK_ResS16_Unwrap
 #define ResS16_Expect IMK_ResS16_Expect
 #define ResS16_UnwrapOr IMK_ResS16_UnwrapOr
+#define ResS16_UnwrapErr IMK_ResS16_UnwrapErr
 
 #define ResS32_Ok IMK_ResS32_Ok
 #define ResS32_Err IMK_ResS32_Err
@@ -344,6 +360,7 @@ typedef IMK_ResF64 ResF64;
 #define ResS32_Unwrap IMK_ResS32_Unwrap
 #define ResS32_Expect IMK_ResS32_Expect
 #define ResS32_UnwrapOr IMK_ResS32_UnwrapOr
+#define ResS32_UnwrapErr IMK_ResS32_UnwrapErr
 
 #define ResS64_Ok IMK_ResS64_Ok
 #define ResS64_Err IMK_ResS64_Err
@@ -353,6 +370,7 @@ typedef IMK_ResF64 ResF64;
 #define ResS64_Unwrap IMK_ResS64_Unwrap
 #define ResS64_Expect IMK_ResS64_Expect
 #define ResS64_UnwrapOr IMK_ResS64_UnwrapOr
+#define ResS64_UnwrapErr IMK_ResS64_UnwrapErr
 
 #define ResU8_Ok IMK_ResU8_Ok
 #define ResU8_Err IMK_ResU8_Err
@@ -362,6 +380,7 @@ typedef IMK_ResF64 ResF64;
 #define ResU8_Unwrap IMK_ResU8_Unwrap
 #define ResU8_Expect IMK_ResU8_Expect
 #define ResU8_UnwrapOr IMK_ResU8_UnwrapOr
+#define ResU8_UnwrapErr IMK_ResU8_UnwrapErr
 
 #define ResU16_Ok IMK_ResU16_Ok
 #define ResU16_Err IMK_ResU16_Err
@@ -371,6 +390,7 @@ typedef IMK_ResF64 ResF64;
 #define ResU16_Unwrap IMK_ResU16_Unwrap
 #define ResU16_Expect IMK_ResU16_Expect
 #define ResU16_UnwrapOr IMK_ResU16_UnwrapOr
+#define ResU16_UnwrapErr IMK_ResU16_UnwrapErr
 
 #define ResU32_Ok IMK_ResU32_Ok
 #define ResU32_Err IMK_ResU32_Err
@@ -380,6 +400,7 @@ typedef IMK_ResF64 ResF64;
 #define ResU32_Unwrap IMK_ResU32_Unwrap
 #define ResU32_Expect IMK_ResU32_Expect
 #define ResU32_UnwrapOr IMK_ResU32_UnwrapOr
+#define ResU32_UnwrapErr IMK_ResU32_UnwrapErr
 
 #define ResU64_Ok IMK_ResU64_Ok
 #define ResU64_Err IMK_ResU64_Err
@@ -389,6 +410,7 @@ typedef IMK_ResF64 ResF64;
 #define ResU64_Unwrap IMK_ResU64_Unwrap
 #define ResU64_Expect IMK_ResU64_Expect
 #define ResU64_UnwrapOr IMK_ResU64_UnwrapOr
+#define ResU64_UnwrapErr IMK_ResU64_UnwrapErr
 
 #define ResF32_Ok IMK_ResF32_Ok
 #define ResF32_Err IMK_ResF32_Err
@@ -398,6 +420,7 @@ typedef IMK_ResF64 ResF64;
 #define ResF32_Unwrap IMK_ResF32_Unwrap
 #define ResF32_Expect IMK_ResF32_Expect
 #define ResF32_UnwrapOr IMK_ResF32_UnwrapOr
+#define ResF32_UnwrapErr IMK_ResF32_UnwrapErr
 
 #define ResF64_Ok IMK_ResF64_Ok
 #define ResF64_Err IMK_ResF64_Err
@@ -407,6 +430,7 @@ typedef IMK_ResF64 ResF64;
 #define ResF64_Unwrap IMK_ResF64_Unwrap
 #define ResF64_Expect IMK_ResF64_Expect
 #define ResF64_UnwrapOr IMK_ResF64_UnwrapOr
+#define ResF64_UnwrapErr IMK_ResF64_UnwrapErr
 #endif /* USING_IMKLIB_OPTRES_IMK_RESULT */
 
 #endif /* !IMKLIB_OPTRES_IMK_RESULT_H_ */
