@@ -32,7 +32,7 @@ struct IMK_Klass {
 
   size_t (*hash)(void const *self);
   int (*compare)(void const *a, void const *b);
-  IMK_Ptr (*to_str)(void const *self);
+  IMK_Ptr (*to_str)(void const *self, void *stack, IMK_SteapMode mode);
 
   void (*impl_of)(void *interface);
 };
@@ -40,7 +40,7 @@ struct IMK_Klass {
 #define IMK_KLASS(k)                                                           \
   void GLUE(k, _Init_)(void);                                                        \
   static IMK_Klass GLUE(k, _) = {GLUE(k, _Init_),                                        \
-                                "IMK_KLASS(" #k ")",                           \
+                                "IMK_KLASS(" STRINGIFY(k) ")",                           \
                                 0u,                                            \
                                 NULL,                                          \
                                 NULL,                                          \

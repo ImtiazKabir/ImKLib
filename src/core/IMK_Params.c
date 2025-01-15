@@ -2,6 +2,7 @@
 #define USING_IMKLIB_CORE_IMK_PTR
 
 #include <stdarg.h>
+#include <string.h>
 
 #include "imklib/base/IMK_macros.h"
 #include "imklib/core/IMK_params.h"
@@ -250,6 +251,10 @@ void ParamsExtract(Params const *self, ...) {
 
     }
   })
+}
+
+void ParamsCopy(Params *dest, Params const *src) {
+  memcpy(dest, src, sizeof(*dest));
 }
 
 

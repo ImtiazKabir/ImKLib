@@ -165,8 +165,8 @@ int IsOf(Ptr ptr, Klass *klass) {
 OptPtr ToStr(Ptr ptr, void *stack, SteapMode mode) {
   Klass *klass = GetKlass(ptr);
   BlockHeader *header;
-  if (klass != NULL) {
-    return OptPtr_Some(klass->to_str(ptr.raw));
+  if (klass != NULL && klass->to_str != NULL) {
+    return OptPtr_Some(klass->to_str(ptr.raw, stack, mode));
   }
   header = GetHeader(ptr);
   if (header == NULL) {
@@ -258,15 +258,20 @@ static OptPtr AllocKlass(Klass *klass, void *stack_, SteapMode mode) {
 }
 
 static ResVoid CtorRecurse(void *self, Klass *klass, Params *params) {
-  Params super_params = {0};
-
-  if (klass->super_klass != NULL) {
-    ASSERT(klass->super_params);
-    klass->super_params(&super_params, params);
-    return CtorRecurse(self, klass->super_klass, &super_params);
+  if (klass->super_klass) {
+    Params super_params = {0};
+    if (klass->super_params) {
+      klass->super_params(&super_params, params);
+    } else {
+      ParamsCopy(&super_params, params);
+    }
+    RESULT_TRY(ResVoid, CtorRecurse(self, klass->super_klass, &super_params), ResVoid);
   }
 
-  return klass->ctor(self, params);
+  if (klass->ctor) {
+    return klass->ctor(self, params);
+  }
+  return ResVoid_Ok(0);
 }
 
 static ResPtr KlassAllocV(Klass *klass, void *stack, SteapMode mode, va_list list) {
@@ -364,15 +369,21 @@ void Drop(Ptr *ptr) {
   if ((ptr->flags & BIN2(1, 1)) != PTR_OWNED) {
     return;
   }
+
+  if (ptr->flags & PTR_IMK_MEM) {
+    BlockHeader *header = GetHeader(*ptr);
+    ASSERT(header);
+    if (header->allockey == KLASS_ALLOC_KEY) {
+      Klass *klass = header->type.klass;
+      ASSERT(klass);
+      DtorRecurse(ptr->raw, klass);
+    }
+  }
+
   if ((ptr->flags & BIN2(1, 1) << 2) == PTR_HEAP) {
     if (ptr->flags & PTR_IMK_MEM) {
       BlockHeader *header = GetHeader(*ptr);
       ASSERT(header);
-      if (header->allockey == KLASS_ALLOC_KEY) {
-        Klass *klass = header->type.klass;
-        ASSERT(klass);
-        DtorRecurse(ptr->raw, klass);
-      }
       free(header);
     } else {
       free(ptr->raw);
