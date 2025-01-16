@@ -2,22 +2,19 @@
 #define USING_IMKLIB_CORE_IMK_MEM
 #define USING_IMKLIB_CORE_IMK_STEAP
 #define USING_IMKLIB_CORE_IMK_SCOPE
-#define USING_IMKLIB_OPTRES_IMK_OPTION
 #define USING_IMKLIB_OPTRES_IMK_RESULT
 #define USING_IMKLIB_IO_IMK_ASSERT
 #define USING_IMKLIB_CORE_IMK_PARAMS
 #define USING_IMKLIB_LOGGING_IMK_LOG
 
-#include "imklib/core/IMK_ptr.h"
 #include "imklib/core/IMK_mem.h"
-#include "imklib/core/IMK_steap.h"
-#include "imklib/core/IMK_scope.h"
 #include "imklib/core/IMK_params.h"
-#include "imklib/optres/IMK_option.h"
-#include "imklib/optres/IMK_result.h"
+#include "imklib/core/IMK_ptr.h"
+#include "imklib/core/IMK_scope.h"
+#include "imklib/core/IMK_steap.h"
 #include "imklib/io/IMK_assert.h"
 #include "imklib/logging/IMK_log.h"
-
+#include "imklib/optres/IMK_result.h"
 
 typedef struct {
   int id;
@@ -44,11 +41,9 @@ int main(void) {
   Ptr student;
   SCOPE_ADD(scope, student);
 
-  student = KlassAllocP(StudentKlass, &stack, PREFER_STACK, U32(1), PARAM_INT, 2005041);
+  student = KlassAllocP(StudentKlass, &stack, PREFER_STACK, U32(1), PARAM_INT,
+                        2005041);
   Log1(LOG_INFO, "Student ID: %d", ((Student *)student.raw)->id);
 
   SCOPE_RET(scope, int, 0);
 }
-
-
-
