@@ -5,10 +5,10 @@
 #include <stddef.h>
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_BASE
+#include SLUG_IMK_HEADER_BASE
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_PTR
+#include SLUG_IMK_HEADER_PTR
 
 typedef enum {
   IMK_PARAM_INT,

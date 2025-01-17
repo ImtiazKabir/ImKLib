@@ -5,7 +5,7 @@
 #include <stdio.h>
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_INTS
+#include SLUG_IMK_HEADER_INTS
 
 /* clang-format off */
 #define IMK_LogF(level, fp, fmt)                                                  IMK_LogFCol(level, fp, __FILE__, __LINE__, fmt)

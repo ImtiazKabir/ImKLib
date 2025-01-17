@@ -6,11 +6,11 @@
 #define USING_IMKLIB_ERROR_IMK_ERRNO
 #define USING_IMKLIB_LOGGING_IMK_LOG
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_ERRNO
-#include IMK_SLUG_LOG
+#include SLUG_IMK_HEADER_ERRNO
+#include SLUG_IMK_HEADER_LOG
 
 /* Thread-local storage keys for error code and error message */
 static pthread_key_t errcode_key;

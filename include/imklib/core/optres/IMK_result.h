@@ -4,16 +4,16 @@
 #include <stddef.h>
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_BASE
+#include SLUG_IMK_HEADER_BASE
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_PTR
+#include SLUG_IMK_HEADER_PTR
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_ASSERT
+#include SLUG_IMK_HEADER_ASSERT
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_PRINTF
+#include SLUG_IMK_HEADER_PRINTF
 
 #define IMK_RESULT_OK(res) GLUE(res, _Ok)
 #define IMK_RESULT_ERR(res) GLUE(res, _Err)

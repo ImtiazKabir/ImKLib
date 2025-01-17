@@ -2,10 +2,10 @@
 
 #define USING_IMKLIB_ERROR_IMK_ERRNO
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_ERRNO
+#include SLUG_IMK_HEADER_ERRNO
 
 int main(void) {
   SetError(41, "Sample error");

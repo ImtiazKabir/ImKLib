@@ -5,11 +5,11 @@
 #define USING_IMKLIB_LOGGING_IMK_MODLOG
 #define USING_IMKLIB_LOGGING_IMK_ANSI_STYLE
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_MODLOG
-#include IMK_SLUG_ANSI_STYLE
+#include SLUG_IMK_HEADER_MODLOG
+#include SLUG_IMK_HEADER_ANSI_STYLE
 
 void IMK_ModLogv(LogModule *logger, u8 priority, char const *fmt,
                  va_list args) {

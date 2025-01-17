@@ -4,12 +4,12 @@
 #define USING_IMKLIB_CORE_IMK_PARAMS
 #define USING_IMKLIB_CORE_IMK_PTR
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_PARAMS
-#include IMK_SLUG_PTR
-#include IMK_SLUG_BASE
+#include SLUG_IMK_HEADER_PARAMS
+#include SLUG_IMK_HEADER_PTR
+#include SLUG_IMK_HEADER_BASE
 
 Params *ParamsVPush(Params *self, size_t len, va_list list) {
   size_t i = 0u;

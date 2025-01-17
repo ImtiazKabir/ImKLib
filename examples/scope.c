@@ -1,11 +1,11 @@
 #define USING_IMKLIB_CORE_IMK_SCOPE
 #define USING_IMKLIB_CORE_IMK_PTR
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_PTR
-#include IMK_SLUG_SCOPE
+#include SLUG_IMK_HEADER_PTR
+#include SLUG_IMK_HEADER_SCOPE
 
 static Ptr FuncA(void) {
   SCOPE(10) scope = {0};

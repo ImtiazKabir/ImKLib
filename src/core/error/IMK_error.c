@@ -8,16 +8,16 @@
 
 #include <string.h>
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_ERROR
-#include IMK_SLUG_PTR
-#include IMK_SLUG_MEM
-#include IMK_SLUG_STEAP
-#include IMK_SLUG_PARAMS
-#include IMK_SLUG_RESULT
-#include IMK_SLUG_ASSERT
+#include SLUG_IMK_HEADER_ERROR
+#include SLUG_IMK_HEADER_PTR
+#include SLUG_IMK_HEADER_MEM
+#include SLUG_IMK_HEADER_STEAP
+#include SLUG_IMK_HEADER_PARAMS
+#include SLUG_IMK_HEADER_RESULT
+#include SLUG_IMK_HEADER_ASSERT
 
 static ResVoid Error_Constructor(Ptr self, Params *args) {
   int code;

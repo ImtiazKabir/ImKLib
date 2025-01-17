@@ -1,9 +1,9 @@
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_RESULT
-#include IMK_SLUG_PTR
-#include IMK_SLUG_MEM
+#include SLUG_IMK_HEADER_RESULT
+#include SLUG_IMK_HEADER_PTR
+#include SLUG_IMK_HEADER_MEM
 
 static void PtrDropR(IMK_Ptr ptr) { IMK_Drop(&ptr); }
 static IMK_Ptr PtrToStrR(IMK_Ptr ptr) {

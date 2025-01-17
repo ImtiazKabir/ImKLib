@@ -1,9 +1,9 @@
 #define USING_IMKLIB_LOGGING_IMK_LOG
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_LOG
+#include SLUG_IMK_HEADER_LOG
 
 int main(void) {
   Log(LOG_TRACE, "Tracing program flow");

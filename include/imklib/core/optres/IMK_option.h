@@ -2,13 +2,13 @@
 #define IMKLIB_OPTRES_IMK_OPTION_H_
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_BASE
+#include SLUG_IMK_HEADER_BASE
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_PTR
+#include SLUG_IMK_HEADER_PTR
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_ASSERT
+#include SLUG_IMK_HEADER_ASSERT
 
 #define IMK_OPTION_SOME(opt) GLUE(opt, _Some)
 #define IMK_OPTION_NONE(opt) GLUE(opt, _None)

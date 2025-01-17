@@ -4,14 +4,14 @@
 #define USING_IMKLIB_CORE_IMK_MEM
 #define USING_IMKLIB_LOGGING_IMK_LOG
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_SCOPE
-#include IMK_SLUG_STEAP
-#include IMK_SLUG_MEM
-#include IMK_SLUG_LOG
-#include IMK_SLUG_PTR
+#include SLUG_IMK_HEADER_SCOPE
+#include SLUG_IMK_HEADER_STEAP
+#include SLUG_IMK_HEADER_MEM
+#include SLUG_IMK_HEADER_LOG
+#include SLUG_IMK_HEADER_PTR
 
 int main(void) {
   SCOPE_INIT(scope, 8);

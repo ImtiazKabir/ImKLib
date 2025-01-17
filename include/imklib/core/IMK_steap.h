@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_PTR
+#include SLUG_IMK_HEADER_PTR
 
 #define IMK_STACK(c)                                                           \
   struct {                                                                     \

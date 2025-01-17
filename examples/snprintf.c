@@ -3,10 +3,10 @@
 
 #define USING_IMKLIB_IO_IMK_PRINTF_H_
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_PRINTF
+#include SLUG_IMK_HEADER_PRINTF
 
 int main(void) {
   size_t n = (size_t)SNPrintF(NULL, 0, "%d IMKLib %f", 2005041, 3.141596);

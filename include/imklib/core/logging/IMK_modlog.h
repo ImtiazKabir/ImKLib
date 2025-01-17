@@ -4,7 +4,7 @@
 #include <stdarg.h>
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_INTS
+#include SLUG_IMK_HEADER_INTS
 
 typedef u32 IMK_LogModuleLevelType;
 #define IMK_MODULE_LOG_MAX_LEVEL sizeof(IMK_LogModuleLevelType)

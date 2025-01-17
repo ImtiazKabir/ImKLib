@@ -4,19 +4,19 @@
 #include <stddef.h>
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_PTR
+#include SLUG_IMK_HEADER_PTR
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_STEAP
+#include SLUG_IMK_HEADER_STEAP
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_OPTION
+#include SLUG_IMK_HEADER_OPTION
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_RESULT
+#include SLUG_IMK_HEADER_RESULT
 
 #include "IMK_slug_index_ref.h"
-#include IMK_SLUG_PARAMS
+#include SLUG_IMK_HEADER_PARAMS
 
 #define IMK_KLASS_ALLOC_KEY 314159265u
 #define IMK_DATA_ALLOC_KEY 271828182u

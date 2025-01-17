@@ -3,11 +3,11 @@
 #define USING_IMKLIB_CORE_IMK_PTR
 #define USING_IMKLIB_IO_IMK_ASSERT
 
-#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include IMK_SLUG_PTR
-#include IMK_SLUG_ASSERT
+#include SLUG_IMK_HEADER_PTR
+#include SLUG_IMK_HEADER_ASSERT
 
 Ptr PtrOwnRaw(void *raw, u32 type) {
   Ptr ptr = {0};
