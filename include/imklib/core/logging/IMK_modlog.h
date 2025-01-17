@@ -27,9 +27,9 @@ void IMK_ModLogv(IMK_LogModule *logger, u8 priority, char const *fmt,
 void IMK_ModLog(IMK_LogModule *logger, u8 priority, char const *fmt, ...);
 
 #ifdef USING_NAMESPACE_IMK_MODLOG
-typedef IMK_LogModuleLevel LogModuleLevel;
-typedef IMK_LogModule LogModule;
-typedef IMK_LogModuleLevelType LogModuleLevelType;
+#define LogModuleLevel IMK_LogModuleLevel
+#define LogModule IMK_LogModule
+#define LogModuleLevelType IMK_LogModuleLevelType
 #define MODULE_LOG_MAX_LEVEL IMK_MODULE_LOG_MAX_LEVEL
 #define ModLogV IMK_ModLogV
 #define ModLog IMK_ModLog

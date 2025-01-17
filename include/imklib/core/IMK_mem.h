@@ -125,8 +125,8 @@ void IMK_Assign(IMK_Ptr to_b, IMK_Ptr from_b);
 #define KLASS_ALLOC_KEY IMK_KLASS_ALLOC_KEY
 #define DATA_ALLOC_KEY IMK_DATA_ALLOC_KEY
 
-typedef IMK_Klass Klass;
-typedef IMK_BlockHeader BlockHeader;
+#define Klass IMK_Klass
+#define BlockHeader IMK_BlockHeader
 
 #define KLASS IMK_KLASS
 

@@ -75,9 +75,9 @@ void IMK_ParamsExtract(IMK_Params const *self, ...);
 void IMK_ParamsCopy(IMK_Params *dest, IMK_Params const *src);
 
 #ifdef USING_NAMESPACE_IMK_PARAMS
-typedef IMK_ParamType ParamType;
-typedef IMK_ParamValue ParamValue;
-typedef IMK_Params Params;
+#define ParamType IMK_ParamType
+#define ParamValue IMK_ParamValue
+#define Params IMK_Params
 
 #define ParamsVPush IMK_ParamsVPush
 #define ParamsPush IMK_ParamsPush

@@ -57,7 +57,7 @@ IMK_Ptr IMK_PtrMove(IMK_Ptr *ptr);
 void IMK_Drop(IMK_Ptr *ptr);
 
 #ifdef USING_NAMESPACE_IMK_PTR
-typedef IMK_Ptr Ptr;
+#define Ptr IMK_Ptr
 
 #define PTR_DEREF IMK_PTR_DEREF
 

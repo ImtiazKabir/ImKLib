@@ -83,15 +83,15 @@ void IMK_ErrorThrow(IMK_Ptr self, void *stack, IMK_SteapMode mode);
     return IMK_PtrMove(&ptr);                                                  \
   }                                                                            \
                                                                                \
-  IMK_KLASS(GLUE(name, Klass)) {                                               \
-    GLUE(GLUE(name, Klass), _).size = sizeof(name);                            \
-    GLUE(GLUE(name, Klass), _).super_klass = GLUE(parent, Klass);              \
-    GLUE(GLUE(name, Klass), _).super_params = GLUE(name, _SuperParams_);       \
-    GLUE(GLUE(name, Klass), _).to_str = GLUE(name, _ToStr_);                   \
+  IMK_KLASS(GLUE_(name, Klass)) {                                              \
+    GLUE(GLUE_(name, Klass), _).size = sizeof(name);                           \
+    GLUE(GLUE_(name, Klass), _).super_klass = GLUE_(parent, Klass);            \
+    GLUE(GLUE_(name, Klass), _).super_params = GLUE(name, _SuperParams_);      \
+    GLUE(GLUE_(name, Klass), _).to_str = GLUE(name, _ToStr_);                  \
   }
 
 #ifdef USING_NAMESPACE_IMK_ERROR
-typedef IMK_Error Error;
+#define Error IMK_Error
 #define ErrorKlass IMK_ErrorKlass
 #define ERROR_DECLARE IMK_ERROR_DECLARE
 #define ERROR_DEFINE IMK_ERROR_DEFINE
