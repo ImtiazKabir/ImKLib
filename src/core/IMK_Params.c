@@ -1,8 +1,8 @@
 #include <stdarg.h>
 #include <string.h>
 
-#define USING_IMKLIB_CORE_IMK_PARAMS
-#define USING_IMKLIB_CORE_IMK_PTR
+#define USING_NAMESPACE_IMK_PARAMS
+#define USING_NAMESPACE_IMK_PTR
 
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"

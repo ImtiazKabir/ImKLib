@@ -1,5 +1,5 @@
-#ifndef IMKLIB_ERROR_IMK_ERROR_H_
-#define IMKLIB_ERROR_IMK_ERROR_H_
+#ifndef IMK_ERROR_H_O8H417O925IC46K6
+#define IMK_ERROR_H_O8H417O925IC46K6
 
 #include <string.h>
 
@@ -90,12 +90,12 @@ void IMK_ErrorThrow(IMK_Ptr self, void *stack, IMK_SteapMode mode);
     GLUE(GLUE(name, Klass), _).to_str = GLUE(name, _ToStr_);                   \
   }
 
-#ifdef USING_IMKLIB_ERROR_IMK_ERROR
+#ifdef USING_NAMESPACE_IMK_ERROR
 typedef IMK_Error Error;
 #define ErrorKlass IMK_ErrorKlass
 #define ERROR_DECLARE IMK_ERROR_DECLARE
 #define ERROR_DEFINE IMK_ERROR_DEFINE
 #define ErrorThrow IMK_ErrorThrow
-#endif /* USING_IMKLIB_ERROR_IMK_ERROR */
+#endif /* USING_NAMESPACE_IMK_ERROR */
 
-#endif /* !IMKLIB_ERROR_IMK_ERROR_H_ */
+#endif /* !IMK_ERROR_H_O8H417O925IC46K6 */

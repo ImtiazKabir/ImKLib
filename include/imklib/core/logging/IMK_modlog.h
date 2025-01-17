@@ -1,5 +1,5 @@
-#ifndef IMKLIB_LOGGING_IMK_MODLOG_H_
-#define IMKLIB_LOGGING_IMK_MODLOG_H_
+#ifndef IMK_MODLOG_H_9RVMADL2AM07I8AI
+#define IMK_MODLOG_H_9RVMADL2AM07I8AI
 
 #include <stdarg.h>
 
@@ -26,13 +26,13 @@ void IMK_ModLogv(IMK_LogModule *logger, u8 priority, char const *fmt,
 
 void IMK_ModLog(IMK_LogModule *logger, u8 priority, char const *fmt, ...);
 
-#ifdef USING_IMKLIB_LOGGING_IMK_MODLOG
+#ifdef USING_NAMESPACE_IMK_MODLOG
 typedef IMK_LogModuleLevel LogModuleLevel;
 typedef IMK_LogModule LogModule;
 typedef IMK_LogModuleLevelType LogModuleLevelType;
 #define MODULE_LOG_MAX_LEVEL IMK_MODULE_LOG_MAX_LEVEL
 #define ModLogV IMK_ModLogV
 #define ModLog IMK_ModLog
-#endif /* USING_IMKLIB_LOGGIN_IMK_MODLOG */
+#endif /* USING_NAMESPACE_IMK_MODLOG */
 
-#endif /* !IMKLIB_LOGGING_IMK_MODLOG_H_ */
+#endif /* !IMK_MODLOG_H_9RVMADL2AM07I8AI */

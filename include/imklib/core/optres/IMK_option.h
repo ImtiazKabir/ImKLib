@@ -1,5 +1,5 @@
-#ifndef IMKLIB_OPTRES_IMK_OPTION_H_
-#define IMKLIB_OPTRES_IMK_OPTION_H_
+#ifndef IMK_OPTION_H_FW630PAIVSA45CAX
+#define IMK_OPTION_H_FW630PAIVSA45CAX
 
 #include "IMK_slug_index_ref.h"
 #include SLUG_IMK_HEADER_BASE
@@ -118,7 +118,7 @@ typedef struct IMK_OptU64 IMK_OptU64;
 typedef struct IMK_OptF32 IMK_OptF32;
 typedef struct IMK_OptF64 IMK_OptF64;
 
-#ifdef USING_IMKLIB_OPTRES_IMK_OPTION
+#ifdef USING_NAMESPACE_IMK_OPTION
 #define OPTION_SOME IMK_OPTION_SOME
 #define OPTION_NONE IMK_OPTION_NONE
 #define OPTION_IS_SOME IMK_OPTION_IS_SOME
@@ -339,6 +339,6 @@ typedef IMK_OptF64 OptF64;
 #define OptF64_Expect IMK_OptF64_Expect
 #define OptF64_UnwrapOr IMK_OptF64_UnwrapOr
 
-#endif /* USING_IMKLIB_OPTRES_IMK_OPTION */
+#endif /* USING_NAMESPACE_IMK_OPTION */
 
-#endif /* !IMKLIB_OPTRES_IMK_OPTION_H_*/
+#endif /* !IMK_OPTION_H_FW630PAIVSA45CAX */

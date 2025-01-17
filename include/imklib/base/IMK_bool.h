@@ -1,5 +1,5 @@
-#ifndef IMKLIB_BASE_IMK_BOOL_H_
-#define IMKLIB_BASE_IMK_BOOL_H_
+#ifndef IMK_BOOL_H_HGHRGKZPJDE2FRVV
+#define IMK_BOOL_H_HGHRGKZPJDE2FRVV
 
 #include "IMK_slug_index_ref.h"
 #include SLUG_IMK_HEADER_INTS
@@ -9,4 +9,4 @@
 
 #define BOOLIFY(x) ((x) != FALSE)
 
-#endif /* !IMKLIB_BASE_IMK_BOOL_H_ */
+#endif /* !IMK_BOOL_H_HGHRGKZPJDE2FRVV */

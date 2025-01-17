@@ -1,5 +1,5 @@
-#ifndef IMKLIB_CORE_IMK_SCOPE_H_
-#define IMKLIB_CORE_IMK_SCOPE_H_
+#ifndef IMK_SCOPE_H_ORZMLMWX2CSRKCX2
+#define IMK_SCOPE_H_ORZMLMWX2CSRKCX2
 
 #include <stdlib.h>
 
@@ -42,12 +42,12 @@
     return s_ret_2005041_;                                                     \
   }
 
-#ifdef USING_IMKLIB_CORE_IMK_SCOPE
+#ifdef USING_NAMESPACE_IMK_SCOPE
 #define SCOPE IMK_SCOPE
 #define SCOPE_INIT IMK_SCOPE_INIT
 #define SCOPE_ADD IMK_SCOPE_ADD
 #define SCOPE_END IMK_SCOPE_END
 #define SCOPE_RET IMK_SCOPE_RET
-#endif /* USING_IMKLIB_CORE_IMK_SCOPE */
+#endif /* USING_NAMESPACE_IMK_SCOPE */
 
-#endif /* !IMKLIB_CORE_IMK_SCOPE_H_ */
+#endif /* !IMK_SCOPE_H_ORZMLMWX2CSRKCX2 */

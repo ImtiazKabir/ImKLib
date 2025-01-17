@@ -1,5 +1,5 @@
-#ifndef IMKLIB_BASE_IMK_FLOATS_H_
-#define IMKLIB_BASE_IMK_FLOATS_H_
+#ifndef IMK_FLOATS_H_R36EWR6MCEPR2YOZ
+#define IMK_FLOATS_H_R36EWR6MCEPR2YOZ
 
 #include <float.h>
 
@@ -19,4 +19,4 @@ typedef double f64;
 #define F64_FMT "f"
 #define F64(value) ((f64)(value))
 
-#endif /* !IMKLIB_BASE_IMK_FLOATS_H_ */
+#endif /* !IMK_FLOATS_H_R36EWR6MCEPR2YOZ */

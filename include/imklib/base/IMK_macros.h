@@ -1,5 +1,5 @@
-#ifndef IMKLIB_BASE_IMK_MACROS_H_
-#define IMKLIB_BASE_IMK_MACROS_H_
+#ifndef IMK_MACROS_H_Y00OVTCJP5BUFN4S
+#define IMK_MACROS_H_Y00OVTCJP5BUFN4S
 
 #include "IMK_slug_index_ref.h"
 #include SLUG_IMK_HEADER_INTS
@@ -81,4 +81,4 @@
          b17, b16, b15, b14, b13, b12, b11, b10, b9, b8, b7, b6, b5, b4, b3,   \
          b2, b1, b0))
 
-#endif /* !IMKLIB_BASE_IMK_MACROS_H_ */
+#endif /* !IMK_MACROS_H_Y00OVTCJP5BUFN4S */

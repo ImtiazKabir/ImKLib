@@ -1,5 +1,5 @@
-#ifndef IMKLIB_IO_IMK_PRINTF_H_
-#define IMKLIB_IO_IMK_PRINTF_H_
+#ifndef IMK_PRINTF_H_ZN244WV6EGPVSVIL
+#define IMK_PRINTF_H_ZN244WV6EGPVSVIL
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -7,10 +7,9 @@
 int IMK_SNPrintF(char *str, size_t size, char const *fmt, ...);
 int IMK_VSNPrintF(char *str, size_t size, char const *fmt, va_list ap);
 
-#ifdef USING_IMKLIB_IO_IMK_PRINTF_H_
-#define SNPrintF  IMK_SNPrintF
+#ifdef USING_NAMESPACE_IMK_PRINTF_H_
+#define SNPrintF IMK_SNPrintF
 #define VSNPrintF IMK_VSNPrintF
-#endif /* USING_IMKLIB_IO_IMK_PRINTF_H_ */
+#endif /* USING_NAMESPACE_IMK_PRINTF_H_ */
 
-#endif /* !IMKLIB_IO_IMK_PRINTF_H_ */
-
+#endif /* !IMK_PRINTF_H_ZN244WV6EGPVSVIL */

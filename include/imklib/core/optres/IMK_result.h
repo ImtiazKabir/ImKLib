@@ -1,5 +1,5 @@
-#ifndef IMKLIB_OPTRES_IMK_RESULT_H_
-#define IMKLIB_OPTRES_IMK_RESULT_H_
+#ifndef IMK_RESULT_H_7CV443ZQWRBXXAKP
+#define IMK_RESULT_H_7CV443ZQWRBXXAKP
 
 #include <stddef.h>
 
@@ -167,7 +167,7 @@ typedef struct IMK_ResU64 IMK_ResU64;
 typedef struct IMK_ResF32 IMK_ResF32;
 typedef struct IMK_ResF64 IMK_ResF64;
 
-#ifdef USING_IMKLIB_OPTRES_IMK_RESULT
+#ifdef USING_NAMESPACE_IMK_RESULT
 #define RESULT_OK IMK_RESULT_OK
 #define RESULT_ERR IMK_RESULT_ERR
 #define RESULT_ERRC IMK_RESULT_ERRC
@@ -436,6 +436,6 @@ typedef IMK_ResF64 ResF64;
 #define ResF64_Expect IMK_ResF64_Expect
 #define ResF64_UnwrapOr IMK_ResF64_UnwrapOr
 #define ResF64_UnwrapErr IMK_ResF64_UnwrapErr
-#endif /* USING_IMKLIB_OPTRES_IMK_RESULT */
+#endif /* USING_NAMESPACE_IMK_RESULT */
 
-#endif /* !IMKLIB_OPTRES_IMK_RESULT_H_ */
+#endif /* !IMK_RESULT_H_7CV443ZQWRBXXAKP */

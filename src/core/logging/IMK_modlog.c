@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define USING_IMKLIB_LOGGING_IMK_MODLOG
-#define USING_IMKLIB_LOGGING_IMK_ANSI_STYLE
+#define USING_NAMESPACE_IMK_MODLOG
+#define USING_NAMESPACE_IMK_ANSI_STYLE
 
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"

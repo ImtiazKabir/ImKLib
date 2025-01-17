@@ -1,5 +1,5 @@
-#ifndef IMKLIB_BASE_IMK_INTS_H_
-#define IMKLIB_BASE_IMK_INTS_H_
+#ifndef IMK_INTS_H_1YUBCT7UJQO2X8HS
+#define IMK_INTS_H_1YUBCT7UJQO2X8HS
 
 #include <limits.h>
 
@@ -90,9 +90,9 @@ typedef unsigned long u64;
 #define S64(value) ((s64)(value##L))
 #define U64(value) ((u64)(value##UL))
 #else
-/* If your platform doesn't support 64-bit integers, comment out the next line */
+/* If your platform doesn't support 64-bit integers, comment out the next line
+ */
 #error "64-bit type not supported on this platform"
 #endif
 
-#endif /* !IMKLIB_BASE_IMK_INTS_H_ */
-
+#endif /* !IMK_INTS_H_1YUBCT7UJQO2X8HS */

@@ -1,5 +1,5 @@
-#ifndef IMKLIB_LOGGING_IMK_LOG_H_
-#define IMKLIB_LOGGING_IMK_LOG_H_
+#ifndef IMK_LOG_H_UEK2076US6EIQ8Q7
+#define IMK_LOG_H_UEK2076US6EIQ8Q7
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -73,7 +73,7 @@ u8 IMK_LogGetMask(void);
 void IMK_LogAddMask(u8 levelmsk);
 void IMK_LogClearMask(u8 levelmsk);
 
-#ifdef USING_IMKLIB_LOGGING_IMK_LOG
+#ifdef USING_NAMESPACE_IMK_LOG
 #define LogF IMK_LogF
 #define LogF1 IMK_LogF1
 #define LogF2 IMK_LogF2
@@ -126,6 +126,6 @@ void IMK_LogClearMask(u8 levelmsk);
 #define LogAddMask IMK_LogGetMask
 #define LogClearMask IMK_LogClearMask
 
-#endif /* USING_IMKLIB_LOGGING_IMK_LOG */
+#endif /* USING_NAMESPACE_IMK_LOG */
 
-#endif /* !IMKLIB_LOGGING_IMK_LOG_H_ */
+#endif /* !IMK_LOG_H_UEK2076US6EIQ8Q7 */

@@ -1,5 +1,5 @@
-#ifndef IMKLIB_CORE_IMK_PARAMS_H_
-#define IMKLIB_CORE_IMK_PARAMS_H_
+#ifndef IMK_PARAMS_H_EICI0XBGGZZ35SML
+#define IMK_PARAMS_H_EICI0XBGGZZ35SML
 
 #include <stdarg.h>
 #include <stddef.h>
@@ -74,7 +74,7 @@ int IMK_ParamsMatch(IMK_Params const *self, size_t len, ...);
 void IMK_ParamsExtract(IMK_Params const *self, ...);
 void IMK_ParamsCopy(IMK_Params *dest, IMK_Params const *src);
 
-#ifdef USING_IMKLIB_CORE_IMK_PARAMS
+#ifdef USING_NAMESPACE_IMK_PARAMS
 typedef IMK_ParamType ParamType;
 typedef IMK_ParamValue ParamValue;
 typedef IMK_Params Params;
@@ -108,6 +108,6 @@ typedef IMK_Params Params;
 #define PARAM_F32 IMK_PARAM_F32
 #define PARAM_F64 IMK_PARAM_F64
 
-#endif /* USING_IMKLIB_CORE_IMK_PARAMS */
+#endif /* USING_NAMESPACE_IMK_PARAMS */
 
-#endif /* !IMKLIB_CORE_IMK_PARAMS_H_ */
+#endif /* !IMK_PARAMS_H_EICI0XBGGZZ35SML */

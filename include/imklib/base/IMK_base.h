@@ -1,5 +1,5 @@
-#ifndef IMKLIB_BASE_IMK_TYPES_H_
-#define IMKLIB_BASE_IMK_TYPES_H_
+#ifndef IMK_BASE_QYDCUMU7BLK4B7SJ
+#define IMK_BASE_QYDCUMU7BLK4B7SJ
 
 #include "IMK_slug_index_ref.h"
 #include SLUG_IMK_HEADER_INDEX
@@ -16,4 +16,4 @@
 #include "IMK_slug_index_ref.h"
 #include SLUG_IMK_HEADER_MACROS
 
-#endif /* !IMKLIB_BASE_IMK_TYPES_H_ */
+#endif /* !IMK_BASE_QYDCUMU7BLK4B7SJ */

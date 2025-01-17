@@ -1,4 +1,4 @@
-#define USING_IMKLIB_OPTRES_IMK_OPTION
+#define USING_NAMESPACE_IMK_OPTION
 
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"

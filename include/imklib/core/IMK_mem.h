@@ -1,5 +1,5 @@
-#ifndef IMKLIB_CORE_IMK_MEM_H_
-#define IMKLIB_CORE_IMK_MEM_H_
+#ifndef IMK_MEM_H_2JH5L1VYK3BJSRZ9
+#define IMK_MEM_H_2JH5L1VYK3BJSRZ9
 
 #include <stddef.h>
 
@@ -120,7 +120,7 @@ IMK_Ptr IMK_CloneP(IMK_Ptr ptr_b, void *stack, IMK_SteapMode mode);
 
 void IMK_Assign(IMK_Ptr to_b, IMK_Ptr from_b);
 
-#ifdef USING_IMKLIB_CORE_IMK_MEM
+#ifdef USING_NAMESPACE_IMK_MEM
 
 #define KLASS_ALLOC_KEY IMK_KLASS_ALLOC_KEY
 #define DATA_ALLOC_KEY IMK_DATA_ALLOC_KEY
@@ -154,6 +154,6 @@ typedef IMK_BlockHeader BlockHeader;
 #define Clone IMK_Clone
 #define CloneP IMK_CloneP
 #define Assign IMK_Assign
-#endif /* USING_IMKLIB_CORE_IMK_MEM */
+#endif /* USING_NAMESPACE_IMK_MEM */
 
-#endif /* !IMKLIB_CORE_IMK_MEM_H_ */
+#endif /* !IMK_MEM_H_2JH5L1VYK3BJSRZ9 */

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define USING_IMKLIB_ERROR_IMK_ERRNO
+#define USING_NAMESPACE_IMK_ERRNO
 
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"

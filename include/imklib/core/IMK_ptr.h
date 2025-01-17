@@ -1,5 +1,5 @@
-#ifndef IMKLIB_CORE_IMK_PTR_H_
-#define IMKLIB_CORE_IMK_PTR_H_
+#ifndef IMK_PTR_H_99JPJ0NI06PW128Q
+#define IMK_PTR_H_99JPJ0NI06PW128Q
 
 #include <stddef.h>
 #include <stdlib.h>
@@ -56,7 +56,7 @@ IMK_Ptr IMK_PtrMove(IMK_Ptr *ptr);
 
 void IMK_Drop(IMK_Ptr *ptr);
 
-#ifdef USING_IMKLIB_CORE_IMK_PTR
+#ifdef USING_NAMESPACE_IMK_PTR
 typedef IMK_Ptr Ptr;
 
 #define PTR_DEREF IMK_PTR_DEREF
@@ -82,6 +82,6 @@ typedef IMK_Ptr Ptr;
 #define PtrMove IMK_PtrMove
 #define Drop IMK_Drop
 
-#endif /* USING_IMKLIB_CORE_IMK_PTR */
+#endif /* USING_NAMESPACE_IMK_PTR */
 
-#endif /* !IMKLIB_CORE_IMK_PTR_H_ */
+#endif /* !IMK_PTR_H_99JPJ0NI06PW128Q */
