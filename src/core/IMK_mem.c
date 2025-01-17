@@ -6,16 +6,19 @@
 #define USING_IMKLIB_IO_IMK_ASSERT
 #define USING_IMKLIB_CORE_IMK_PARAMS
 
-#include "imklib/core/IMK_ptr.h"
-#include "imklib/core/IMK_mem.h"
-#include "imklib/core/IMK_steap.h"
-#include "imklib/core/IMK_params.h"
-#include "imklib/optres/IMK_option.h"
-#include "imklib/optres/IMK_result.h"
-#include "imklib/io/IMK_assert.h"
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
 
-#include <string.h>
+#include IMK_SLUG_PTR
+#include IMK_SLUG_MEM
+#include IMK_SLUG_STEAP
+#include IMK_SLUG_PARAMS
+#include IMK_SLUG_OPTION
+#include IMK_SLUG_RESULT
+#include IMK_SLUG_ASSERT
+
 #include <stdarg.h>
+#include <string.h>
 
 static void *StackAllocRaw(void *stack_, size_t n) {
   STACK(1) *stack = stack_;
@@ -32,26 +35,30 @@ static void *StackAllocRaw(void *stack_, size_t n) {
   }
 }
 
-static void *HeapAllocRaw(size_t n) {
-  return calloc(n, 1);
-}
+static void *HeapAllocRaw(size_t n) { return calloc(n, 1); }
 
 static void *AllocRaw(void *stack, size_t n, SteapMode mode) {
   void *ret = NULL;
-  switch(mode) {
+  switch (mode) {
   case PREFER_STACK:
-    if ((ret = StackAllocRaw(stack, n))) return ret;
-    if ((ret = HeapAllocRaw(n))) return ret;
+    if ((ret = StackAllocRaw(stack, n)))
+      return ret;
+    if ((ret = HeapAllocRaw(n)))
+      return ret;
     break;
   case FORCE_STACK:
-    if ((ret = StackAllocRaw(stack, n))) return ret;
+    if ((ret = StackAllocRaw(stack, n)))
+      return ret;
     break;
   case PREFER_HEAP:
-    if ((ret = HeapAllocRaw(n))) return ret;
-    if ((ret = StackAllocRaw(stack, n))) return ret;
+    if ((ret = HeapAllocRaw(n)))
+      return ret;
+    if ((ret = StackAllocRaw(stack, n)))
+      return ret;
     break;
   case FORCE_HEAP:
-    if ((ret = HeapAllocRaw(n))) return ret;
+    if ((ret = HeapAllocRaw(n)))
+      return ret;
     break;
   }
   return NULL;
@@ -69,7 +76,8 @@ OptPtr VanillaAlloc(void *stack_, size_t n, SteapMode mode) {
 
   if (stack == NULL) {
     where = PTR_HEAP;
-  } else if (stack->mem <= (char *)rptr && (char *)rptr < stack->mem + stack->cap) {
+  } else if (stack->mem <= (char *)rptr &&
+             (char *)rptr < stack->mem + stack->cap) {
     where = PTR_STACK;
   } else {
     where = PTR_HEAP;
@@ -84,7 +92,8 @@ Ptr VanillaAllocP(void *stack, size_t n, IMK_SteapMode mode) {
   return OptPtr_Unwrap(VanillaAlloc(stack, n, mode));
 }
 
-OptPtr TypedAlloc(char const *type_hint, void *stack_, size_t n, IMK_SteapMode mode) {
+OptPtr TypedAlloc(char const *type_hint, void *stack_, size_t n,
+                  IMK_SteapMode mode) {
   Ptr ptr = {0};
   STACK(1) *stack = stack_;
   BlockHeader *header;
@@ -98,7 +107,8 @@ OptPtr TypedAlloc(char const *type_hint, void *stack_, size_t n, IMK_SteapMode m
 
   if (stack == NULL) {
     where = PTR_HEAP;
-  } else if (stack->mem <= (char *)header && (char *)header < stack->mem + stack->cap) {
+  } else if (stack->mem <= (char *)header &&
+             (char *)header < stack->mem + stack->cap) {
     where = PTR_STACK;
   } else {
     where = PTR_HEAP;
@@ -114,10 +124,10 @@ OptPtr TypedAlloc(char const *type_hint, void *stack_, size_t n, IMK_SteapMode m
   return OptPtr_Some(ptr);
 }
 
-Ptr TypedAllocP(char const *type_hint, void *stack, size_t n, IMK_SteapMode mode) {
+Ptr TypedAllocP(char const *type_hint, void *stack, size_t n,
+                IMK_SteapMode mode) {
   return OptPtr_Unwrap(TypedAlloc(type_hint, stack, n, mode));
 }
-
 
 static BlockHeader *GetHeader(Ptr ptr) {
   BlockHeader *header;
@@ -173,20 +183,23 @@ OptPtr ToStr(Ptr ptr, void *stack, SteapMode mode) {
     Ptr str;
     char cstr[48] = {0};
     sprintf(cstr, "%p", ptr.raw);
-    OPTION_TRY(str, OptPtr, TypedAlloc("String", stack, strlen(cstr) + 1, mode), OptPtr);
+    OPTION_TRY(str, OptPtr, TypedAlloc("String", stack, strlen(cstr) + 1, mode),
+               OptPtr);
     strcat(str.raw, cstr);
     return OptPtr_Some(PtrMove(&str));
   }
   if (strcmp(header->type.hint, "String") == 0) {
     Ptr str;
-    OPTION_TRY(str, OptPtr, TypedAlloc("String", stack, strlen(ptr.raw) + 1, mode), OptPtr);
+    OPTION_TRY(str, OptPtr,
+               TypedAlloc("String", stack, strlen(ptr.raw) + 1, mode), OptPtr);
     strcat(str.raw, ptr.raw);
     return OptPtr_Some(PtrMove(&str));
   } else {
     Ptr str;
     char cstr[48] = {0};
     sprintf(cstr, "%s@%p", GetTypeHint(ptr), ptr.raw);
-    OPTION_TRY(str, OptPtr, TypedAlloc("String", stack, strlen(cstr) + 1, mode), OptPtr);
+    OPTION_TRY(str, OptPtr, TypedAlloc("String", stack, strlen(cstr) + 1, mode),
+               OptPtr);
     strcat(str.raw, cstr);
     return OptPtr_Some(PtrMove(&str));
   }
@@ -203,7 +216,6 @@ size_t Hash(Ptr ptr) {
   }
   return klass->hash(PtrBorrow(ptr));
 }
-
 
 int Compare(Ptr p1, Ptr p2) {
   Klass *k1 = GetKlass(p1);
@@ -241,7 +253,8 @@ static OptPtr AllocKlass(Klass *klass, void *stack_, SteapMode mode) {
 
   if (stack == NULL) {
     where = PTR_HEAP;
-  } else if (stack->mem <= (char *)header && (char *)header < stack->mem + stack->cap) {
+  } else if (stack->mem <= (char *)header &&
+             (char *)header < stack->mem + stack->cap) {
     where = PTR_STACK;
   } else {
     where = PTR_HEAP;
@@ -265,7 +278,8 @@ static ResVoid CtorRecurse(Ptr self, Klass *klass, Params *params) {
     } else {
       ParamsCopy(&super_params, params);
     }
-    RESULT_TRY(ResVoid, CtorRecurse(self, klass->super_klass, &super_params), ResVoid);
+    RESULT_TRY(ResVoid, CtorRecurse(self, klass->super_klass, &super_params),
+               ResVoid);
   }
 
   if (klass->ctor) {
@@ -274,12 +288,15 @@ static ResVoid CtorRecurse(Ptr self, Klass *klass, Params *params) {
   return ResVoid_Ok(0);
 }
 
-static ResPtr KlassAllocV(Klass *klass, void *stack, SteapMode mode, va_list list) {
+static ResPtr KlassAllocV(Klass *klass, void *stack, SteapMode mode,
+                          va_list list) {
   Ptr ret;
   Params params = {0};
   u32 len;
 
-  ret = OptPtr_Unwrap(AllocKlass(klass, stack, mode)); /* TODO do not use unwrap, change it to use errors */
+  ret = OptPtr_Unwrap(
+      AllocKlass(klass, stack,
+                 mode)); /* TODO do not use unwrap, change it to use errors */
   len = va_arg(list, u32);
   if (len != 0u) {
     ParamsVPush(&params, len, list);
@@ -341,11 +358,11 @@ static void AssignRecurse(Ptr from, Klass *klass, Ptr to) {
 void Assign(Ptr to, Ptr from) {
   Klass *to_klass = GetKlass(to);
   Klass *from_klass = GetKlass(from);
-  
+
   ASSERT(to_klass);
   ASSERT(from_klass);
   ASSERT(to_klass == from_klass);
-  
+
   AssignRecurse(from, to_klass, to);
 }
 
@@ -391,4 +408,3 @@ void Drop(Ptr *ptr) {
   }
   memset(ptr, 0, sizeof(*ptr));
 }
-

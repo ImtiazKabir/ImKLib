@@ -1,14 +1,15 @@
-#define USING_IMKLIB_CORE_IMK_PARAMS
-#define USING_IMKLIB_CORE_IMK_PTR
-
 #include <stdarg.h>
 #include <string.h>
 
-#include "imklib/base/IMK_macros.h"
-#include "imklib/core/IMK_params.h"
-#include "imklib/core/IMK_ptr.h"
+#define USING_IMKLIB_CORE_IMK_PARAMS
+#define USING_IMKLIB_CORE_IMK_PTR
 
-#include "imklib/base/IMK_types.h"
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_PARAMS
+#include IMK_SLUG_PTR
+#include IMK_SLUG_BASE
 
 Params *ParamsVPush(Params *self, size_t len, va_list list) {
   size_t i = 0u;
@@ -27,78 +28,76 @@ Params *ParamsVPush(Params *self, size_t len, va_list list) {
     type = va_arg(list, unsigned);
     self->params[self->len - 1u].type = type;
     switch (type) {
-    case PARAM_INT: 
+    case PARAM_INT:
       self->params[self->len - 1u].value.int_rep = va_arg(list, int);
       break;
-    
-    case PARAM_SHORT: 
+
+    case PARAM_SHORT:
       self->params[self->len - 1u].value.short_rep = va_arg(list, int);
       break;
-    
-    case PARAM_LONG: 
+
+    case PARAM_LONG:
       self->params[self->len - 1u].value.long_rep = va_arg(list, long);
       break;
-    
+
     case PARAM_FLOAT:
       self->params[self->len - 1u].value.float_rep = va_arg(list, double);
       break;
-    
+
     case PARAM_DOUBLE:
       self->params[self->len - 1u].value.double_rep = va_arg(list, double);
       break;
-    
-    case PARAM_CHAR: 
+
+    case PARAM_CHAR:
       self->params[self->len - 1u].value.char_rep = va_arg(list, int);
       break;
-    
-    case PARAM_UINT: 
+
+    case PARAM_UINT:
       self->params[self->len - 1u].value.uint_rep = va_arg(list, unsigned);
       break;
-    
-    case PARAM_USHORT: 
-      self->params[self->len - 1u].value.ushort_rep =
-          va_arg(list, unsigned);
+
+    case PARAM_USHORT:
+      self->params[self->len - 1u].value.ushort_rep = va_arg(list, unsigned);
       break;
-    
-    case PARAM_ULONG: 
+
+    case PARAM_ULONG:
       self->params[self->len - 1u].value.ulong_rep =
           va_arg(list, unsigned long);
       break;
-    
-    case PARAM_UCHAR: 
-      self->params[self->len - 1u].value.uchar_rep =
-          va_arg(list, unsigned);
+
+    case PARAM_UCHAR:
+      self->params[self->len - 1u].value.uchar_rep = va_arg(list, unsigned);
       break;
-    
-    case PARAM_RPTR: 
+
+    case PARAM_RPTR:
       self->params[self->len - 1u].value.rptr_rep = va_arg(list, void *);
       break;
-    
-    case PARAM_PTR: 
+
+    case PARAM_PTR:
       self->params[self->len - 1u].value.ptr_rep = va_arg(list, Ptr);
       break;
 
-    case PARAM_S8: 
+    case PARAM_S8:
       self->params[self->len - 1u].value.s8_rep = va_arg(list, s32);
       break;
 
-    case PARAM_S16: 
+    case PARAM_S16:
       self->params[self->len - 1u].value.s16_rep = va_arg(list, s32);
       break;
 
-    case PARAM_S32: 
+    case PARAM_S32:
       self->params[self->len - 1u].value.s32_rep = va_arg(list, s32);
       break;
 
-    case PARAM_S64: 
+    case PARAM_S64:
       self->params[self->len - 1u].value.s64_rep = va_arg(list, s64);
       break;
 
-    case PARAM_U8: 
+    case PARAM_U8:
       self->params[self->len - 1u].value.u8_rep = va_arg(list, u32);
       break;
 
-    case PARAM_U16: 
+    case PARAM_U16:
       self->params[self->len - 1u].value.u16_rep = va_arg(list, u32);
       break;
 
@@ -117,9 +116,7 @@ Params *ParamsVPush(Params *self, size_t len, va_list list) {
     case PARAM_F64:
       self->params[self->len - 1u].value.f64_rep = va_arg(list, f64);
       break;
-    
     }
-
   }
   return self;
 }
@@ -164,48 +161,48 @@ void ParamsExtract(Params const *self, ...) {
     case PARAM_INT:
       *(int *)ptr = self->params[i].value.int_rep;
       break;
-    
-    case PARAM_SHORT: 
+
+    case PARAM_SHORT:
       *(short *)ptr = self->params[i].value.short_rep;
       break;
-    
-    case PARAM_LONG: 
+
+    case PARAM_LONG:
       *(long *)ptr = self->params[i].value.long_rep;
       break;
-    
+
     case PARAM_FLOAT:
       *(float *)ptr = self->params[i].value.float_rep;
       break;
-    
+
     case PARAM_DOUBLE:
       *(double *)ptr = self->params[i].value.double_rep;
       break;
-    
-    case PARAM_CHAR: 
+
+    case PARAM_CHAR:
       *(char *)ptr = self->params[i].value.char_rep;
       break;
-    
-    case PARAM_UINT: 
+
+    case PARAM_UINT:
       *(unsigned int *)ptr = self->params[i].value.uint_rep;
       break;
-    
-    case PARAM_USHORT: 
+
+    case PARAM_USHORT:
       *(unsigned short *)ptr = self->params[i].value.ushort_rep;
       break;
-    
-    case PARAM_ULONG: 
+
+    case PARAM_ULONG:
       *(unsigned long *)ptr = self->params[i].value.ulong_rep;
       break;
-    
-    case PARAM_UCHAR: 
+
+    case PARAM_UCHAR:
       *(unsigned char *)ptr = self->params[i].value.uchar_rep;
       break;
-    
-    case PARAM_RPTR: 
+
+    case PARAM_RPTR:
       *(void **)ptr = self->params[i].value.rptr_rep;
       break;
-    
-    case PARAM_PTR: 
+
+    case PARAM_PTR:
       *(Ptr *)ptr = self->params[i].value.ptr_rep;
       break;
 
@@ -213,23 +210,23 @@ void ParamsExtract(Params const *self, ...) {
       *(s8 *)ptr = self->params[i].value.s8_rep;
       break;
 
-    case PARAM_S16: 
+    case PARAM_S16:
       *(s16 *)ptr = self->params[i].value.s16_rep;
       break;
 
-    case PARAM_S32: 
+    case PARAM_S32:
       *(s32 *)ptr = self->params[i].value.s32_rep;
       break;
 
-    case PARAM_S64: 
+    case PARAM_S64:
       *(s64 *)ptr = self->params[i].value.s64_rep;
       break;
 
-    case PARAM_U8: 
+    case PARAM_U8:
       *(u8 *)ptr = self->params[i].value.u8_rep;
       break;
 
-    case PARAM_U16: 
+    case PARAM_U16:
       *(u16 *)ptr = self->params[i].value.u16_rep;
       break;
 
@@ -248,7 +245,6 @@ void ParamsExtract(Params const *self, ...) {
     case PARAM_F64:
       *(f64 *)ptr = self->params[i].value.f64_rep;
       break;
-
     }
   })
 }
@@ -256,5 +252,3 @@ void ParamsExtract(Params const *self, ...) {
 void ParamsCopy(Params *dest, Params const *src) {
   memcpy(dest, src, sizeof(*dest));
 }
-
-

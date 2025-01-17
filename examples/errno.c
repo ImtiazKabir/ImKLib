@@ -1,7 +1,11 @@
-#define USING_IMKLIB_ERROR_IMK_ERRNO
-#include "imklib/error/IMK_errno.h"
-
 #include <stdio.h>
+
+#define USING_IMKLIB_ERROR_IMK_ERRNO
+
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_ERRNO
 
 int main(void) {
   SetError(41, "Sample error");
@@ -13,4 +17,3 @@ int main(void) {
   PrintError("Maybe?");
   return 0;
 }
-

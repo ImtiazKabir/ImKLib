@@ -3,11 +3,20 @@
 
 #include <stdlib.h>
 
-#include "../base/IMK_ints.h"
-#include "../base/IMK_macros.h"
-#include "../io/IMK_assert.h"
-#include "IMK_ptr.h"
-#include "IMK_mem.h"
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_INTS
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_MACROS
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_ASSERT
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_PTR
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_MEM
 
 #define IMK_SCOPE(c)                                                           \
   struct {                                                                     \
@@ -24,7 +33,7 @@
 #define IMK_SCOPE_END(s)                                                       \
   {                                                                            \
     FOR(u32 s_iter_2005041_, s_iter_2005041_ = 0; s_iter_2005041_ < s.len;     \
-        s_iter_2005041_++, IMK_Drop(s.ptrs[s_iter_2005041_]);)              \
+        s_iter_2005041_++, IMK_Drop(s.ptrs[s_iter_2005041_]);)                 \
   }
 #define IMK_SCOPE_RET(s, T, x)                                                 \
   {                                                                            \

@@ -2,9 +2,12 @@
 #define USING_IMKLIB_IO_IMK_ASSERT
 #define USING_IMKLIB_LOGGING_IMK_LOG
 
-#include "imklib/core/IMK_params.h"
-#include "imklib/io/IMK_assert.h"
-#include "imklib/logging/IMK_log.h"
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_PARAMS
+#include IMK_SLUG_ASSERT
+#include IMK_SLUG_LOG
 
 static int add(Params *params) {
   int a, b;
@@ -19,4 +22,3 @@ int main(void) {
   Log1(LOG_INFO, "Sum = %d", sum);
   return 0;
 }
-

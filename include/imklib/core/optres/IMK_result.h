@@ -3,12 +3,17 @@
 
 #include <stddef.h>
 
-#include "../base/IMK_floats.h"
-#include "../base/IMK_ints.h"
-#include "../base/IMK_macros.h"
-#include "../core/IMK_ptr.h"
-#include "../io/IMK_assert.h"
-#include "../io/IMK_printf.h"
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_BASE
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_PTR
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_ASSERT
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_PRINTF
 
 #define IMK_RESULT_OK(res) GLUE(res, _Ok)
 #define IMK_RESULT_ERR(res) GLUE(res, _Err)

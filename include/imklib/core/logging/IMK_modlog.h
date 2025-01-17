@@ -3,7 +3,8 @@
 
 #include <stdarg.h>
 
-#include "../base/IMK_ints.h"
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_INTS
 
 typedef u32 IMK_LogModuleLevelType;
 #define IMK_MODULE_LOG_MAX_LEVEL sizeof(IMK_LogModuleLevelType)
@@ -20,7 +21,8 @@ typedef struct {
   IMK_LogModuleLevel level[IMK_MODULE_LOG_MAX_LEVEL];
 } IMK_LogModule;
 
-void IMK_ModLogv(IMK_LogModule *logger, u8 priority, char const *fmt, va_list args);
+void IMK_ModLogv(IMK_LogModule *logger, u8 priority, char const *fmt,
+                 va_list args);
 
 void IMK_ModLog(IMK_LogModule *logger, u8 priority, char const *fmt, ...);
 
@@ -34,4 +36,3 @@ typedef IMK_LogModuleLevelType LogModuleLevelType;
 #endif /* USING_IMKLIB_LOGGIN_IMK_MODLOG */
 
 #endif /* !IMKLIB_LOGGING_IMK_MODLOG_H_ */
-

@@ -1,5 +1,8 @@
-#include "imklib/core/IMK_ptr.h"
-#include "imklib/optres/IMK_option.h"
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_PTR
+#include IMK_SLUG_OPTION
 
 IMK_OPTION_DEFINE(IMK_OptVoid, int)
 IMK_OPTION_DEFINE(IMK_OptInt, int)

@@ -4,11 +4,14 @@
 #define USING_IMKLIB_CORE_IMK_MEM
 #define USING_IMKLIB_LOGGING_IMK_LOG
 
-#include "imklib/core/IMK_scope.h"
-#include "imklib/core/IMK_steap.h"
-#include "imklib/core/IMK_mem.h"
-#include "imklib/logging/IMK_log.h"
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
 
+#include IMK_SLUG_STEAP
+#include IMK_SLUG_PTR
+#include IMK_SLUG_SCOPE
+#include IMK_SLUG_MEM
+#include IMK_SLUG_LOG
 
 int main(void) {
   SCOPE_INIT(scope, 8);
@@ -20,5 +23,3 @@ int main(void) {
 
   SCOPE_RET(scope, int, 0);
 }
-
-

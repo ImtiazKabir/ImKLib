@@ -1,11 +1,14 @@
 #ifndef IMKLIB_OPTRES_IMK_OPTION_H_
 #define IMKLIB_OPTRES_IMK_OPTION_H_
 
-#include "../base/IMK_floats.h"
-#include "../base/IMK_ints.h"
-#include "../base/IMK_macros.h"
-#include "../io/IMK_assert.h"
-#include "../core/IMK_ptr.h"
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_BASE
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_PTR
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_ASSERT
 
 #define IMK_OPTION_SOME(opt) GLUE(opt, _Some)
 #define IMK_OPTION_NONE(opt) GLUE(opt, _None)

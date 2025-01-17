@@ -1,5 +1,9 @@
 #include <stdio.h>
-#include "imklib/logging/IMK_ansi_style.h"
+
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_ANSI_STYLE
 
 static void PrintDemo(char const *style, char const *text) {
   printf("%s%s%s\n", style, text, IMK_ANSI_RESET);

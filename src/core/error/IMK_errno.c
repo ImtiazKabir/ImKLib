@@ -1,13 +1,16 @@
-#define USING_IMKLIB_ERROR_IMK_ERRNO
-#include "imklib/error/IMK_errno.h"
-
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+#define USING_IMKLIB_ERROR_IMK_ERRNO
 #define USING_IMKLIB_LOGGING_IMK_LOG
-#include "imklib/logging/IMK_log.h"
+
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_ERRNO
+#include IMK_SLUG_LOG
 
 /* Thread-local storage keys for error code and error message */
 static pthread_key_t errcode_key;

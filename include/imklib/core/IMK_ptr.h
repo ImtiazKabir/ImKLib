@@ -4,8 +4,11 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#include "../base/IMK_ints.h"
-#include "../base/IMK_macros.h"
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_INTS
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_MACROS
 
 typedef struct {
   void *raw;

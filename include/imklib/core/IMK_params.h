@@ -1,11 +1,14 @@
 #ifndef IMKLIB_CORE_IMK_PARAMS_H_
 #define IMKLIB_CORE_IMK_PARAMS_H_
 
-#include <stddef.h>
 #include <stdarg.h>
+#include <stddef.h>
 
-#include "../base/IMK_types.h"
-#include "IMK_ptr.h"
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_BASE
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_PTR
 
 typedef enum {
   IMK_PARAM_INT,
@@ -82,31 +85,29 @@ typedef IMK_Params Params;
 #define ParamsExtract IMK_ParamsExtract
 #define ParamsCopy IMK_ParamsCopy
 
-#define  PARAM_INT    IMK_PARAM_INT
-#define  PARAM_SHORT  IMK_PARAM_SHORT
-#define  PARAM_LONG   IMK_PARAM_LONG
-#define  PARAM_FLOAT  IMK_PARAM_FLOAT
-#define  PARAM_DOUBLE IMK_PARAM_DOUBLE
-#define  PARAM_CHAR   IMK_PARAM_CHAR
-#define  PARAM_UINT   IMK_PARAM_UINT
-#define  PARAM_USHORT IMK_PARAM_USHORT
-#define  PARAM_ULONG  IMK_PARAM_ULONG
-#define  PARAM_UCHAR  IMK_PARAM_UCHAR
-#define  PARAM_RPTR   IMK_PARAM_RPTR
-#define  PARAM_PTR    IMK_PARAM_PTR
-#define  PARAM_U8     IMK_PARAM_U8
-#define  PARAM_U16    IMK_PARAM_U16
-#define  PARAM_U32    IMK_PARAM_U32
-#define  PARAM_U64    IMK_PARAM_U64
-#define  PARAM_S8     IMK_PARAM_S8
-#define  PARAM_S16    IMK_PARAM_S16
-#define  PARAM_S32    IMK_PARAM_S32
-#define  PARAM_S64    IMK_PARAM_S64
-#define  PARAM_F32    IMK_PARAM_F32
-#define  PARAM_F64    IMK_PARAM_F64
-
+#define PARAM_INT IMK_PARAM_INT
+#define PARAM_SHORT IMK_PARAM_SHORT
+#define PARAM_LONG IMK_PARAM_LONG
+#define PARAM_FLOAT IMK_PARAM_FLOAT
+#define PARAM_DOUBLE IMK_PARAM_DOUBLE
+#define PARAM_CHAR IMK_PARAM_CHAR
+#define PARAM_UINT IMK_PARAM_UINT
+#define PARAM_USHORT IMK_PARAM_USHORT
+#define PARAM_ULONG IMK_PARAM_ULONG
+#define PARAM_UCHAR IMK_PARAM_UCHAR
+#define PARAM_RPTR IMK_PARAM_RPTR
+#define PARAM_PTR IMK_PARAM_PTR
+#define PARAM_U8 IMK_PARAM_U8
+#define PARAM_U16 IMK_PARAM_U16
+#define PARAM_U32 IMK_PARAM_U32
+#define PARAM_U64 IMK_PARAM_U64
+#define PARAM_S8 IMK_PARAM_S8
+#define PARAM_S16 IMK_PARAM_S16
+#define PARAM_S32 IMK_PARAM_S32
+#define PARAM_S64 IMK_PARAM_S64
+#define PARAM_F32 IMK_PARAM_F32
+#define PARAM_F64 IMK_PARAM_F64
 
 #endif /* USING_IMKLIB_CORE_IMK_PARAMS */
 
 #endif /* !IMKLIB_CORE_IMK_PARAMS_H_ */
-

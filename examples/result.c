@@ -5,13 +5,17 @@
 #define USING_IMKLIB_CORE_IMK_MEM
 #define USING_IMKLIB_CORE_IMK_STEAP
 #define USING_IMKLIB_CORE_IMK_PARAMS
-#include "imklib/core/IMK_ptr.h"
-#include "imklib/logging/IMK_log.h"
-#include "imklib/optres/IMK_result.h"
-#include "imklib/error/IMK_error.h"
-#include "imklib/core/IMK_mem.h"
-#include "imklib/core/IMK_steap.h"
-#include "imklib/core/IMK_params.h"
+
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_PTR
+#include IMK_SLUG_LOG
+#include IMK_SLUG_RESULT
+#include IMK_SLUG_ERROR
+#include IMK_SLUG_MEM
+#include IMK_SLUG_STEAP
+#include IMK_SLUG_PARAMS
 
 RESULT_DECLARE(ResultNum, int, char const *)
 typedef struct ResultNum ResultNum;
@@ -49,13 +53,19 @@ ERROR_DEFINE(IllegalArgument, Error, -1, "Illegal argument")
 ERROR_DEFINE(TooLargeArgument, IllegalArgument, -2, "Too large argument")
 ERROR_DEFINE(OutOfDomainArgument, IllegalArgument, -3, "Out of domain argument")
 
-
 static ResInt factorial2(int n) {
   if (n < 0) {
-    return ResInt_Err(KlassAllocP(OutOfDomainArgumentKlass, NULL, FORCE_HEAP, U32(3), PARAM_RPTR, "Negative numbers passed to factorial", PARAM_RPTR, NULL, PARAM_U32, FORCE_HEAP));
+    return ResInt_Err(KlassAllocP(OutOfDomainArgumentKlass, NULL, FORCE_HEAP,
+                                  U32(3), PARAM_RPTR,
+                                  "Negative numbers passed to factorial",
+                                  PARAM_RPTR, NULL, PARAM_U32, FORCE_HEAP));
   }
   if (n >= 20) {
-    return ResInt_Err(KlassAllocP(TooLargeArgumentKlass, NULL, FORCE_HEAP, U32(3), PARAM_RPTR, "Numbers greater than 19 cant be processed with the current implementation of factorial", PARAM_RPTR, NULL, PARAM_U32, FORCE_HEAP));
+    return ResInt_Err(
+        KlassAllocP(TooLargeArgumentKlass, NULL, FORCE_HEAP, U32(3), PARAM_RPTR,
+                    "Numbers greater than 19 cant be processed with the "
+                    "current implementation of factorial",
+                    PARAM_RPTR, NULL, PARAM_U32, FORCE_HEAP));
   }
   if (n == 0) {
     return ResInt_Ok(1);

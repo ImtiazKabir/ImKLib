@@ -1,5 +1,9 @@
 #define USING_IMKLIB_LOGGING_IMK_LOG
-#include "imklib/logging/IMK_log.h"
+
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_LOG
 
 int main(void) {
   Log(LOG_TRACE, "Tracing program flow");
@@ -23,4 +27,3 @@ int main(void) {
   Log(LOG_FATAL, "You cant mask me");
   return 0;
 }
-

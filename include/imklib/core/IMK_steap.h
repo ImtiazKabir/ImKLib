@@ -4,7 +4,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#include "IMK_ptr.h"
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_PTR
 
 #define IMK_STACK(c)                                                           \
   struct {                                                                     \
@@ -25,9 +26,9 @@ typedef enum {
 #define STACK IMK_STACK
 #define STACK_INIT IMK_STACK_INIT
 #define PREFER_STACK IMK_PREFER_STACK
-#define FORCE_STACK  IMK_FORCE_STACK
-#define PREFER_HEAP  IMK_PREFER_HEAP
-#define FORCE_HEAP   IMK_FORCE_HEAP  
+#define FORCE_STACK IMK_FORCE_STACK
+#define PREFER_HEAP IMK_PREFER_HEAP
+#define FORCE_HEAP IMK_FORCE_HEAP
 #define SteapMode IMK_SteapMode
 #endif /* USING_IMKLIB_CORE_IMK_STEAP */
 

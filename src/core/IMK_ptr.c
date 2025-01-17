@@ -1,10 +1,13 @@
-#define USING_IMKLIB_CORE_IMK_PTR
-#include "imklib/core/IMK_ptr.h"
-
-#define USING_IMKLIB_IO_IMK_ASSERT
-#include "imklib/io/IMK_assert.h"
-
 #include <string.h>
+
+#define USING_IMKLIB_CORE_IMK_PTR
+#define USING_IMKLIB_IO_IMK_ASSERT
+
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_PTR
+#include IMK_SLUG_ASSERT
 
 Ptr PtrOwnRaw(void *raw, u32 type) {
   Ptr ptr = {0};
@@ -94,4 +97,3 @@ Ptr PtrMove(Ptr *ptr) {
 
   return ret;
 }
-

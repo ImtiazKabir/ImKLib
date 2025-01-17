@@ -1,19 +1,24 @@
-#define USING_IMKLIB_LOGGING_IMK_MODLOG
-#include "imklib/logging/IMK_modlog.h"
-
-#include <stdlib.h>
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
 
+#define USING_IMKLIB_LOGGING_IMK_MODLOG
 #define USING_IMKLIB_LOGGING_IMK_ANSI_STYLE
-#include "imklib/logging/IMK_ansi_style.h"
 
-void IMK_ModLogv(LogModule *logger, u8 priority, char const *fmt, va_list args) {
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_MODLOG
+#include IMK_SLUG_ANSI_STYLE
+
+void IMK_ModLogv(LogModule *logger, u8 priority, char const *fmt,
+                 va_list args) {
   LogModuleLevel *level = NULL;
   if ((logger->mask & (1u << priority)) == 0u) {
     return;
   }
-  for (level = logger->level; level <= &logger->level[MODULE_LOG_MAX_LEVEL]; level += 1u) {
+  for (level = logger->level; level <= &logger->level[MODULE_LOG_MAX_LEVEL];
+       level += 1u) {
     if (level->priority == priority) {
       break;
     }
@@ -34,4 +39,3 @@ void IMK_ModLog(IMK_LogModule *logger, u8 priority, char const *fmt, ...) {
   IMK_ModLogv(logger, priority, fmt, args);
   va_end(args);
 }
-

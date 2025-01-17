@@ -3,11 +3,20 @@
 
 #include <stddef.h>
 
-#include "IMK_ptr.h"
-#include "IMK_steap.h"
-#include "../optres/IMK_option.h"
-#include "../optres/IMK_result.h"
-#include "IMK_params.h"
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_PTR
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_STEAP
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_OPTION
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_RESULT
+
+#include "IMK_slug_index_ref.h"
+#include IMK_SLUG_PARAMS
 
 #define IMK_KLASS_ALLOC_KEY 314159265u
 #define IMK_DATA_ALLOC_KEY 271828182u
@@ -38,21 +47,21 @@ struct IMK_Klass {
 };
 
 #define IMK_KLASS(k)                                                           \
-  void GLUE(k, _Init_)(void);                                                        \
-  static IMK_Klass GLUE(k, _) = {GLUE(k, _Init_),                                        \
-                                "IMK_KLASS(" STRINGIFY(k) ")",                           \
-                                0u,                                            \
-                                NULL,                                          \
-                                NULL,                                          \
-                                NULL,                                          \
-                                NULL,                                          \
-                                NULL,                                          \
-                                NULL,                                          \
-                                NULL,                                          \
-                                NULL,                                          \
-                                NULL,                                          \
-                                NULL};                                         \
-  IMK_Klass *const k = &GLUE(k, _);                                                  \
+  void GLUE(k, _Init_)(void);                                                  \
+  static IMK_Klass GLUE(k, _) = {GLUE(k, _Init_),                              \
+                                 "IMK_KLASS(" STRINGIFY(k) ")",                \
+                                 0u,                                           \
+                                 NULL,                                         \
+                                 NULL,                                         \
+                                 NULL,                                         \
+                                 NULL,                                         \
+                                 NULL,                                         \
+                                 NULL,                                         \
+                                 NULL,                                         \
+                                 NULL,                                         \
+                                 NULL,                                         \
+                                 NULL};                                        \
+  IMK_Klass *const k = &GLUE(k, _);                                            \
   void GLUE(k, _Init_)(void)
 
 /*
@@ -87,10 +96,13 @@ typedef struct {
 IMK_OptPtr IMK_VanillaAlloc(void *stack, size_t n, IMK_SteapMode mode);
 IMK_Ptr IMK_VanillaAllocP(void *stack, size_t n, IMK_SteapMode mode);
 
-IMK_OptPtr IMK_TypedAlloc(char const *type_hint, void *stack, size_t n, IMK_SteapMode mode);
-IMK_Ptr IMK_TypedAllocP(char const *type_hint, void *stack, size_t n, IMK_SteapMode mode);
+IMK_OptPtr IMK_TypedAlloc(char const *type_hint, void *stack, size_t n,
+                          IMK_SteapMode mode);
+IMK_Ptr IMK_TypedAllocP(char const *type_hint, void *stack, size_t n,
+                        IMK_SteapMode mode);
 
-IMK_ResPtr IMK_KlassAlloc(IMK_Klass *klass, void *stack, IMK_SteapMode mode, ...);
+IMK_ResPtr IMK_KlassAlloc(IMK_Klass *klass, void *stack, IMK_SteapMode mode,
+                          ...);
 IMK_Ptr IMK_KlassAllocP(IMK_Klass *klass, void *stack, IMK_SteapMode mode, ...);
 
 char const *IMK_GetTypeHint(IMK_Ptr ptr_b);
@@ -121,7 +133,7 @@ typedef IMK_BlockHeader BlockHeader;
 #define VanillaAlloc IMK_VanillaAlloc
 #define VanillaAllocP IMK_VanillaAllocP
 
-#define TypedAlloc  IMK_TypedAlloc
+#define TypedAlloc IMK_TypedAlloc
 #define TypedAllocP IMK_TypedAllocP
 
 #define KlassAlloc IMK_KlassAlloc
@@ -145,4 +157,3 @@ typedef IMK_BlockHeader BlockHeader;
 #endif /* USING_IMKLIB_CORE_IMK_MEM */
 
 #endif /* !IMKLIB_CORE_IMK_MEM_H_ */
-

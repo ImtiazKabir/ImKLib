@@ -1,18 +1,19 @@
-#include <stdio.h>
-#define USING_IMKLIB_IO_IMK_ASSERT
-#include "imklib/io/IMK_assert.h"
-
 #include <errno.h>
+#include <stdio.h>
 #include <string.h>
 
-#include "imklib/base/IMK_ints.h"
-#include "imklib/base/IMK_macros.h"
-
+#define USING_IMKLIB_IO_IMK_ASSERT
 #define USING_IMKLIB_LOGGING_IMK_LOG
-#include "imklib/logging/IMK_log.h"
-
 #define USING_IMKLIB_ERROR_IMK_ERRNO
-#include "imklib/error/IMK_errno.h"
+
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_ASSERT
+#include IMK_SLUG_INTS
+#include IMK_SLUG_MACROS
+#include IMK_SLUG_LOG
+#include IMK_SLUG_ERRNO
 
 void Panic(char const *msg) {
   LogF1(LOG_FATAL, stderr, "PANIC: %s", msg);
@@ -27,8 +28,8 @@ void Panic(char const *msg) {
 }
 
 void PanicBox(char const *msg) {
-  enum {TERMWD = 80};
-  enum {BOXWD = 40};
+  enum { TERMWD = 80 };
+  enum { BOXWD = 40 };
   size_t len = strlen(msg);
   u8 num_chars_in_line = BOXWD - 2;
   u8 initial_space_count = (TERMWD - BOXWD) / 2;
@@ -43,8 +44,9 @@ void PanicBox(char const *msg) {
   }
   fputs("+\n", stderr);
 
-  while(printed_count < len) {
-    fprintf(stderr, "%*s|%-*.*s|\n", initial_space_count, "", num_chars_in_line, num_chars_in_line, msg);
+  while (printed_count < len) {
+    fprintf(stderr, "%*s|%-*.*s|\n", initial_space_count, "", num_chars_in_line,
+            num_chars_in_line, msg);
     printed_count += num_chars_in_line;
     msg += num_chars_in_line;
   }
@@ -54,7 +56,7 @@ void PanicBox(char const *msg) {
     fputc('-', stderr);
   }
   fputs("+\n", stderr);
-  
+
   if (errno != 0) {
     LogF1(LOG_ERROR, stderr, "ERRNO: %s", strerror(errno));
   }
@@ -64,4 +66,3 @@ void PanicBox(char const *msg) {
   fprintf(stderr, "\n");
   PROGRAM_CRASH();
 }
-

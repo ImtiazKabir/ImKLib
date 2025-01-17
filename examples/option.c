@@ -1,5 +1,9 @@
 #define USING_IMKLIB_OPTRES_IMK_OPTION
-#include "imklib/optres/IMK_option.h"
+
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_OPTION
 
 struct ComplexNumber {
   int x;

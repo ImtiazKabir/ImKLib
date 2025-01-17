@@ -7,14 +7,17 @@
 #define USING_IMKLIB_CORE_IMK_PARAMS
 #define USING_IMKLIB_LOGGING_IMK_LOG
 
-#include "imklib/core/IMK_mem.h"
-#include "imklib/core/IMK_params.h"
-#include "imklib/core/IMK_ptr.h"
-#include "imklib/core/IMK_scope.h"
-#include "imklib/core/IMK_steap.h"
-#include "imklib/io/IMK_assert.h"
-#include "imklib/logging/IMK_log.h"
-#include "imklib/optres/IMK_result.h"
+#define IMK_SLUG_EXTERN_ROOT_DIR imklib
+#include "imklib/IMK_slug_index_ref.h"
+
+#include IMK_SLUG_PTR
+#include IMK_SLUG_MEM
+#include IMK_SLUG_STEAP
+#include IMK_SLUG_SCOPE
+#include IMK_SLUG_PARAMS
+#include IMK_SLUG_LOG
+#include IMK_SLUG_ASSERT
+#include IMK_SLUG_RESULT
 
 typedef struct {
   int id;
