@@ -1,0 +1,36 @@
+#ifndef USING_NAMESPACE_IMK_PARAMS
+
+#undef ParamType
+#undef ParamValue
+#undef Params
+
+#undef ParamsVPush
+#undef ParamsPush
+#undef ParamsMatch
+#undef ParamsExtract
+#undef ParamsCopy
+
+#undef PARAM_INT
+#undef PARAM_SHORT
+#undef PARAM_LONG
+#undef PARAM_FLOAT
+#undef PARAM_DOUBLE
+#undef PARAM_CHAR
+#undef PARAM_UINT
+#undef PARAM_USHORT
+#undef PARAM_ULONG
+#undef PARAM_UCHAR
+#undef PARAM_RPTR
+#undef PARAM_PTR
+#undef PARAM_U8
+#undef PARAM_U16
+#undef PARAM_U32
+#undef PARAM_U64
+#undef PARAM_S8
+#undef PARAM_S16
+#undef PARAM_S32
+#undef PARAM_S64
+#undef PARAM_F32 IMK_PARAM_F32
+#undef PARAM_F64 IMK_PARAM_F64
+
+#endif /* !USING_NAMESPACE_IMK_PARAMS */

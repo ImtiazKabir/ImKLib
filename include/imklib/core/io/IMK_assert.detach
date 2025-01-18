@@ -1,0 +1,6 @@
+#ifndef USING_NAMESPACE_IMK_ASSERT
+#undef Panic
+#undef PanicBox
+#undef ASSERT
+#undef ASSERT_MSG
+#endif /* !USING_NAMESPACE_IMK_ASSERT */

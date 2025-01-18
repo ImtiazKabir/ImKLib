@@ -1,0 +1,41 @@
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_ERRNO
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_ERROR
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_LOG
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_MODLOG
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_ANSI_STYLE
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_ASSERT
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_PRINTF
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_OPTION
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_RESULT
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_MEM
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_PARAMS
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_PTR
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_SCOPE
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_STEAP

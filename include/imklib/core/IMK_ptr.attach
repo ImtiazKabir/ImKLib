@@ -1,0 +1,25 @@
+#define Ptr IMK_Ptr
+
+#define PTR_DEREF IMK_PTR_DEREF
+
+#define PTR_UNINITIALIZED IMK_PTR_UNINITIALIZED
+#define PTR_BORROWED IMK_PTR_BORROWED
+#define PTR_OWNED IMK_PTR_OWNED
+#define PTR_MOVED IMK_PTR_MOVED
+
+#define PTR_STACK IMK_PTR_STACK
+#define PTR_HEAP IMK_PTR_HEAP
+#define PTR_STATIC IMK_PTR_STATIC
+
+#define PTR_IMK_MEM IMK_PTR_IMK_MEM
+#define PTR_RDONLY IMK_PTR_RDONLY
+
+#define PtrOwnRaw IMK_PtrOwnRaw
+#define PtrBorrowRaw IMK_PtrBorrowRaw
+#define PtrSetRdOnly IMK_PtrSetRdOnly
+#define PtrSetSize IMK_PtrSetSize
+#define PtrOff IMK_PtrOff
+#define PtrBorrow IMK_PtrBorrow
+#define PtrMove IMK_PtrMove
+#define Drop IMK_Drop
+

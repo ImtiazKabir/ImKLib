@@ -74,58 +74,8 @@ void IMK_LogAddMask(u8 levelmsk);
 void IMK_LogClearMask(u8 levelmsk);
 
 #ifdef USING_NAMESPACE_IMK_LOG
-#define LogF IMK_LogF
-#define LogF1 IMK_LogF1
-#define LogF2 IMK_LogF2
-#define LogF3 IMK_LogF3
-#define LogF4 IMK_LogF4
-#define LogF5 IMK_LogF5
-#define LogF6 IMK_LogF6
-#define LogF7 IMK_LogF7
-#define LogF8 IMK_LogF8
-
-#define Log IMK_Log
-#define Log1 IMK_Log1
-#define Log2 IMK_Log2
-#define Log3 IMK_Log3
-#define Log4 IMK_Log4
-#define Log5 IMK_Log5
-#define Log6 IMK_Log6
-#define Log7 IMK_Log7
-#define Log8 IMK_Log8
-
-#define LOG_TRACE IMK_LOG_TRACE
-#define LOG_DEBUG IMK_LOG_DEBUG
-#define LOG_INFO IMK_LOG_INFO
-#define LOG_WARN IMK_LOG_WARN
-#define LOG_ERROR IMK_LOG_ERROR
-#define LOG_FATAL IMK_LOG_FATAL
-
-#define LOG_MASK_TRACE IMK_LOG_MASK_TRACE
-#define LOG_MASK_DEBUG IMK_LOG_MASK_DEBUG
-#define LOG_MASK_INFO IMK_LOG_MASK_INFO
-#define LOG_MASK_WARN IMK_LOG_MASK_WARN
-#define LOG_MASK_ERROR IMK_LOG_MASK_ERROR
-#define LOG_MASK_FATAL IMK_LOG_MASK_FATAL
-#define LOG_MASK_NONE IMK_LOG_MASK_NONE
-#define LOG_MASK_ALL IMK_LOG_MASK_ALL
-
-#define LogVFBW IMK_LogVFBW
-#define LogVBW IMK_LogVBW
-#define LogFBW IMK_LogFBW
-#define LogBW IMK_LogBW
-
-#define LogVFCol IMK_LogVFCol
-#define LogVCol IMK_LogVCol
-#define LogFCol IMK_LogFCol
-#define LogCol IMK_LogCol
-
-#define LogSetMask IMK_LogSetMask
-#define LogSetMin IMK_LogSetMin
-#define LogGetMask IMK_LogGetMask
-#define LogAddMask IMK_LogGetMask
-#define LogClearMask IMK_LogClearMask
-
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_LOG
 #endif /* USING_NAMESPACE_IMK_LOG */
 
 #endif /* !IMK_LOG_H_UEK2076US6EIQ8Q7 */

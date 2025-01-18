@@ -1,0 +1,54 @@
+#ifndef USING_NAMESPACE_IMK_LOG
+#undef LogF
+#undef LogF1
+#undef LogF2
+#undef LogF3
+#undef LogF4
+#undef LogF5
+#undef LogF6
+#undef LogF7
+#undef LogF8
+
+#undef Log
+#undef Log1
+#undef Log2
+#undef Log3
+#undef Log4
+#undef Log5
+#undef Log6
+#undef Log7
+#undef Log8
+
+#undef LOG_TRACE
+#undef LOG_DEBUG
+#undef LOG_INFO
+#undef LOG_WARN
+#undef LOG_ERROR
+#undef LOG_FATAL
+
+#undef LOG_MASK_TRACE
+#undef LOG_MASK_DEBUG
+#undef LOG_MASK_INFO
+#undef LOG_MASK_WARN
+#undef LOG_MASK_ERROR
+#undef LOG_MASK_FATAL
+#undef LOG_MASK_NONE
+#undef LOG_MASK_ALL
+
+#undef LogVFBW
+#undef LogVBW
+#undef LogFBW
+#undef LogBW
+
+#undef LogVFCol
+#undef LogVCol
+#undef LogFCol
+#undef LogCol
+
+#undef LogSetMask
+#undef LogSetMin
+#undef LogGetMask
+#undef LogAddMask
+#undef LogClearMask
+
+#endif /* !USING_NAMESPACE_IMK_LOG */

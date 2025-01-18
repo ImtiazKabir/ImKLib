@@ -1,0 +1,223 @@
+#ifndef USING_NAMESPACE_IMK_OPTION
+
+#undef OPTION_SOME
+#undef OPTION_NONE
+#undef OPTION_IS_SOME
+#undef OPTION_IS_NONE
+#undef OPTION_UNWRAP
+#undef OPTION_EXPECT
+#undef OPTION_UNWRAP_OR
+#undef OPTION_TRY
+
+#undef OPTION_DECLARE
+#undef OPTION_DEFINE
+
+#undef OptVoid
+#undef OptInt
+#undef OptShort
+#undef OptLong
+#undef OptFloat
+#undef OptDouble
+#undef OptChar
+#undef OptUInt
+#undef OptUShort
+#undef OptULong
+#undef OptUChar
+#undef OptRPtr
+#undef OptPtr
+#undef OptS8
+#undef OptS16
+#undef OptS32
+#undef OptS64
+#undef OptU8
+#undef OptU16
+#undef OptU32
+#undef OptU64
+#undef OptF32
+#undef OptF64
+
+#undef OptVoid_Some
+#undef OptVoid_None
+#undef OptVoid_IsSome
+#undef OptVoid_IsNone
+#undef OptVoid_Unwrap
+#undef OptVoid_Expect
+#undef OptVoid_UnwrapOr
+
+#undef OptInt_Some
+#undef OptInt_None
+#undef OptInt_IsSome
+#undef OptInt_IsNone
+#undef OptInt_Unwrap
+#undef OptInt_Expect
+#undef OptInt_UnwrapOr
+
+#undef OptShort_Some
+#undef OptShort_None
+#undef OptShort_IsSome
+#undef OptShort_IsNone
+#undef OptShort_Unwrap
+#undef OptShort_Expect
+#undef OptShort_UnwrapOr
+
+#undef OptLong_Some
+#undef OptLong_None
+#undef OptLong_IsSome
+#undef OptLong_IsNone
+#undef OptLong_Unwrap
+#undef OptLong_Expect
+#undef OptLong_UnwrapOr
+
+#undef OptFloat_Some
+#undef OptFloat_None
+#undef OptFloat_IsSome
+#undef OptFloat_IsNone
+#undef OptFloat_Unwrap
+#undef OptFloat_Expect
+#undef OptFloat_UnwrapOr
+
+#undef OptDouble_Some
+#undef OptDouble_None
+#undef OptDouble_IsSome
+#undef OptDouble_IsNone
+#undef OptDouble_Unwrap
+#undef OptDouble_Expect
+#undef OptDouble_UnwrapOr
+
+#undef OptChar_Some
+#undef OptChar_None
+#undef OptChar_IsSome
+#undef OptChar_IsNone
+#undef OptChar_Unwrap
+#undef OptChar_Expect
+#undef OptChar_UnwrapOr
+
+#undef OptUInt_Some
+#undef OptUInt_None
+#undef OptUInt_IsSome
+#undef OptUInt_IsNone
+#undef OptUInt_Unwrap
+#undef OptUInt_Expect
+#undef OptUInt_UnwrapOr
+
+#undef OptUShort_Some
+#undef OptUShort_None
+#undef OptUShort_IsSome
+#undef OptUShort_IsNone
+#undef OptUShort_Unwrap
+#undef OptUShort_Expect
+#undef OptUShort_UnwrapOr
+
+#undef OptULong_Some
+#undef OptULong_None
+#undef OptULong_IsSome
+#undef OptULong_IsNone
+#undef OptULong_Unwrap
+#undef OptULong_Expect
+#undef OptULong_UnwrapOr
+
+#undef OptUChar_Some
+#undef OptUChar_None
+#undef OptUChar_IsSome
+#undef OptUChar_IsNone
+#undef OptUChar_Unwrap
+#undef OptUChar_Expect
+#undef OptUChar_UnwrapOr
+
+#undef OptRPtr_Some
+#undef OptRPtr_None
+#undef OptRPtr_IsSome
+#undef OptRPtr_IsNone
+#undef OptRPtr_Unwrap
+#undef OptRPtr_Expect
+#undef OptRPtr_UnwrapOr
+
+#undef OptPtr_Some
+#undef OptPtr_None
+#undef OptPtr_IsSome
+#undef OptPtr_IsNone
+#undef OptPtr_Unwrap
+#undef OptPtr_Expect
+#undef OptPtr_UnwrapOr
+
+#undef OptS8_Some
+#undef OptS8_None
+#undef OptS8_IsSome
+#undef OptS8_IsNone
+#undef OptS8_Unwrap
+#undef OptS8_Expect
+#undef OptS8_UnwrapOr
+
+#undef OptS16_Some
+#undef OptS16_None
+#undef OptS16_IsSome
+#undef OptS16_IsNone
+#undef OptS16_Unwrap
+#undef OptS16_Expect
+#undef OptS16_UnwrapOr
+
+#undef OptS32_Some
+#undef OptS32_None
+#undef OptS32_IsSome
+#undef OptS32_IsNone
+#undef OptS32_Unwrap
+#undef OptS32_Expect
+#undef OptS32_UnwrapOr
+
+#undef OptS64_Some
+#undef OptS64_None
+#undef OptS64_IsSome
+#undef OptS64_IsNone
+#undef OptS64_Unwrap
+#undef OptS64_Expect
+#undef OptS64_UnwrapOr
+
+#undef OptU8_Some
+#undef OptU8_None
+#undef OptU8_IsSome
+#undef OptU8_IsNone
+#undef OptU8_Unwrap
+#undef OptU8_Expect
+#undef OptU8_UnwrapOr
+
+#undef OptU16_Some
+#undef OptU16_None
+#undef OptU16_IsSome
+#undef OptU16_IsNone
+#undef OptU16_Unwrap
+#undef OptU16_Expect
+#undef OptU16_UnwrapOr
+
+#undef OptU32_Some
+#undef OptU32_None
+#undef OptU32_IsSome
+#undef OptU32_IsNone
+#undef OptU32_Unwrap
+#undef OptU32_Expect
+#undef OptU32_UnwrapOr
+
+#undef OptU64_Some
+#undef OptU64_None
+#undef OptU64_IsSome
+#undef OptU64_IsNone
+#undef OptU64_Unwrap
+#undef OptU64_Expect
+#undef OptU64_UnwrapOr
+
+#undef OptF32_Some
+#undef OptF32_None
+#undef OptF32_IsSome
+#undef OptF32_IsNone
+#undef OptF32_Unwrap
+#undef OptF32_Expect
+#undef OptF32_UnwrapOr
+
+#undef OptF64_Some
+#undef OptF64_None
+#undef OptF64_IsSome
+#undef OptF64_IsNone
+#undef OptF64_Unwrap
+#undef OptF64_Expect
+#undef OptF64_UnwrapOr
+
+#endif /* !USING_NAMESPACE_IMK_OPTION */

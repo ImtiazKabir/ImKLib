@@ -1,0 +1,10 @@
+#ifndef USING_NAMESPACE_IMK_MODLOG
+
+#undef LogModuleLevel
+#undef LogModule
+#undef LogModuleLevelType
+#undef MODULE_LOG_MAX_LEVEL
+#undef ModLogV
+#undef ModLog
+
+#endif /* !USING_NAMESPACE_IMK_MODLOG */

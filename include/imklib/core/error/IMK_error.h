@@ -91,11 +91,8 @@ void IMK_ErrorThrow(IMK_Ptr self, void *stack, IMK_SteapMode mode);
   }
 
 #ifdef USING_NAMESPACE_IMK_ERROR
-#define Error IMK_Error
-#define ErrorKlass IMK_ErrorKlass
-#define ERROR_DECLARE IMK_ERROR_DECLARE
-#define ERROR_DEFINE IMK_ERROR_DEFINE
-#define ErrorThrow IMK_ErrorThrow
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_ERROR
 #endif /* USING_NAMESPACE_IMK_ERROR */
 
 #endif /* !IMK_ERROR_H_O8H417O925IC46K6 */

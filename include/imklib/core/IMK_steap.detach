@@ -1,0 +1,11 @@
+#ifndef USING_NAMESPACE_IMK_STEAP
+
+#undef STACK
+#undef STACK_INIT
+#undef PREFER_STACK
+#undef FORCE_STACK
+#undef PREFER_HEAP
+#undef FORCE_HEAP
+#undef SteapMode
+
+#endif /* !USING_NAMESPACE_IMK_STEAP */

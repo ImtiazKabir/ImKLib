@@ -1,0 +1,9 @@
+#ifndef USING_NAMESPACE_IMK_SCOPE
+
+#undef SCOPE
+#undef SCOPE_INIT
+#undef SCOPE_ADD
+#undef SCOPE_END
+#undef SCOPE_RET
+
+#endif /* !USING_NAMESPACE_IMK_SCOPE */

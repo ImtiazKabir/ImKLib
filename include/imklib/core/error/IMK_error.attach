@@ -1,0 +1,5 @@
+#define Error IMK_Error
+#define ErrorKlass IMK_ErrorKlass
+#define ERROR_DECLARE IMK_ERROR_DECLARE
+#define ERROR_DEFINE IMK_ERROR_DEFINE
+#define ErrorThrow IMK_ErrorThrow

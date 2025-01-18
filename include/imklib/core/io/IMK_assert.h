@@ -15,10 +15,8 @@ void IMK_PanicBox(char const *msg);
   }
 
 #ifdef USING_NAMESPACE_IMK_ASSERT
-#define Panic IMK_Panic
-#define PanicBox IMK_PanicBox
-#define ASSERT IMK_ASSERT
-#define ASSERT_MSG IMK_ASSERT_MSG
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_ASSERT
 #endif /* USING_NAMESPACE_IMK_ASSERT */
 
 #endif /* !IMK_ASSERT_H_LYBOWAACF1AEFYSI */

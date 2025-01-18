@@ -1,0 +1,272 @@
+#ifndef USING_NAMESPACE_IMK_RESULT
+
+#undef RESULT_OK
+#undef RESULT_ERR
+#undef RESULT_ERRC
+#undef RESULT_IS_OK
+#undef RESULT_IS_ERR
+#undef RESULT_UNWRAP
+#undef RESULT_EXPECT
+#undef RESULT_UNWRAP_OR
+#undef RESULT_UNWRAP_ERR
+#undef RESULT_TRY
+#undef RESULT_TRY_OR
+
+#undef RESULT_DECLARE
+#undef RESULT_DEFINE
+
+#undef ResVoid
+#undef ResInt
+#undef ResShort
+#undef ResLong
+#undef ResFloat
+#undef ResDouble
+#undef ResChar
+#undef ResUInt
+#undef ResUShort
+#undef ResULong
+#undef ResUChar
+#undef ResRPtr
+#undef ResPtr
+#undef ResS8
+#undef ResS16
+#undef ResS32
+#undef ResS64
+#undef ResU8
+#undef ResU16
+#undef ResU32
+#undef ResU64
+#undef ResF32
+#undef ResF64
+
+#undef ResVoid_Ok
+#undef ResVoid_Err
+#undef ResVoid_ErrWithCode
+#undef ResVoid_IsOk
+#undef ResVoid_IsErr
+#undef ResVoid_Unwrap
+#undef ResVoid_Expect
+#undef ResVoid_UnwrapOr
+#undef ResVoid_UnwrapErr
+
+#undef ResInt_Ok
+#undef ResInt_Err
+#undef ResInt_ErrWithCode
+#undef ResInt_IsOk
+#undef ResInt_IsErr
+#undef ResInt_Unwrap
+#undef ResInt_Expect
+#undef ResInt_UnwrapOr
+#undef ResInt_UnwrapErr
+
+#undef ResShort_Ok
+#undef ResShort_Err
+#undef ResShort_ErrWithCode
+#undef ResShort_IsOk
+#undef ResShort_IsErr
+#undef ResShort_Unwrap
+#undef ResShort_Expect
+#undef ResShort_UnwrapOr
+#undef ResShort_UnwrapErr
+
+#undef ResLong_Ok
+#undef ResLong_Err
+#undef ResLong_ErrWithCode
+#undef ResLong_IsOk
+#undef ResLong_IsErr
+#undef ResLong_Unwrap
+#undef ResLong_Expect
+#undef ResLong_UnwrapOr
+#undef ResLong_UnwrapErr
+
+#undef ResFloat_Ok IMK_ResFloat_Ok
+#undef ResFloat_Err IMK_ResFloat_Err
+#undef ResFloat_ErrWithCode IMK_ResFloat_ErrWithCode
+#undef ResFloat_IsOk IMK_ResFloat_IsOk
+#undef ResFloat_IsErr IMK_ResFloat_IsErr
+#undef ResFloat_Unwrap IMK_ResFloat_Unwrap
+#undef ResFloat_Expect IMK_ResFloat_Expect
+#undef ResFloat_UnwrapOr IMK_ResFloat_UnwrapOr
+#undef ResFloat_UnwrapErr IMK_ResFloat_UnwrapErr
+
+#undef ResDouble_Ok
+#undef ResDouble_Err
+#undef ResDouble_ErrWithCode
+#undef ResDouble_IsOk
+#undef ResDouble_IsErr
+#undef ResDouble_Unwrap
+#undef ResDouble_Expect
+#undef ResDouble_UnwrapOr
+#undef ResDouble_UnwrapErr
+
+#undef ResChar_Ok
+#undef ResChar_Err
+#undef ResChar_ErrWithCode
+#undef ResChar_IsOk
+#undef ResChar_IsErr
+#undef ResChar_Unwrap
+#undef ResChar_Expect
+#undef ResChar_UnwrapOr
+#undef ResChar_UnwrapErr
+
+#undef ResUInt_Ok
+#undef ResUInt_Err
+#undef ResUInt_ErrWithCode
+#undef ResUInt_IsOk
+#undef ResUInt_IsErr
+#undef ResUInt_Unwrap
+#undef ResUInt_Expect
+#undef ResUInt_UnwrapOr
+#undef ResUInt_UnwrapErr
+
+#undef ResUShort_Ok
+#undef ResUShort_Err
+#undef ResUShort_ErrWithCode
+#undef ResUShort_IsOk
+#undef ResUShort_IsErr
+#undef ResUShort_Unwrap
+#undef ResUShort_Expect
+#undef ResUShort_UnwrapOr
+#undef ResUShort_UnwrapErr
+
+#undef ResULong_Ok
+#undef ResULong_Err
+#undef ResULong_ErrWithCode
+#undef ResULong_IsOk
+#undef ResULong_IsErr
+#undef ResULong_Unwrap
+#undef ResULong_Expect
+#undef ResULong_UnwrapOr
+#undef ResULong_UnwrapErr
+
+#undef ResUChar_Ok
+#undef ResUChar_Err
+#undef ResUChar_ErrWithCode
+#undef ResUChar_IsOk
+#undef ResUChar_IsErr
+#undef ResUChar_Unwrap
+#undef ResUChar_Expect
+#undef ResUChar_UnwrapOr
+#undef ResUChar_UnwrapErr
+
+#undef ResRPtr_Ok
+#undef ResRPtr_Err
+#undef ResRPtr_ErrWithCode
+#undef ResRPtr_IsOk
+#undef ResRPtr_IsErr
+#undef ResRPtr_Unwrap
+#undef ResRPtr_Expect
+#undef ResRPtr_UnwrapOr
+#undef ResRPtr_UnwrapErr
+
+#undef ResPtr_Ok
+#undef ResPtr_Err
+#undef ResPtr_ErrWithCode
+#undef ResPtr_IsOk
+#undef ResPtr_IsErr
+#undef ResPtr_Unwrap
+#undef ResPtr_Expect
+#undef ResPtr_UnwrapOr
+#undef ResPtr_UnwrapErr
+
+#undef ResS8_Ok
+#undef ResS8_Err
+#undef ResS8_ErrWithCode
+#undef ResS8_IsOk
+#undef ResS8_IsErr
+#undef ResS8_Unwrap
+#undef ResS8_Expect
+#undef ResS8_UnwrapOr
+#undef ResS8_UnwrapErr
+
+#undef ResS16_Ok
+#undef ResS16_Err
+#undef ResS16_ErrWithCode
+#undef ResS16_IsOk
+#undef ResS16_IsErr
+#undef ResS16_Unwrap
+#undef ResS16_Expect
+#undef ResS16_UnwrapOr
+#undef ResS16_UnwrapErr
+
+#undef ResS32_Ok
+#undef ResS32_Err
+#undef ResS32_ErrWithCode
+#undef ResS32_IsOk
+#undef ResS32_IsErr
+#undef ResS32_Unwrap
+#undef ResS32_Expect
+#undef ResS32_UnwrapOr
+#undef ResS32_UnwrapErr
+
+#undef ResS64_Ok
+#undef ResS64_Err
+#undef ResS64_ErrWithCode
+#undef ResS64_IsOk
+#undef ResS64_IsErr
+#undef ResS64_Unwrap
+#undef ResS64_Expect
+#undef ResS64_UnwrapOr
+#undef ResS64_UnwrapErr
+
+#undef ResU8_Ok
+#undef ResU8_Err
+#undef ResU8_ErrWithCode
+#undef ResU8_IsOk
+#undef ResU8_IsErr
+#undef ResU8_Unwrap
+#undef ResU8_Expect
+#undef ResU8_UnwrapOr
+#undef ResU8_UnwrapErr
+
+#undef ResU16_Ok
+#undef ResU16_Err
+#undef ResU16_ErrWithCode
+#undef ResU16_IsOk
+#undef ResU16_IsErr
+#undef ResU16_Unwrap
+#undef ResU16_Expect
+#undef ResU16_UnwrapOr
+#undef ResU16_UnwrapErr
+
+#undef ResU32_Ok
+#undef ResU32_Err
+#undef ResU32_ErrWithCode
+#undef ResU32_IsOk
+#undef ResU32_IsErr
+#undef ResU32_Unwrap
+#undef ResU32_Expect
+#undef ResU32_UnwrapOr
+#undef ResU32_UnwrapErr
+
+#undef ResU64_Ok
+#undef ResU64_Err
+#undef ResU64_ErrWithCode
+#undef ResU64_IsOk
+#undef ResU64_IsErr
+#undef ResU64_Unwrap
+#undef ResU64_Expect
+#undef ResU64_UnwrapOr
+#undef ResU64_UnwrapErr
+
+#undef ResF32_Ok
+#undef ResF32_Err
+#undef ResF32_ErrWithCode
+#undef ResF32_IsOk
+#undef ResF32_IsErr
+#undef ResF32_Unwrap
+#undef ResF32_Expect
+#undef ResF32_UnwrapOr
+#undef ResF32_UnwrapErr
+
+#undef ResF64_Ok
+#undef ResF64_Err
+#undef ResF64_ErrWithCode
+#undef ResF64_IsOk
+#undef ResF64_IsErr
+#undef ResF64_Unwrap
+#undef ResF64_Expect
+#undef ResF64_UnwrapOr
+#undef ResF64_UnwrapErr
+
+#endif /* !USING_NAMESPACE_IMK_RESULT */

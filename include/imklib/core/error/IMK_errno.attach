@@ -1,0 +1,5 @@
+#define SetError IMK_SetError
+#define GetErrorCode IMK_GetErrorCode
+#define GetErrorMessage IMK_GetErrorMessage
+#define ClearError IMK_ClearError
+#define PrintError IMK_PrintError

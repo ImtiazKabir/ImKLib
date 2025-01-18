@@ -1,0 +1,27 @@
+#ifndef USING_NAMESPACE_IMK_PTR
+#undef Ptr
+
+#undef PTR_DEREF
+
+#undef PTR_UNINITIALIZED
+#undef PTR_BORROWED
+#undef PTR_OWNED
+#undef PTR_MOVED
+
+#undef PTR_STACK
+#undef PTR_HEAP
+#undef PTR_STATIC
+
+#undef PTR_IMK_MEM
+#undef PTR_RDONLY
+
+#undef PtrOwnRaw
+#undef PtrBorrowRaw
+#undef PtrSetRdOnly
+#undef PtrSetSize
+#undef PtrOff
+#undef PtrBorrow
+#undef PtrMove
+#undef Drop
+
+#endif /* !USING_NAMESPACE_IMK_PTR */

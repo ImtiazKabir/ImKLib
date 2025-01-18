@@ -121,39 +121,8 @@ IMK_Ptr IMK_CloneP(IMK_Ptr ptr_b, void *stack, IMK_SteapMode mode);
 void IMK_Assign(IMK_Ptr to_b, IMK_Ptr from_b);
 
 #ifdef USING_NAMESPACE_IMK_MEM
-
-#define KLASS_ALLOC_KEY IMK_KLASS_ALLOC_KEY
-#define DATA_ALLOC_KEY IMK_DATA_ALLOC_KEY
-
-#define Klass IMK_Klass
-#define BlockHeader IMK_BlockHeader
-
-#define KLASS IMK_KLASS
-
-#define VanillaAlloc IMK_VanillaAlloc
-#define VanillaAllocP IMK_VanillaAllocP
-
-#define TypedAlloc IMK_TypedAlloc
-#define TypedAllocP IMK_TypedAllocP
-
-#define KlassAlloc IMK_KlassAlloc
-#define KlassAllocP IMK_KlassAllocP
-
-#define GetTypeHint IMK_GetTypeHint
-#define GetClass IMK_GetClass
-
-#define GetSuperKlass IMK_GetSuperKlass
-#define IsOf IMK_IsOf
-
-#define ToStr IMK_ToStr
-#define ToStrP IMK_ToStrP
-
-#define Hash IMK_Hash
-#define Compare IMK_Compare
-
-#define Clone IMK_Clone
-#define CloneP IMK_CloneP
-#define Assign IMK_Assign
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_ATTACH_MEM
 #endif /* USING_NAMESPACE_IMK_MEM */
 
 #endif /* !IMK_MEM_H_2JH5L1VYK3BJSRZ9 */

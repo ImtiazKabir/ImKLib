@@ -1,0 +1,36 @@
+#ifndef USING_NAMESPACE_IMK_MEM
+
+#undef KLASS_ALLOC_KEY
+#undef DATA_ALLOC_KEY
+
+#undef Klass
+#undef BlockHeader
+
+#undef KLASS
+
+#undef VanillaAlloc
+#undef VanillaAllocP
+
+#undef TypedAlloc
+#undef TypedAllocP
+
+#undef KlassAlloc
+#undef KlassAllocP
+
+#undef GetTypeHint
+#undef GetClass
+
+#undef GetSuperKlass
+#undef IsOf
+
+#undef ToStr
+#undef ToStrP
+
+#undef Hash
+#undef Compare
+
+#undef Clone
+#undef CloneP
+#undef Assign
+
+#endif /* !USING_NAMESPACE_IMK_MEM */

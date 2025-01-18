@@ -1,0 +1,4 @@
+#ifndef USING_NAMESPACE_IMK_PRINTF
+#define SNPrintF IMK_SNPrintF
+#define VSNPrintF IMK_VSNPrintF
+#endif /* !USING_NAMESPACE_IMK_PRINTF */

@@ -1,0 +1,2 @@
+#define SNPrintF IMK_SNPrintF
+#define VSNPrintF IMK_VSNPrintF

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define USING_NAMESPACE_IMK_PRINTF_H_
+#define USING_NAMESPACE_IMK_PRINTF
 
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_index_ref.slug"

@@ -1,0 +1,45 @@
+#ifndef USING_NAMESPACE_IMK_CORE
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_ERRNO
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_ERROR
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_LOG
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_MODLOG
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_ANSI_STYLE
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_ASSERT
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_PRINTF
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_OPTION
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_RESULT
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_MEM
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_PARAMS
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_PTR
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_SCOPE
+
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_DETACH_STEAP
+
+#endif /* !USING_NAMESPACE_IMK_CORE */

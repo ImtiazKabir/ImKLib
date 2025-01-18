@@ -1,0 +1,7 @@
+#ifndef USING_NAMESPACE_IMK_ERRNO
+#undef SetError
+#undef GetErrorCode
+#undef GetErrorMessage
+#undef ClearError
+#undef PrintError
+#endif /* !USING_NAMESPACE_IMK_ERRNO */
