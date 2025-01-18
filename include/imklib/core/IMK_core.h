@@ -18,46 +18,46 @@
 #define USING_NAMESPACE_IMK_STEAP
 #endif /* USING_NAMESPACE_IMK_CORE */
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_ERRNO
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_ERROR
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_LOG
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_MODLOG
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_ANSI_STYLE
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_ASSERT
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_PRINTF
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_OPTION
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_RESULT
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_MEM
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_PARAMS
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_PTR
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_SCOPE
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_STEAP
 
 #endif /* !IMK_CORE_H_0EFPTB36E7OSFPR8 */

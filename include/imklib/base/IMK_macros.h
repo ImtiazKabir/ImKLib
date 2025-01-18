@@ -1,7 +1,7 @@
 #ifndef IMK_MACROS_H_Y00OVTCJP5BUFN4S
 #define IMK_MACROS_H_Y00OVTCJP5BUFN4S
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_INTS
 
 #define STRINGIFY_(S) #S

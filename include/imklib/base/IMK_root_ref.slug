@@ -1,5 +1,5 @@
 /* clang-format off */
-#include "../IMK_slug_root_ref.h"
+#include "../IMK_root_ref.slug"
 
 #undef SLUG_IMK_DIR_INTERN_ROOT
 #if(SLUG_IMK_DIR_LEVEL==0)

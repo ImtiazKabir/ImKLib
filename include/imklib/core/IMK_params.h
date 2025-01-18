@@ -4,10 +4,10 @@
 #include <stdarg.h>
 #include <stddef.h>
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_BASE
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_PTR
 
 typedef enum {

@@ -3,7 +3,7 @@
 
 #include <stdarg.h>
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_INTS
 
 typedef u32 IMK_LogModuleLevelType;

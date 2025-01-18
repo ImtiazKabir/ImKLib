@@ -3,19 +3,19 @@
 
 #include <stdlib.h>
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_INTS
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_MACROS
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_ASSERT
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_PTR
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_MEM
 
 #define IMK_SCOPE(c)                                                           \

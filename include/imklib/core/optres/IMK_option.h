@@ -1,13 +1,13 @@
 #ifndef IMK_OPTION_H_FW630PAIVSA45CAX
 #define IMK_OPTION_H_FW630PAIVSA45CAX
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_BASE
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_PTR
 
-#include "IMK_slug_index_ref.h"
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_ASSERT
 
 #define IMK_OPTION_SOME(opt) GLUE(opt, _Some)

@@ -2,7 +2,7 @@
 #ifdef SLUG_IMK_DIR_ROOT
 #define SLUG_IMK_DIR_INTERN_ROOT SLUG_IMK_DIR_ROOT
 #else
-#include "IMK_slug_root_ref.h"
+#include "IMK_root_ref.slug"
 #endif
 
 #ifndef SLUG_STRINGIFY
@@ -11,6 +11,6 @@
 #endif /* SLUG_STRINGIFY */
 
 #undef SLUG_IMK_HEADER_INDEX
-#define SLUG_IMK_HEADER_INDEX SLUG_STRINGIFY(SLUG_IMK_DIR_INTERN_ROOT/IMK_slug_index.h)
+#define SLUG_IMK_HEADER_INDEX SLUG_STRINGIFY(SLUG_IMK_DIR_INTERN_ROOT/IMK_index.slug)
 #include SLUG_IMK_HEADER_INDEX
 

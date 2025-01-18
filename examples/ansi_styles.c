@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #define SLUG_IMK_DIR_ROOT imklib
-#include "imklib/IMK_slug_index_ref.h"
+#include "imklib/IMK_index_ref.slug"
 
 #include SLUG_IMK_HEADER_ANSI_STYLE
 
