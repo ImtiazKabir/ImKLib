@@ -1,17 +1,8 @@
-#define USING_NAMESPACE_IMK_STEAP
-#define USING_NAMESPACE_IMK_PTR
-#define USING_NAMESPACE_IMK_SCOPE
-#define USING_NAMESPACE_IMK_MEM
-#define USING_NAMESPACE_IMK_LOG
-
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_slug_index_ref.h"
 
-#include SLUG_IMK_HEADER_SCOPE
-#include SLUG_IMK_HEADER_STEAP
-#include SLUG_IMK_HEADER_MEM
-#include SLUG_IMK_HEADER_LOG
-#include SLUG_IMK_HEADER_PTR
+#define USING_NAMESPACE_IMK_CORE
+#include SLUG_IMK_HEADER_CORE
 
 int main(void) {
   SCOPE_INIT(scope, 8);
