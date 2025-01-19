@@ -18,7 +18,7 @@
 #undef KlassAllocP
 
 #undef GetTypeHint
-#undef GetClass
+#undef GetKlass
 
 #undef GetSuperKlass
 #undef IsOf
@@ -32,5 +32,8 @@
 #undef Clone
 #undef CloneP
 #undef Assign
+
+#undef GetImplOf
+#undef GetImplOfP
 
 #endif /* !USING_NAMESPACE_IMK_MEM */

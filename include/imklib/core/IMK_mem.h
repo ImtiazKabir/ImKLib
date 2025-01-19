@@ -43,7 +43,7 @@ struct IMK_Klass {
   int (*compare)(IMK_Ptr a, IMK_Ptr b);
   IMK_Ptr (*to_str)(IMK_Ptr self, void *stack, IMK_SteapMode mode);
 
-  void (*impl_of)(IMK_Ptr interface);
+  void (*impl_filler)(IMK_Ptr interface);
 };
 
 #define IMK_KLASS(k)                                                           \
@@ -119,6 +119,9 @@ IMK_OptPtr IMK_Clone(IMK_Ptr ptr_b, void *stack, IMK_SteapMode mode);
 IMK_Ptr IMK_CloneP(IMK_Ptr ptr_b, void *stack, IMK_SteapMode mode);
 
 void IMK_Assign(IMK_Ptr to_b, IMK_Ptr from_b);
+
+IMK_ResPtr IMK_GetImplOf(IMK_Klass *implementation, IMK_Klass *interface, void *stack, IMK_SteapMode mode);
+IMK_Ptr IMK_GetImplOfP(IMK_Klass *implementation, IMK_Klass *interface, void *stack, IMK_SteapMode mode);
 
 #ifdef USING_NAMESPACE_IMK_MEM
 #include "IMK_index_ref.slug"

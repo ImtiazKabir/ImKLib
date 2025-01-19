@@ -150,7 +150,7 @@ char const *GetTypeHint(Ptr ptr) {
   }
 }
 
-static Klass *GetKlass(Ptr ptr) {
+Klass *GetKlass(Ptr ptr) {
   BlockHeader *header = GetHeader(ptr);
   if (header == NULL) {
     return NULL;
@@ -408,3 +408,16 @@ void Drop(Ptr *ptr) {
   }
   memset(ptr, 0, sizeof(*ptr));
 }
+
+ResPtr GetImplOf(Klass *implementation, Klass *interface, void *stack, SteapMode mode) {
+  Ptr interface_instance;
+  RESULT_TRY_OR(interface_instance, ResPtr, KlassAlloc(interface, stack, mode), ResPtr);
+  implementation->impl_filler(interface_instance);
+  return ResPtr_Ok(interface_instance);
+}
+
+Ptr GetImplOfP(Klass *implementation, Klass *interface, void *stack, SteapMode mode) {
+  return ResPtr_Unwrap(GetImplOf(implementation, interface, stack, mode));
+}
+
+

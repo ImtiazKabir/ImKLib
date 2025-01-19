@@ -16,7 +16,7 @@
 #define KlassAllocP IMK_KlassAllocP
 
 #define GetTypeHint IMK_GetTypeHint
-#define GetClass IMK_GetClass
+#define GetKlass IMK_GetKlass
 
 #define GetSuperKlass IMK_GetSuperKlass
 #define IsOf IMK_IsOf
@@ -30,3 +30,6 @@
 #define Clone IMK_Clone
 #define CloneP IMK_CloneP
 #define Assign IMK_Assign
+
+#define GetImplOf IMK_GetImplOf
+#define GetImplOfP IMK_GetImplOfP
