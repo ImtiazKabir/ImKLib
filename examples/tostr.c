@@ -17,11 +17,11 @@ static ResVoid Student_Constructor(Ptr self, Params *args) {
 }
 
 static OptPtr Student_ToStr(Ptr self, void *stack, SteapMode mode) {
-  size_t n = (size_t) csnprintf(NULL, 0, "Student(%d)", PTR_DEREF(self, Student).id);
+  size_t n = (size_t) SNPrintF(NULL, 0, "Student(%d)", PTR_DEREF(self, Student).id);
   OptPtr opt = TypedAlloc("String", stack, n + 1, mode);
   Ptr ptr;
   OPTION_TRY(ptr, OptPtr, opt, OptPtr);
-  csnprintf(ptr.raw, n + 1, "Student(%d)", PTR_DEREF(self, Student).id);
+  SNPrintF(ptr.raw, n + 1, "Student(%d)", PTR_DEREF(self, Student).id);
   return OptPtr_Some(PtrMove(&ptr));
 }
 
@@ -39,7 +39,7 @@ int main(void) {
 
   student = KlassAllocP(StudentKlass, &stack, PREFER_STACK, U32(1), PARAM_INT,
                         2005041);
-  /*Log1(LOG_INFO, "Hello: %obj", student);*/
+  Log1(LOG_INFO, "Hello: %obj", student);
   PrintF("Hello: %obj\n", student);
 
   SCOPE_RET(scope, int, 0);

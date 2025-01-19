@@ -11,6 +11,9 @@
 #define USING_NAMESPACE_IMK_CORE
 #include SLUG_IMK_HEADER_CORE
 
+static char internal_buffer[268435456] = {0};
+static char *internal_buffer_start = internal_buffer;
+
 int PrintF(char const *fmt, ...) {
   va_list ap;
   int ret;
@@ -52,36 +55,19 @@ int VPrintF(char const *fmt, va_list ap) {
 }
 
 int VFPrintF(FILE *stream, char const *fmt, va_list ap) {
-  int ret;
-
-  size_t n = (size_t)VSNPrintF(NULL, 0, fmt, ap);
-  char *buf = malloc(n + 1);
-  VSNPrintF(buf, n + 1, fmt, ap);
-  ret = fprintf(stream, "%s", buf);
-  free(buf);
-
-  return ret;
+  VSNPrintF(NULL, 0, fmt, ap);
+  return fprintf(stream, "%s", internal_buffer_start);
 }
 
 int VSPrintF(char *str, char const *fmt, va_list ap) {
-  int ret;
-
-  size_t n = (size_t)VSNPrintF(NULL, 0, fmt, ap);
-  char *buf = malloc(n + 1);
-  VSNPrintF(buf, n + 1, fmt, ap);
-  ret = sprintf(str, "%s", buf);
-  free(buf);
-
-  return ret;
+  VSNPrintF(NULL, 0, fmt, ap);
+  return sprintf(str, "%s", internal_buffer_start);
 }
 
 static int ObjSpecifier(char *str, va_list ap) {
-  Ptr ptr;
-  Ptr tostr;
-  int ret;
-  ptr = va_arg(ap, Ptr);
-  tostr = ToStrP(ptr, NULL, FORCE_HEAP);
-  ret = sprintf(str, "%s", (char *)tostr.raw);
+  Ptr ptr = va_arg(ap, Ptr);
+  Ptr tostr = ToStrP(ptr, NULL, FORCE_HEAP);
+  int ret = sprintf(str, "%s", (char *)tostr.raw);
   Drop(&ptr);
   Drop(&tostr);
   return ret;
@@ -98,7 +84,7 @@ static char *shortened(char const *src, size_t n) {
   return ret;
 }
 
-static int vsprintf_(char *str, char const *fmt, va_list ap) {
+static int vsprintf_(char const *fmt, va_list ap) {
   char const *first_specifier = NULL;
   int (*first_handler)(char *, va_list) = NULL;
   size_t first_occur_index;
@@ -121,56 +107,37 @@ static int vsprintf_(char *str, char const *fmt, va_list ap) {
   }
 
   if (first_specifier) {
-    int n1 = 0;
-    int n2 = 0;
-    int n3 = 0;
+    int n1, n2, n3;
+
     char *dupfmt = shortened(fmt, first_occur_index);
-    n1 = vsprintf(str, dupfmt, ap);
+    n1 = vsprintf(internal_buffer_start, dupfmt, ap);
+    internal_buffer_start += n1;
     free(dupfmt);
-    n2 = first_handler(str + n1, ap);
-    n3 = vsprintf_(str + n1 + n2, fmt + first_occur_index + strlen(first_specifier), ap);
+
+    n2 = first_handler(internal_buffer_start, ap);
+    internal_buffer_start += n2;
+
+    n3 = vsprintf_(fmt + first_occur_index + strlen(first_specifier), ap);
+    internal_buffer_start += n3;
+    
     return n1 + n2 + n3;
   } else {
-    return vsprintf(str, fmt, ap);
+    int n = vsprintf(internal_buffer_start, fmt, ap);
+    internal_buffer_start += n;
+    return n;
   }
 }
 
 int VSNPrintF(char *str, size_t size, char const *fmt, va_list ap) {
-  static char internal_buffer[268435456];
-  int ret = -1;
-  if (size > sizeof(internal_buffer)) {
-    return -1;
-  }
-  ret = vsprintf_(internal_buffer, fmt, ap);
-  if (ret > 0 && str != NULL && size > 0) {
-    size_t min = (size_t)ret < size - 1 ? (size_t)ret : size - 1;
-    memcpy(str, internal_buffer, min);
-    str[min] = '\0';
-  }
-  return ret;
-}
-
-int IMK_csnprintf(char *str, size_t size, char const *fmt, ...) {
-  va_list ap;
+  char *pushed_buf_start = internal_buffer_start;
   int ret;
-  va_start(ap, fmt);
-  ret = cvsnprintf(str, size, fmt, ap);
-  va_end(ap);
-  return ret;
-}
-
-int IMK_cvsnprintf(char *str, size_t size, char const *fmt, va_list ap) {
-  static char internal_buffer[268435456];
-  int ret = -1;
-  if (size > sizeof(internal_buffer)) {
-    return -1;
-  }
-  ret = vsprintf(internal_buffer, fmt, ap);
+  ret = vsprintf_(fmt, ap);
   if (ret > 0 && str != NULL && size > 0) {
     size_t min = (size_t)ret < size - 1 ? (size_t)ret : size - 1;
-    memcpy(str, internal_buffer, min);
+    memcpy(str, pushed_buf_start, min);
     str[min] = '\0';
   }
+  internal_buffer_start = pushed_buf_start;
   return ret;
 }
 

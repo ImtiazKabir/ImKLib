@@ -40,10 +40,10 @@ void IMK_LogVFBW(u8 level, FILE *fp, char const *file, int line,
   time(&rawtime);
   timeinfo = localtime(&rawtime);
 
-  FPrintF(fp, "%02d:%02d:%02d %-5s %s:%d: ", timeinfo->tm_hour,
+  fprintf(fp, "%02d:%02d:%02d %-5s %s:%d: ", timeinfo->tm_hour,
           timeinfo->tm_min, timeinfo->tm_sec, level_strings[level], file, line);
   VFPrintF(fp, fmt, args);
-  FPrintF(fp, "\n");
+  fprintf(fp, "\n");
 }
 
 void IMK_LogVBW(u8 level, char const *file, int line, char const *fmt,
@@ -79,12 +79,12 @@ void IMK_LogVFCol(u8 level, FILE *fp, char const *file, int line,
   time(&rawtime);
   timeinfo = localtime(&rawtime);
 
-  FPrintF(fp,
+  fprintf(fp,
           "%02d:%02d:%02d " ANSI_RESET "%s%-5s" ANSI_RESET ANSI_FG_BRIGHT_BLACK " %s:%d: " ANSI_RESET,
           timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec,
           level_colors[level], level_strings[level], file, line);
   VFPrintF(fp, fmt, args);
-  FPrintF(fp, "\n");
+  fprintf(fp, "\n");
 }
 
 void IMK_LogVCol(u8 level, char const *file, int line, char const *fmt,
