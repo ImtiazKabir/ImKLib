@@ -176,7 +176,7 @@ OptPtr ToStr(Ptr ptr, void *stack, SteapMode mode) {
   Klass *klass = GetKlass(ptr);
   BlockHeader *header;
   if (klass != NULL && klass->to_str != NULL) {
-    return OptPtr_Some(klass->to_str(PtrBorrow(ptr), stack, mode));
+    return klass->to_str(PtrBorrow(ptr), stack, mode);
   }
   header = GetHeader(ptr);
   if (header == NULL) {

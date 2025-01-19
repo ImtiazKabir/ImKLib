@@ -72,15 +72,17 @@ void IMK_ErrorThrow(IMK_Ptr self, void *stack, IMK_SteapMode mode);
     }                                                                          \
     return IMK_ResVoid_Ok(0);                                                  \
   }                                                                            \
-  static IMK_Ptr GLUE(name, _ToStr_)(Ptr self_, void *stack,                   \
+  static IMK_OptPtr GLUE(name, _ToStr_)(Ptr self_, void *stack,                \
                                      IMK_SteapMode mode) {                     \
     IMK_Error self = IMK_PTR_DEREF(self_, IMK_Error);                          \
     char const *prefix = "[" STRINGIFY(name) "]: ";                            \
-    IMK_Ptr ptr = IMK_TypedAllocP(                                             \
+    IMK_OptPtr opt = IMK_TypedAlloc(                                           \
         "String", stack, strlen(prefix) + strlen(self.desc.raw) + 1, mode);    \
+    IMK_Ptr ptr;                                                               \
+    IMK_OPTION_TRY(ptr, IMK_OptPtr, opt, IMK_OptPtr);                          \
     strcat(ptr.raw, prefix);                                                   \
     strcat(ptr.raw, self.desc.raw);                                            \
-    return IMK_PtrMove(&ptr);                                                  \
+    return IMK_OptPtr_Some(IMK_PtrMove(&ptr));                                 \
   }                                                                            \
                                                                                \
   IMK_KLASS(GLUE_(name, Klass)) {                                              \

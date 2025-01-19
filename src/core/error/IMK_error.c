@@ -1,23 +1,8 @@
-#define USING_NAMESPACE_IMK_ERROR
-#define USING_NAMESPACE_IMK_PTR
-#define USING_NAMESPACE_IMK_MEM
-#define USING_NAMESPACE_IMK_STEAP
-#define USING_NAMESPACE_IMK_RESULT
-#define USING_NAMESPACE_IMK_ASSERT
-#define USING_NAMESPACE_IMK_PARAMS
-
-#include <string.h>
-
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_index_ref.slug"
 
-#include SLUG_IMK_HEADER_ERROR
-#include SLUG_IMK_HEADER_PTR
-#include SLUG_IMK_HEADER_MEM
-#include SLUG_IMK_HEADER_STEAP
-#include SLUG_IMK_HEADER_PARAMS
-#include SLUG_IMK_HEADER_RESULT
-#include SLUG_IMK_HEADER_ASSERT
+#define USING_NAMESPACE_IMK_CORE
+#include SLUG_IMK_HEADER_CORE
 
 static ResVoid Error_Constructor(Ptr self, Params *args) {
   int code;
@@ -41,19 +26,21 @@ static ResVoid Error_Constructor(Ptr self, Params *args) {
 
 static void Error_Destructor(Ptr self) { Drop(&PTR_DEREF(self, Error).desc); }
 
-static Ptr Error_ToStr(Ptr self_, void *stack, SteapMode mode) {
+static OptPtr Error_ToStr(Ptr self_, void *stack, SteapMode mode) {
   Error self = PTR_DEREF(self_, Error);
   char const *prefix = "[IMK_Error]: ";
-  Ptr ptr = TypedAllocP("String", stack,
+  OptPtr opt = TypedAlloc("String", stack,
                         strlen(prefix) + strlen(self.desc.raw) + 1, mode);
+  Ptr ptr;
+  OPTION_TRY(ptr, OptPtr, opt, OptPtr);
   strcat(ptr.raw, prefix);
   strcat(ptr.raw, self.desc.raw);
-  return PtrMove(&ptr);
+  return OptPtr_Some(PtrMove(&ptr));
 }
 
 void ErrorThrow(Ptr self, void *stack, SteapMode mode) {
   char const *prefix = "Thrown ";
-  Ptr str = Error_ToStr(self, stack, mode);
+  Ptr str = ToStrP(self, stack, mode);
   Ptr msg =
       TypedAllocP("String", stack, strlen(prefix) + strlen(str.raw) + 1, mode);
   strcat(msg.raw, prefix);

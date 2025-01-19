@@ -41,7 +41,7 @@ struct IMK_Klass {
 
   size_t (*hash)(IMK_Ptr self);
   int (*compare)(IMK_Ptr a, IMK_Ptr b);
-  IMK_Ptr (*to_str)(IMK_Ptr self, void *stack, IMK_SteapMode mode);
+  IMK_OptPtr (*to_str)(IMK_Ptr self, void *stack, IMK_SteapMode mode);
 
   void (*impl_filler)(IMK_Ptr interface);
 };
