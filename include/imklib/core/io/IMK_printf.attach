@@ -6,3 +6,5 @@
 #define VFPrintF IMK_VFPrintF
 #define VSPrintF IMK_VSPrintF
 #define VSNPrintF IMK_VSNPrintF
+#define csnprintf IMK_csnprintf
+#define cvsnprintf IMK_cvsnprintf

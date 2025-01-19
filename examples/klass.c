@@ -8,19 +8,19 @@ typedef struct {
   int id;
 } Student;
 
-ResVoid Constructor(Ptr self_, Params *args) {
-  Student self = PTR_DEREF(self_, Student);
+static ResVoid Student_Constructor(Ptr self, Params *args) {
   int id;
   Log(LOG_TRACE, "Inside constructor");
   ASSERT(ParamsMatch(args, 1, PARAM_INT));
   ParamsExtract(args, &id);
-  self.id = id;
+  PTR_DEREF(self, Student).id = id;
   return ResVoid_Ok(0);
 }
 
+
 KLASS(StudentKlass) {
   StudentKlass_.size = sizeof(Student);
-  StudentKlass_.ctor = Constructor;
+  StudentKlass_.ctor = Student_Constructor;
 }
 
 int main(void) {

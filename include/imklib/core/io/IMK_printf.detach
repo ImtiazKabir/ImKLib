@@ -7,4 +7,6 @@
 #undef VFPrintF
 #undef VSPrintF
 #undef VSNPrintF
+#undef csnprintf
+#undef cvsnprintf
 #endif /* !USING_NAMESPACE_IMK_PRINTF */

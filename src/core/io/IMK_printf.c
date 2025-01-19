@@ -11,8 +11,6 @@
 #define USING_NAMESPACE_IMK_CORE
 #include SLUG_IMK_HEADER_CORE
 
-static char internal_buffer[268435456];
-
 int PrintF(char const *fmt, ...) {
   va_list ap;
   int ret;
@@ -56,23 +54,34 @@ int VPrintF(char const *fmt, va_list ap) {
 int VFPrintF(FILE *stream, char const *fmt, va_list ap) {
   int ret;
 
-  VSNPrintF(NULL, 0, fmt, ap);
-  ret = fprintf(stream, "%s", internal_buffer);
+  size_t n = (size_t)VSNPrintF(NULL, 0, fmt, ap);
+  char *buf = malloc(n + 1);
+  VSNPrintF(buf, n + 1, fmt, ap);
+  ret = fprintf(stream, "%s", buf);
+  free(buf);
 
   return ret;
 }
 
 int VSPrintF(char *str, char const *fmt, va_list ap) {
   int ret;
-  VSNPrintF(NULL, 0, fmt, ap);
-  ret = sprintf(str, "%s", internal_buffer);
+
+  size_t n = (size_t)VSNPrintF(NULL, 0, fmt, ap);
+  char *buf = malloc(n + 1);
+  VSNPrintF(buf, n + 1, fmt, ap);
+  ret = sprintf(str, "%s", buf);
+  free(buf);
+
   return ret;
 }
 
 static int ObjSpecifier(char *str, va_list ap) {
-  Ptr ptr = va_arg(ap, Ptr);
-  Ptr tostr = ToStrP(ptr, NULL, FORCE_HEAP);
-  int ret = sprintf(str, "%s", (char *)tostr.raw);
+  Ptr ptr;
+  Ptr tostr;
+  int ret;
+  ptr = va_arg(ap, Ptr);
+  tostr = ToStrP(ptr, NULL, FORCE_HEAP);
+  ret = sprintf(str, "%s", (char *)tostr.raw);
   Drop(&ptr);
   Drop(&tostr);
   return ret;
@@ -127,11 +136,36 @@ static int vsprintf_(char *str, char const *fmt, va_list ap) {
 }
 
 int VSNPrintF(char *str, size_t size, char const *fmt, va_list ap) {
+  static char internal_buffer[268435456];
   int ret = -1;
   if (size > sizeof(internal_buffer)) {
     return -1;
   }
   ret = vsprintf_(internal_buffer, fmt, ap);
+  if (ret > 0 && str != NULL && size > 0) {
+    size_t min = (size_t)ret < size - 1 ? (size_t)ret : size - 1;
+    memcpy(str, internal_buffer, min);
+    str[min] = '\0';
+  }
+  return ret;
+}
+
+int IMK_csnprintf(char *str, size_t size, char const *fmt, ...) {
+  va_list ap;
+  int ret;
+  va_start(ap, fmt);
+  ret = cvsnprintf(str, size, fmt, ap);
+  va_end(ap);
+  return ret;
+}
+
+int IMK_cvsnprintf(char *str, size_t size, char const *fmt, va_list ap) {
+  static char internal_buffer[268435456];
+  int ret = -1;
+  if (size > sizeof(internal_buffer)) {
+    return -1;
+  }
+  ret = vsprintf(internal_buffer, fmt, ap);
   if (ret > 0 && str != NULL && size > 0) {
     size_t min = (size_t)ret < size - 1 ? (size_t)ret : size - 1;
     memcpy(str, internal_buffer, min);
