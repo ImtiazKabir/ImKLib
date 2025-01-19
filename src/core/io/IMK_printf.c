@@ -6,10 +6,10 @@
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_index_ref.slug"
 
-#define USING_NAMESPACE_IMK_PRINTF
-#include SLUG_IMK_HEADER_PRINTF
-
 #include SLUG_IMK_HEADER_MACROS
+
+#define USING_NAMESPACE_IMK_CORE
+#include SLUG_IMK_HEADER_CORE
 
 static char internal_buffer[268435456];
 
@@ -54,36 +54,28 @@ int VPrintF(char const *fmt, va_list ap) {
 }
 
 int VFPrintF(FILE *stream, char const *fmt, va_list ap) {
-  size_t n;
-  char *buf;
   int ret;
-  va_list aq;
 
-  __va_copy(aq, ap);
-  n = (size_t)VSNPrintF(NULL, 0, fmt, aq);
-  va_end(aq);
-
-  buf = malloc(n + 1);
-  VSNPrintF(buf, n + 1, fmt, ap);
-  ret = fprintf(stream, "%s", buf);
-  free(buf);
+  VSNPrintF(NULL, 0, fmt, ap);
+  ret = fprintf(stream, "%s", internal_buffer);
 
   return ret;
 }
 
 int VSPrintF(char *str, char const *fmt, va_list ap) {
-  size_t n = (size_t)VSNPrintF(NULL, 0, fmt, ap);
-  char *buf = malloc(n + 1);
   int ret;
-  VSNPrintF(buf, n + 1, fmt, ap);
-  ret = sprintf(str, "%s", buf);
-  free(buf);
+  VSNPrintF(NULL, 0, fmt, ap);
+  ret = sprintf(str, "%s", internal_buffer);
   return ret;
 }
 
 static int ObjSpecifier(char *str, va_list ap) {
-  int n = va_arg(ap, int);
-  return sprintf(str, "%d", n);
+  Ptr ptr = va_arg(ap, Ptr);
+  Ptr tostr = ToStrP(ptr, NULL, FORCE_HEAP);
+  int ret = sprintf(str, "%s", (char *)tostr.raw);
+  Drop(&ptr);
+  Drop(&tostr);
+  return ret;
 }
 
 static char const *custom_specifiers[] = {"%obj"};

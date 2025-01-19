@@ -5,7 +5,9 @@
 #include SLUG_IMK_HEADER_PRINTF
 
 int main(void) {
-  PrintF("%obj\n", 2005041);
+  char buffer[100];
+  SPrintF(buffer, "%d + %d = %d", 4, 5, 9);
+  PrintF("%s\n", buffer);
   return 0;
 }
 
