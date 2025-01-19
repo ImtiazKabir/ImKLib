@@ -1,4 +1,10 @@
 #ifndef USING_NAMESPACE_IMK_PRINTF
-#define SNPrintF IMK_SNPrintF
-#define VSNPrintF IMK_VSNPrintF
+#undef PrintF
+#undef FPrintF
+#undef SPrintF
+#undef SNPrintF
+#undef VPrintF
+#undef VFPrintF
+#undef VSPrintF
+#undef VSNPrintF
 #endif /* !USING_NAMESPACE_IMK_PRINTF */

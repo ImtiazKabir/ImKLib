@@ -5,6 +5,7 @@
 
 #define USING_NAMESPACE_IMK_LOG
 #define USING_NAMESPACE_IMK_ANSI_STYLE
+#define USING_NAMESPACE_IMK_PRINTF
 
 #define SLUG_IMK_DIR_ROOT imklib
 #include "imklib/IMK_index_ref.slug"
@@ -12,6 +13,7 @@
 #include SLUG_IMK_HEADER_LOG
 #include SLUG_IMK_HEADER_INTS
 #include SLUG_IMK_HEADER_ANSI_STYLE
+#include SLUG_IMK_HEADER_PRINTF
 
 static u8 log_levelmsk = LOG_MASK_ALL;
 
@@ -38,10 +40,10 @@ void IMK_LogVFBW(u8 level, FILE *fp, char const *file, int line,
   time(&rawtime);
   timeinfo = localtime(&rawtime);
 
-  fprintf(fp, "%02d:%02d:%02d %-5s %s:%d: ", timeinfo->tm_hour,
+  FPrintF(fp, "%02d:%02d:%02d %-5s %s:%d: ", timeinfo->tm_hour,
           timeinfo->tm_min, timeinfo->tm_sec, level_strings[level], file, line);
-  vfprintf(fp, fmt, args);
-  fprintf(fp, "\n");
+  VFPrintF(fp, fmt, args);
+  FPrintF(fp, "\n");
 }
 
 void IMK_LogVBW(u8 level, char const *file, int line, char const *fmt,
@@ -77,12 +79,12 @@ void IMK_LogVFCol(u8 level, FILE *fp, char const *file, int line,
   time(&rawtime);
   timeinfo = localtime(&rawtime);
 
-  fprintf(fp,
-          "%02d:%02d:%02d\x1b[0m %s%-5s" ANSI_RESET " \x1b[90m%s:%d:\x1b[0m ",
+  FPrintF(fp,
+          "%02d:%02d:%02d " ANSI_RESET "%s%-5s" ANSI_RESET ANSI_FG_BRIGHT_BLACK " %s:%d: " ANSI_RESET,
           timeinfo->tm_hour, timeinfo->tm_min, timeinfo->tm_sec,
           level_colors[level], level_strings[level], file, line);
-  vfprintf(fp, fmt, args);
-  fprintf(fp, "\n");
+  VFPrintF(fp, fmt, args);
+  FPrintF(fp, "\n");
 }
 
 void IMK_LogVCol(u8 level, char const *file, int line, char const *fmt,

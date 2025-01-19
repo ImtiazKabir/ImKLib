@@ -4,7 +4,14 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+int IMK_PrintF(char const *fmt, ...);
+int IMK_FPrintF(FILE *stream, char const *fmt, ...);
+int IMK_SPrintF(char *str, char const *fmt, ...);
 int IMK_SNPrintF(char *str, size_t size, char const *fmt, ...);
+
+int IMK_VPrintF(char const *fmt, va_list ap);
+int IMK_VFPrintF(FILE *stream, char const *fmt, va_list ap);
+int IMK_VSPrintF(char *str, char const *fmt, va_list ap);
 int IMK_VSNPrintF(char *str, size_t size, char const *fmt, va_list ap);
 
 #ifdef USING_NAMESPACE_IMK_PRINTF
