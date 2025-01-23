@@ -3,13 +3,13 @@
 -Wall
 -Wextra
 -pedantic
+-pedantic-errors
 -Wparentheses
 -Wformat=2
 -Wshadow
 -Wwrite-strings
 -Wredundant-decls
 -Wmissing-include-dirs
--pedantic-errors
 -Wuninitialized
 -Wmissing-declarations
 -Wconversion
