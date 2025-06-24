@@ -12,3 +12,5 @@ CMakeUserPresets.json
 examples/**
 !examples/**/*.c
 lib/
+build/
+compile_commands.json

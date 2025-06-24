@@ -22,7 +22,9 @@ int main(void) {
   Log(LOG_ERROR, "But after detach, they are no longer available");
   */
 
-  ASSERT_MSG(1, "If you use a USING_NAMESPACE directive before including a module, then it is permanently attached, so shorter names are available throughout the translation unit");
+  ASSERT_MSG(1, "If you use a USING_NAMESPACE directive before including a "
+                "module, then it is permanently attached, so shorter names are "
+                "available throughout the translation unit");
   IMK_ASSERT_MSG(1, "Like before, so does the longer versions");
 
 #include SLUG_IMK_ATTACH_ASSERT
@@ -32,4 +34,3 @@ int main(void) {
 
   return 0;
 }
-

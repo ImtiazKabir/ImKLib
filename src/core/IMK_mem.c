@@ -409,15 +409,16 @@ void Drop(Ptr *ptr) {
   memset(ptr, 0, sizeof(*ptr));
 }
 
-ResPtr GetImplOf(Klass *implementation, Klass *interface, void *stack, SteapMode mode) {
+ResPtr GetImplOf(Klass *implementation, Klass *interface, void *stack,
+                 SteapMode mode) {
   Ptr interface_instance;
-  RESULT_TRY_OR(interface_instance, ResPtr, KlassAlloc(interface, stack, mode), ResPtr);
+  RESULT_TRY_OR(interface_instance, ResPtr, KlassAlloc(interface, stack, mode),
+                ResPtr);
   implementation->impl_filler(interface_instance);
   return ResPtr_Ok(interface_instance);
 }
 
-Ptr GetImplOfP(Klass *implementation, Klass *interface, void *stack, SteapMode mode) {
+Ptr GetImplOfP(Klass *implementation, Klass *interface, void *stack,
+               SteapMode mode) {
   return ResPtr_Unwrap(GetImplOf(implementation, interface, stack, mode));
 }
-
-
