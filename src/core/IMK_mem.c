@@ -89,7 +89,8 @@ OptPtr VanillaAlloc(void *stack_, size_t n, SteapMode mode) {
 }
 
 Ptr VanillaAllocP(void *stack, size_t n, IMK_SteapMode mode) {
-  return OptPtr_Unwrap(VanillaAlloc(stack, n, mode));
+  return OptPtr_Expect(VanillaAlloc(stack, n, mode),
+                       "Can not allocate in the given stack");
 }
 
 OptPtr TypedAlloc(char const *type_hint, void *stack_, size_t n,
@@ -126,7 +127,8 @@ OptPtr TypedAlloc(char const *type_hint, void *stack_, size_t n,
 
 Ptr TypedAllocP(char const *type_hint, void *stack, size_t n,
                 IMK_SteapMode mode) {
-  return OptPtr_Unwrap(TypedAlloc(type_hint, stack, n, mode));
+  return OptPtr_Expect(TypedAlloc(type_hint, stack, n, mode),
+                       "Can not allocate in the given stack");
 }
 
 static BlockHeader *GetHeader(Ptr ptr) {
@@ -294,9 +296,8 @@ static ResPtr KlassAllocV(Klass *klass, void *stack, SteapMode mode,
   Params params = {0};
   u32 len;
 
-  ret = OptPtr_Unwrap(
-      AllocKlass(klass, stack,
-                 mode)); /* TODO do not use unwrap, change it to use errors */
+  ret = OptPtr_Expect(AllocKlass(klass, stack, mode),
+                      "Can not allocate in the provided stack");
   len = va_arg(list, u32);
   if (len != 0u) {
     ParamsVPush(&params, len, list);
