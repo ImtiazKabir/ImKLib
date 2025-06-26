@@ -2,6 +2,7 @@
 
 #undef STACK
 #undef STACK_INIT
+#undef STACK_CLEAR
 #undef PREFER_STACK
 #undef FORCE_STACK
 #undef PREFER_HEAP

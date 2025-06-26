@@ -2,6 +2,7 @@
 
 #undef SCOPE
 #undef SCOPE_INIT
+#undef SCOPE_CLEAR
 #undef SCOPE_ADD
 #undef SCOPE_END
 #undef SCOPE_RET

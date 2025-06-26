@@ -18,6 +18,9 @@
 #include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_MEM
 
+#include "IMK_index_ref.slug"
+#include SLUG_IMK_HEADER_BASE
+
 #define IMK_SCOPE(c)                                                           \
   struct {                                                                     \
     IMK_Ptr *ptrs[c];                                                          \
@@ -25,6 +28,7 @@
   }
 
 #define IMK_SCOPE_INIT(s, c) SCOPE(c) s = {{0}, 0}
+#define IMK_SCOPE_CLEAR(s) STATEMENT(s.len = 0;)
 #define IMK_SCOPE_ADD(s, p)                                                    \
   IMK_ASSERT_MSG(s.len < ARRAY_COUNT(s.ptrs),                                  \
                  "Scope too small, can not add pointer");                      \

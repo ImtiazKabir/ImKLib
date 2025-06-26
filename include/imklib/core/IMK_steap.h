@@ -6,6 +6,8 @@
 
 #include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_PTR
+
+#include "IMK_index_ref.slug"
 #include SLUG_IMK_HEADER_BASE
 
 #define IMK_STACK(c)                                                           \
