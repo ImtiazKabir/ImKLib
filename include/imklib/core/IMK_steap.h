@@ -15,7 +15,7 @@
     char mem[c];                                                               \
   }
 #define IMK_STACK_INIT(s, c) IMK_STACK(c) s = {c, 0, {0}}
-#define IMK_STACK_CLEAR(s, c) STATEMENT(s.cap = sizeof(s.mem); s.off = 0;)
+#define IMK_STACK_CLEAR(s) STATEMENT(s.cap = sizeof(s.mem); s.off = 0;)
 
 typedef enum {
   IMK_PREFER_STACK,
