@@ -14,6 +14,11 @@
     char mem[c];                                                               \
   }
 #define IMK_STACK_INIT(s, c) IMK_STACK(c) s = {c, 0, {0}}
+#define IMK_STACK_CLEAR(s, c)                                                  \
+  do {                                                                         \
+    s.c = 0;                                                                   \
+    s.off = 0;                                                                 \
+  } while (0)
 
 typedef enum {
   IMK_PREFER_STACK,
