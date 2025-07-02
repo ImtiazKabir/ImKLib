@@ -232,7 +232,6 @@ static void InitAncestryLineRecurse(Klass *klass) {
   if (klass == NULL) {
     return;
   }
-  ASSERT(klass->klass_init);
   klass->klass_init();
   klass->klass_init = NULL;
   InitAncestryLineRecurse(klass->super_klass);
