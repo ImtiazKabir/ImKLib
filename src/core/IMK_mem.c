@@ -229,7 +229,7 @@ int Compare(Ptr p1, Ptr p2) {
 }
 
 static void InitAncestryLineRecurse(Klass *klass) {
-  if (klass == NULL) {
+  if (klass == NULL || klass->klass_init == NULL) {
     return;
   }
   klass->klass_init();
@@ -244,9 +244,7 @@ static OptPtr AllocKlass(Klass *klass, void *stack_, SteapMode mode) {
   Ptr ptr;
 
   ASSERT(klass);
-  if (klass->klass_init != NULL) {
-    InitAncestryLineRecurse(klass);
-  }
+  InitAncestryLineRecurse(klass);
   header = AllocRaw(stack, klass->size + sizeof(BlockHeader), mode);
   if (header == NULL) {
     return OptPtr_None();
